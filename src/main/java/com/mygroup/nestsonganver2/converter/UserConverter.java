@@ -14,6 +14,8 @@ import com.mygroup.nestsonganver2.entity.UserEntity;
  */
 public class UserConverter {
     
+    // Convert Entitty to DTO
+    
     public static UserDTO convertEntitytoDTO(UserEntity entity){
         UserDTO dto = new UserDTO();
         dto.setId(entity.getId());
@@ -23,10 +25,23 @@ public class UserConverter {
         dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setAddress(entity.getAddress());
         dto.setPassword(entity.getPassword());
-        dto.setRoleId(entity.getRoleId());
         dto.setToken(entity.getToken());
         return dto;
     } 
+    
+    public static UserDTO convertBasicInfo(UserEntity entity){
+        UserDTO dto = new UserDTO();
+        dto.setFullname(entity.getFullname());
+        dto.setDateOfBirth(entity.getDateOfBirth());
+        dto.setPhoneNumber(entity.getPhoneNumber());
+        dto.setAddress(entity.getAddress());
+        dto.setToken(entity.getToken());
+        return dto;
+    }
+    
+    // -----------------------------------------------------------------------
+    
+    // Convert Entitty to DTO
     
     public static UserEntity convertDTOtoEntity(UserDTO dto){
         UserEntity entity = new UserEntity();
@@ -37,9 +52,10 @@ public class UserConverter {
         entity.setPhoneNumber(dto.getPhoneNumber());
         entity.setAddress(dto.getAddress());
         entity.setPassword(dto.getPassword());
-        entity.setRoleId(dto.getRoleId());
         entity.setToken(dto.getToken());
         return entity;
     } 
+    
+    // -----------------------------------------------------------------------
     
 }

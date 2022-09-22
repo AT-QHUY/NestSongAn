@@ -17,6 +17,15 @@ import java.util.logging.Logger;
  * @author huy
  */
 public class UserMapper implements RowMapper<UserEntity>{
+    
+    public static UserMapper instance;
+    
+    public static UserMapper getInstance(){
+        if(instance == null){
+            instance = new UserMapper();
+        }
+        return instance;
+    }
 
     @Override
     public UserEntity mapRow(ResultSet rs) {       

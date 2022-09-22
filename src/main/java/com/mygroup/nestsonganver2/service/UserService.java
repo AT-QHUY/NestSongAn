@@ -46,8 +46,12 @@ public class UserService {
         UserEntity userEntity = userDAO.findUser(user.getUsername(), Utils.hashPassWordMd5(user.getPassword()));
         if (userEntity != null) {
             user = UserConverter.convertEntitytoDTO(userEntity);
+            //Add roleName for user
+            return user;
+        }else{
+            return null;
         }
-        return user;
+        
     }
 
     public UserDTO getUserById(int userId) {
@@ -55,6 +59,7 @@ public class UserService {
         UserEntity userEntity = userDAO.findUser(userId);
         if (userEntity != null) {
             user = UserConverter.convertEntitytoDTO(userEntity);
+            //Add roleName for user
         }
         return user;
     }
@@ -65,6 +70,7 @@ public class UserService {
         List<UserEntity> entityList = userDAO.findAll();
         for (UserEntity user : entityList) {
             userDTO = UserConverter.convertEntitytoDTO(user);
+            //Add roleName for user
             list.add(userDTO);
         }
         return list;
@@ -75,10 +81,11 @@ public class UserService {
     
     public int updateUser(UserDTO user) {
         return userDAO.updateUser(UserConverter.convertDTOtoEntity(user));
+        //Add roleID for user
     }
     
     public int updateUserStatus(int id, int status) {
-        return userDAO.updateUserStatus(status, id);
+        return userDAO.updateUserStatus(id, status);
     }
     
     public int updateUserPassword(int id, String password) throws NoSuchAlgorithmException {

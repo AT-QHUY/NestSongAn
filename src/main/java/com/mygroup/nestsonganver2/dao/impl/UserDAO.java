@@ -17,6 +17,8 @@ import java.util.List;
  * @author huy
  */
 public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
+    
+    private static UserMapper userMapper = UserMapper.getInstance();
 
     private static UserDAO userDAO = null;
 
@@ -39,19 +41,19 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     // Find User
     @Override
     public UserEntity findUser(String username, String password) {
-        List<UserEntity> userList = query(UserSQL.login, new UserMapper(), username, password);
+        List<UserEntity> userList = query(UserSQL.login, userMapper, username, password);
         return (userList.isEmpty() || userList.get(0).getStatus() == 0) ? null : userList.get(0);
     }
 
     @Override
     public List<UserEntity> findAll() {
-        List<UserEntity> userList = query(UserSQL.findAll, new UserMapper());
+        List<UserEntity> userList = query(UserSQL.findAll, userMapper);
         return userList.isEmpty() ? null : userList;
     }
 
     @Override
     public UserEntity findUser(int id) {
-        List<UserEntity> userList = query(UserSQL.findById, new UserMapper(), id);
+        List<UserEntity> userList = query(UserSQL.findById, userMapper, id);
         return (userList.isEmpty() || userList.get(0).getStatus() == 0) ? null : userList.get(0);
     }
 
@@ -64,7 +66,7 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
 
     @Override
     public int updateUserStatus(int id, int status) {
-        return update(UserSQL.updateStatus, id, status);
+        return update(UserSQL.updateStatus, status, id);
     }
 
     @Override
