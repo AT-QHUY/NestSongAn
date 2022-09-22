@@ -43,7 +43,7 @@ public class UserAPI {
     // Get all user in database
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllUsers() {
+    public Response getAll() {
 
         List<UserDTO> list = userService.findAllUsers();
         if (list.isEmpty() || list == null) {
@@ -59,7 +59,7 @@ public class UserAPI {
     @GET
     @Path("{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getOneUserById(@PathParam("isbn") int isbn) {
+    public Response getOneById(@PathParam("isbn") int isbn) {
 
         UserDTO user = userService.getUserById(isbn);
         if (user == null) {
@@ -76,7 +76,7 @@ public class UserAPI {
     @Path("/insert")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response insertUser(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
+    public Response insert(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
 
         int id = userService.insertUser(user);
         if (id == 0) {
@@ -93,7 +93,7 @@ public class UserAPI {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response loginUser(UserDTO user) throws NoSuchAlgorithmException {
+    public Response login(UserDTO user) throws NoSuchAlgorithmException {
 
         user = userService.checkLogin(user);
         if (user != null) {
@@ -110,7 +110,7 @@ public class UserAPI {
     @Path("{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUser(@PathParam("isbn") int isbn, UserDTO user) {
+    public Response updateOne(@PathParam("isbn") int isbn, UserDTO user) {
 
         int result;
         user.setId(isbn);
@@ -129,7 +129,7 @@ public class UserAPI {
     @Path("{isbn}/update-password")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUserPassword(@PathParam("isbn") int isbn, UserDTO user) throws NoSuchAlgorithmException {
+    public Response updatePassword(@PathParam("isbn") int isbn, UserDTO user) throws NoSuchAlgorithmException {
 
         int result;       
         result = userService.updateUserPassword(isbn, user.getPassword());
@@ -147,7 +147,7 @@ public class UserAPI {
     @Path("{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteUser(@PathParam("isbn") int isbn) {
+    public Response deleteOne(@PathParam("isbn") int isbn) {
 
         int result ;
         result = userService.updateUserStatus(isbn, 0);
