@@ -32,7 +32,6 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     // Create User
     @Override
     public int createNewUser(UserEntity user) {
-
         int id = insert(UserSQL.insertNew, user.getFullname(), user.getDateOfBirth(), user.getPhoneNumber(), user.getAddress(), user.getUsername(), user.getPassword());
         return id;
     }
@@ -42,7 +41,7 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     @Override
     public UserEntity findUser(String username, String password) {
         List<UserEntity> userList = query(UserSQL.login, userMapper, username, password);
-        return (userList.isEmpty() || userList.get(0).getStatus() == 0) ? null : userList.get(0);
+        return (!userList.isEmpty() && userList.get(0).getStatus() != 0) ? userList.get(0) : null;
     }
 
     @Override
@@ -54,14 +53,14 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     @Override
     public UserEntity findUser(int id) {
         List<UserEntity> userList = query(UserSQL.findById, userMapper, id);
-        return (userList.isEmpty() || userList.get(0).getStatus() == 0) ? null : userList.get(0);
+        return (!userList.isEmpty() && userList.get(0).getStatus() != 0) ? userList.get(0) : new UserEntity() ;
     }
 
     // ----------------------------------------------------------------------
     // Update User
     @Override
     public int updateUser(UserEntity user) {
-        return update(UserSQL.updateUser, user.getFullname(), user.getDateOfBirth(), user.getPhoneNumber(), user.getAddress(), user.getUsername(), user.getId());
+        return update(UserSQL.updateUser, user.getFullname(), user.getDateOfBirth(), user.getPhoneNumber(), user.getAddress(), user.getId());
     }
 
     @Override
@@ -70,8 +69,8 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     }
 
     @Override
-    public int updateUserPassword(int id, String password) {
-        return update(UserSQL.updatePassword, password, id);
+    public int updateUserPassword(int id, String oldPassword, String newPassword) {
+        return update(UserSQL.updatePassword, newPassword, id, oldPassword);
     }
 
     // ----------------------------------------------------------------------

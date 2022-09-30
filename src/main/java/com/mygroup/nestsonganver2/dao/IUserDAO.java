@@ -36,7 +36,7 @@ public interface IUserDAO extends IDao<UserEntity> {
 
     public int updateUserStatus(int id, int status);
 
-    public int updateUserPassword(int id, String password); 
+    public int updateUserPassword(int id, String oldPassword, String newPassword); 
     
     // ----------------------------------------------------------------------
  

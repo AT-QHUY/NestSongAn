@@ -41,13 +41,15 @@ public class UserAPI {
     UriInfo ui;
 
     // Get all user in database
-    @GET
+    @POST
+    @Path("/getAll")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll() {
-
-        List<UserDTO> list = userService.findAllUsers();
-        if (list.isEmpty() || list == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+    public Response getAll(UserDTO dto) {
+        
+        List<UserDTO> list = userService.findAllUsers(dto.getToken());
+        if (list == null || list.isEmpty()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -56,18 +58,15 @@ public class UserAPI {
     // -------------------------------------------------------------------------
 
     //get user by id 
-    @GET
-    @Path("{isbn}")
+    @POST
+    @Path("/getOne/{isbn}")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getOneById(@PathParam("isbn") int isbn) {
-
-        UserDTO user = userService.getUserById(isbn);
-        if (user == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        } else {
-            return Response.ok(user, MediaType.APPLICATION_JSON).build();
-        }
-
+    public Response getOneById(@PathParam("isbn") int isbn, UserDTO dto) {
+        UserDTO user = userService.getUserById(isbn, dto.getToken());
+        if (user == null) return Response.status(Response.Status.UNAUTHORIZED).build();
+        else if(user.getId() == 0) return Response.status(Response.Status.NO_CONTENT).build();
+        else return Response.ok(user, MediaType.APPLICATION_JSON).build();
     }
 
     //--------------------------------------------------------------------------
@@ -78,12 +77,11 @@ public class UserAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response insert(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
 
-        int id = userService.insertUser(user);
-        if (id == 0) {
+        String token = userService.insertUser(user);
+        if (token == null) {
             return Response.status(Response.Status.NOT_ACCEPTABLE).build();
-        } else {
-            URI uri = new URI(ui.getBaseUri() + "User/" + id);
-            return Response.created(uri).build();
+        } else {          
+            return Response.ok(token, MediaType.APPLICATION_JSON).build();
         }
 
     }
@@ -95,11 +93,11 @@ public class UserAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response login(UserDTO user) throws NoSuchAlgorithmException {
 
-        user = userService.checkLogin(user);
-        if (user != null) {
-            return Response.ok(user, MediaType.APPLICATION_JSON).build();
+        String token = userService.checkLogin(user);
+        if (token != null) {
+            return Response.ok(token, MediaType.APPLICATION_JSON).build();
         } else {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         }
 
     }
@@ -107,36 +105,35 @@ public class UserAPI {
     //--------------------------------------------------------------------------
     // Update an user in database
     @PUT
-    @Path("{isbn}")
+    @Path("/{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateOne(@PathParam("isbn") int isbn, UserDTO user) {
 
-        int result;
-        user.setId(isbn);
-        result = userService.updateUser(user);
-        if (result == 0) {
-            return Response.notModified().build();
-        } else {
-            return Response.ok().build();
-        }
+        String token = userService.updateUser(isbn, user);
+        if (token == null)  return Response.status(Response.Status.UNAUTHORIZED).build();
+        else if(token.isEmpty()) return Response.status(Response.Status.NOT_MODIFIED).build();
+        else return Response.ok().build();
 
     }
     
     // Update user password
     
     @PUT
-    @Path("{isbn}/update-password")
+    @Path("/update-password/{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updatePassword(@PathParam("isbn") int isbn, UserDTO user) throws NoSuchAlgorithmException {
 
         int result;       
-        result = userService.updateUserPassword(isbn, user.getPassword());
-        if (result == 0) {
-            return Response.notModified().build();
-        } else {
-            return Response.ok().build();
+        result = userService.updateUserPassword(isbn, user.getPassword(), user.getNewPassword(), user.getToken());
+        switch (result) {
+            case 0:
+                return Response.notModified().build();
+            case 2:
+                return Response.status(Response.Status.UNAUTHORIZED).build();
+            default:
+                return Response.ok().build();
         }
 
     }
@@ -144,18 +141,21 @@ public class UserAPI {
     //--------------------------------------------------------------------------
     // Delete an user by changing status
     @DELETE
-    @Path("{isbn}")
+    @Path("/{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteOne(@PathParam("isbn") int isbn) {
-
+    public Response deleteOne(@PathParam("isbn") int isbn, UserDTO user) {
         int result ;
-        result = userService.updateUserStatus(isbn, 0);
-        if (result == 0) {
-            return Response.notModified().build();
-        } else {
-            return Response.ok().build();
+        result = userService.updateUserStatus(isbn, 0, user.getToken());
+        switch (result) {
+            case 0:
+                return Response.notModified().build();
+            case 2:
+                return Response.status(Response.Status.UNAUTHORIZED).build();
+            default:
+                return Response.ok().build();
         }
+        
 
     }
     //--------------------------------------------------------------------------

@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +21,9 @@ import java.util.logging.Logger;
  * @author huy
  */
 public class Utils {
+    
+      public static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/ddHH:mm:ss");
+    
      public static Connection makeConnection() {
         Connection conn = null;
         try {
