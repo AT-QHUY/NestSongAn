@@ -8,7 +8,6 @@ package com.mygroup.nestsonganver2.dao.impl;
 import com.mygroup.nestsonganver2.constant.UserSQL;
 import com.mygroup.nestsonganver2.dao.IUserDAO;
 import com.mygroup.nestsonganver2.entity.UserEntity;
-import com.mygroup.nestsonganver2.mapper.RowMapper;
 import com.mygroup.nestsonganver2.mapper.UserMapper;
 import java.util.List;
 

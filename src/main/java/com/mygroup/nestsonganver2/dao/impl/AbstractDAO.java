@@ -14,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +58,7 @@ public class AbstractDAO<T> implements IDao<T> {
             }
         }
     }
-
+    
     private void setParameter(PreparedStatement statement, Object... parameters) {
         try {
             for (int i = 0; i < parameters.length; i++) {
@@ -72,7 +71,9 @@ public class AbstractDAO<T> implements IDao<T> {
                 } else if (parameter instanceof Integer) {
                     statement.setInt(index, (Integer) parameter);
                 } else if (parameter instanceof Date) {
-                    statement.setDate(index, (Date) parameter);
+                    statement.setDate(index, (Date) parameter);    
+                } else if (parameter instanceof Float) {
+                    statement.setFloat(index, (Float) parameter);    
                 }
             }
         } catch (SQLException e) {

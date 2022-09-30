@@ -20,17 +20,28 @@ import java.util.logging.Logger;
  * @author huy
  */
 public class Utils {
-     public static Connection makeConnection() {
+
+    public static void main(String[] args) throws SQLException {
+
+        System.out.println("This is to test if we can connect to SQLServer");
+        Connection conn = makeConnection();
+        DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
+        System.out.println("Driver name: " + dm.getDriverName());
+        System.out.println("Driver version: " + dm.getDriverVersion());
+        closeConnection(conn);
+    }
+
+    public static Connection makeConnection() {
         Connection conn = null;
         try {
 
-            String dbURL = "jdbc:sqlserver://MSI;databaseName=NestSongAn";
+            String dbURL = "jdbc:sqlserver://DESKTOP-U1P6DEO;databaseName=NestSongAn";
             String user = "sa";
             String pass = "123456";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(dbURL, user, pass);
             //System.out.println("Connect to DB successfully");
-        } catch (Exception ex) {
+        } catch (Exception ex) {    
             ex.printStackTrace();
         }
         return conn;
@@ -46,16 +57,16 @@ public class Utils {
             }
         }
     }
-    
-    public static String hashPassWordMd5(String password) throws NoSuchAlgorithmException{
+
+    public static String hashPassWordMd5(String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] messageDigest = md.digest(password.getBytes());
         BigInteger no = new BigInteger(1, messageDigest);
         String hashtext = no.toString(16);
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
-            }
-            return hashtext;
+        while (hashtext.length() < 32) {
+            hashtext = "0" + hashtext;
+        }
+        return hashtext;
     }
-     
+
 }

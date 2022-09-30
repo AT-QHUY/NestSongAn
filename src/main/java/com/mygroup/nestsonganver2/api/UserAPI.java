@@ -5,14 +5,11 @@
  */
 package com.mygroup.nestsonganver2.api;
 
-import com.mygroup.nestsonganver2.dao.impl.UserDAO;
 import com.mygroup.nestsonganver2.dto.UserDTO;
-import com.mygroup.nestsonganver2.entity.UserEntity;
 import com.mygroup.nestsonganver2.service.UserService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -22,7 +19,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
