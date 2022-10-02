@@ -24,6 +24,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -32,42 +33,44 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author huy
  */
-@Path("User")
+@Path("user")
 public class UserAPI {
 
     private static final UserService userService = UserService.getInstance();
 
     @Context
     UriInfo ui;
-
+    
     // Get all user in database
-    @POST
-    @Path("/getAll")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll(UserDTO dto) {
-        
-        List<UserDTO> list = userService.findAllUsers(dto.getToken());
+    public Response getAll(@Context HttpHeaders httpHeaders){
+        String token = httpHeaders.getHeaderString("token");
+        List<UserDTO> list = userService.findAllUsers(token);
         if (list == null || list.isEmpty()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
-
     }
-    // -------------------------------------------------------------------------
 
-    //get user by id 
-    @POST
-    @Path("/getOne/{isbn}")
+    // -------------------------------------------------------------------------
+     //get user by id 
+    
+    @GET
+    @Path("/{isbn}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getOneById(@PathParam("isbn") int isbn, UserDTO dto) {
-        UserDTO user = userService.getUserById(isbn, dto.getToken());
+    public Response getOneById(@PathParam("isbn") int isbn, @Context HttpHeaders httpHeaders) {
+        String token = httpHeaders.getHeaderString("token");
+        UserDTO user = userService.getUserById(isbn, token);
         if (user == null) return Response.status(Response.Status.UNAUTHORIZED).build();
         else if(user.getId() == 0) return Response.status(Response.Status.NO_CONTENT).build();
         else return Response.ok(user, MediaType.APPLICATION_JSON).build();
     }
+
+   
+    
 
     //--------------------------------------------------------------------------
     // insert new user to database

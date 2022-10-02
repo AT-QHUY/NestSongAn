@@ -129,14 +129,14 @@ public class UserService {
     private int getIdFromToken(String token){
         UserDTO tmpDTO = null;
         tmpDTO = UserConverter.convertTokentoDTO(token);
-        if(tmpDTO !=null ) return tmpDTO.getId();
+        if(tmpDTO != null ) return tmpDTO.getId();
         else return 0;
     }
     
     private String getRoleNameFromToken(String token){
         UserDTO tmpDTO = null;
         tmpDTO = UserConverter.convertTokentoDTO(token);
-        if(tmpDTO !=null ) return tmpDTO.getRoleName();
+        if(tmpDTO != null ) return tmpDTO.getRoleName();
         else return "";
     }
 }
