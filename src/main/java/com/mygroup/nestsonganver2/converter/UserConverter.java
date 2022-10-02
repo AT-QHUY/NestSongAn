@@ -7,6 +7,8 @@ package com.mygroup.nestsonganver2.converter;
 
 import com.mygroup.nestsonganver2.dto.UserDTO;
 import com.mygroup.nestsonganver2.entity.UserEntity;
+import com.mygroup.nestsonganver2.utils.Utils;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -14,9 +16,7 @@ import com.mygroup.nestsonganver2.entity.UserEntity;
  */
 public class UserConverter {
     
-    // Convert Entitty to DTO
-    
-    public static UserDTO convertEntitytoDTO(UserEntity entity){
+     public static UserDTO convertEntitytoDTO(UserEntity entity) {
         UserDTO dto = new UserDTO();
         dto.setId(entity.getId());
         dto.setUsername(entity.getUsername());
@@ -27,9 +27,9 @@ public class UserConverter {
         dto.setPassword(entity.getPassword());
         dto.setToken(entity.getToken());
         return dto;
-    } 
-    
-    public static UserDTO convertBasicInfo(UserEntity entity){
+    }
+
+    public static UserDTO convertBasicInfo(UserEntity entity) {
         UserDTO dto = new UserDTO();
         dto.setFullname(entity.getFullname());
         dto.setDateOfBirth(entity.getDateOfBirth());
@@ -38,12 +38,10 @@ public class UserConverter {
         dto.setToken(entity.getToken());
         return dto;
     }
-    
+
     // -----------------------------------------------------------------------
-    
     // Convert Entitty to DTO
-    
-    public static UserEntity convertDTOtoEntity(UserDTO dto){
+    public static UserEntity convertDTOtoEntity(UserDTO dto) {
         UserEntity entity = new UserEntity();
         entity.setId(dto.getId());
         entity.setUsername(dto.getUsername());
@@ -54,8 +52,65 @@ public class UserConverter {
         entity.setPassword(dto.getPassword());
         entity.setToken(dto.getToken());
         return entity;
-    } 
-    
+    }
+
     // -----------------------------------------------------------------------
+    // Convert token to DTO
+    public static UserDTO convertTokentoDTO(String token) {
+        UserDTO dto = new UserDTO();
+        String[] propString;
+        if (token != null && !token.isEmpty()) {
+          
+            String[] tokenArray = token.split("-");
+            for (String prop : tokenArray) {
+              
+                propString = prop.split("=");
+                switch (propString[0]) {
+                    case "id":
+                        dto.setId(Integer.parseInt(propString[1]));
+                        break;
+                    case "fullname":                       
+                        dto.setFullname(propString[1]);
+                        break;
+                    case "role":             
+                        dto.setRoleName(propString[1].trim());
+                        break;
+                    case "expired":
+                        LocalDateTime expr = LocalDateTime.parse(propString[1], Utils.dtf);
+                        LocalDateTime now = LocalDateTime.now();
+                        if(now.isAfter(expr)) return null;
+                        break;
+                }
+            }
+        }
+        return dto;
+    }
+
+    // -----------------------------------------------------------------------
+    // Convert DTO to token
+    public static String ConvertDTOtoToken(UserDTO dto) {
+        StringBuilder builder = new StringBuilder();
+        LocalDateTime now = LocalDateTime.now().plusHours(1);
+        builder.append("expired=").append(Utils.dtf.format(now)).append("-");
+        builder.append("id=").append(dto.getId()).append("-");
+        builder.append("fullname=").append(dto.getFullname()).append("-");
+        builder.append("role=").append(dto.getRoleName());
+        return builder.toString();
+    }
+
+    // -----------------------------------------------------------------------
+    
+    public static void main(String[] args) {
+        UserDTO dto = new UserDTO();
+        dto.setId(2);
+        dto.setFullname("admin");
+        dto.setRoleName("admin");
+        String token = ConvertDTOtoToken(dto);
+        System.out.println(token);
+        dto = convertTokentoDTO(token);
+        if(dto == null) System.out.println("null");
+        else
+        System.out.println("id:" + dto.getId() + "-fullname:" + dto.getFullname() +"-role:" + dto.getRoleName() );
+    }
     
 }

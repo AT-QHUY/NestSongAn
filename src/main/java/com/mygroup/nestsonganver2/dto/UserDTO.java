@@ -34,6 +34,7 @@ public class UserDTO {
     private String password;
     private String roleName;
     private String token;
+    private String newPassword;
     //missing role list
     //missing employee list
     //missing bill list
@@ -41,7 +42,7 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(int id, String username, String fullname, Date dateOfBirth, String phoneNumber, String address, String password, String roleName, String token) {
+    public UserDTO(int id, String username, String fullname, Date dateOfBirth, String phoneNumber, String address, String password, String roleName, String token, String newPassword) {
         this.id = id;
         this.username = username;
         this.fullname = fullname;
@@ -51,7 +52,20 @@ public class UserDTO {
         this.password = password;
         this.roleName = roleName;
         this.token = token;
+        this.newPassword = newPassword;
     }
+    
+    
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    
 
     public String getRoleName() {
         return roleName;

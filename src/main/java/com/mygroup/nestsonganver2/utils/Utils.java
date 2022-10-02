@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,13 +21,16 @@ import java.util.logging.Logger;
  * @author huy
  */
 public class Utils {
+    
+      public static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/ddHH:mm:ss");
+    
      public static Connection makeConnection() {
         Connection conn = null;
         try {
 
-            String dbURL = "jdbc:sqlserver://MSI;databaseName=NestSongAn";
-            String user = "sa";
-            String pass = "123456";
+            String dbURL = "jdbc:sqlserver://nestsongan.cqtchuhryqsc.ap-southeast-1.rds.amazonaws.com:1433;databaseName=NestSongAn";
+            String user = "admin";
+            String pass = "thisisadmin";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(dbURL, user, pass);
             //System.out.println("Connect to DB successfully");
