@@ -9,6 +9,8 @@ import com.mygroup.nestsonganver2.dao.impl.UserDAO;
 import com.mygroup.nestsonganver2.dto.UserDTO;
 import com.mygroup.nestsonganver2.entity.UserEntity;
 import com.mygroup.nestsonganver2.converter.UserConverter;
+import com.mygroup.nestsonganver2.dao.impl.RoleDAO;
+import com.mygroup.nestsonganver2.entity.RoleEntity;
 import com.mygroup.nestsonganver2.utils.Utils;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -19,7 +21,9 @@ import java.util.List;
  * @author huy
  */
 public class UserService {
-
+    
+    private RoleDAO roleDAO = RoleDAO.getRoleDAO();
+    
     private static final UserDAO userDAO = UserDAO.getInstance();
 
     private static UserService userService;
@@ -45,7 +49,8 @@ public class UserService {
     public UserDTO checkLogin(UserDTO user) throws NoSuchAlgorithmException {
         UserEntity userEntity = userDAO.findUser(user.getUsername(), Utils.hashPassWordMd5(user.getPassword()));
         if (userEntity != null) {
-            user = UserConverter.convertEntitytoDTO(userEntity);
+            RoleEntity role = roleDAO.getRoleById(userEntity.getRoleId());
+            user = UserConverter.convertEntitytoDTO(userEntity, role);
         }
         return user;
     }
@@ -54,7 +59,8 @@ public class UserService {
         UserDTO user = null;
         UserEntity userEntity = userDAO.findUser(userId);
         if (userEntity != null) {
-            user = UserConverter.convertEntitytoDTO(userEntity);
+            RoleEntity role = roleDAO.getRoleById(userEntity.getRoleId());
+            user = UserConverter.convertEntitytoDTO(userEntity, role);
         }
         return user;
     }
@@ -63,8 +69,16 @@ public class UserService {
         List<UserDTO> list = new ArrayList<>();
         UserDTO userDTO;
         List<UserEntity> entityList = userDAO.findAll();
+        List<RoleEntity> roleList = roleDAO.getAllRole();
         for (UserEntity user : entityList) {
-            userDTO = UserConverter.convertEntitytoDTO(user);
+            RoleEntity role= new RoleEntity();
+            if (!roleList.isEmpty()) 
+                for (RoleEntity roleCheck : roleList) 
+                    if (roleCheck.getId() == user.getRoleId()) {
+                        role = roleCheck;
+                        break;
+                    }
+            userDTO = UserConverter.convertEntitytoDTO(user, role);
             list.add(userDTO);
         }
         return list;

@@ -6,6 +6,7 @@
 package com.mygroup.nestsonganver2.converter;
 
 import com.mygroup.nestsonganver2.dto.UserDTO;
+import com.mygroup.nestsonganver2.entity.RoleEntity;
 import com.mygroup.nestsonganver2.entity.UserEntity;
 
 /**
@@ -14,7 +15,7 @@ import com.mygroup.nestsonganver2.entity.UserEntity;
  */
 public class UserConverter {
     
-    public static UserDTO convertEntitytoDTO(UserEntity entity){
+    public static UserDTO convertEntitytoDTO(UserEntity entity, RoleEntity role){
         UserDTO dto = new UserDTO();
         dto.setId(entity.getId());
         dto.setUsername(entity.getUsername());
@@ -23,7 +24,7 @@ public class UserConverter {
         dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setAddress(entity.getAddress());
         dto.setPassword(entity.getPassword());
-        dto.setRoleId(entity.getRoleId());
+        dto.setRole(role);
         dto.setToken(entity.getToken());
         return dto;
     } 
@@ -37,7 +38,7 @@ public class UserConverter {
         entity.setPhoneNumber(dto.getPhoneNumber());
         entity.setAddress(dto.getAddress());
         entity.setPassword(dto.getPassword());
-        entity.setRoleId(dto.getRoleId());
+        entity.setRoleId(dto.getRole().getId());
         entity.setToken(dto.getToken());
         return entity;
     } 
