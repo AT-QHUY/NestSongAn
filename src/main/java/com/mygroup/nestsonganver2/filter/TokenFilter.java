@@ -40,7 +40,8 @@ public class TokenFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         res.addHeader("Access-Control-Allow-Origin", "*");
         res.addHeader("Access-Control-Allow-Headers", "*");
-        res.addHeader("Access-Control-Allow-Methods", "*");
+        res.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+        res.addHeader("Access-Control-Allow-Credentials", "true");
         chain.doFilter(request, response);
     }
 
