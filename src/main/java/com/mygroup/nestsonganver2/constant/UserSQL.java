@@ -21,9 +21,9 @@ public class UserSQL {
     
     // Retrive user data
     
-    public static String findAll = "select * from Users";
-    public static String findById = "select * from Users where id = ?";   
-    public static String login = "select * from Users where username = ? and password = ?";
+    public static String findAll = "select * from Users where status = 1";
+    public static String findById = "select * from Users where id = ? and status = 1";   
+    public static String login = "select * from Users where username = ? and password = ? and status = 1";
     
     // ------------------------------------------------------------------------
     

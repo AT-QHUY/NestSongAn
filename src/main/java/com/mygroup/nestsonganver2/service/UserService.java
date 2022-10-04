@@ -54,18 +54,31 @@ public class UserService {
         }
         return user;
     }
+    
+    public UserDTO getUserById(int userId, int tokenId, String tokenRole) {
+        if (tokenRole.equalsIgnoreCase("admin")
+            || tokenRole.equalsIgnoreCase("employee")
+            || tokenId == userId)
+            return getUserById(userId);
+        return null;
+    }
+    
 
-    public UserDTO getUserById(int userId) {
-        UserDTO user = null;
+    private UserDTO getUserById(int userId) {
         UserEntity userEntity = userDAO.findUser(userId);
         if (userEntity != null) {
             RoleEntity role = roleDAO.getRoleById(userEntity.getRoleId());
-            user = UserConverter.convertEntitytoDTO(userEntity, role);
+            return UserConverter.convertEntitytoDTO(userEntity, role);
         }
-        return user;
+        return new UserDTO();
+    }
+    
+    public List<UserDTO> findAllUsers(String tokenRole){
+        if(tokenRole.equalsIgnoreCase("admin")) return findAllUsers();
+        return null;
     }
 
-    public List<UserDTO> findAllUsers() {
+    private List<UserDTO> findAllUsers() {
         List<UserDTO> list = new ArrayList<>();
         UserDTO userDTO;
         List<UserEntity> entityList = userDAO.findAll();

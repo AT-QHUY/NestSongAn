@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -23,6 +24,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -36,7 +38,10 @@ import javax.ws.rs.core.UriInfo;
 public class UserAPI {
 
     private static final UserService userService = UserService.getInstance();
-
+    
+    @Context
+    private ContainerRequestContext ctx;
+    
     @Context
     UriInfo ui;
 
@@ -44,31 +49,28 @@ public class UserAPI {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllUsers() {
-
-        List<UserDTO> list = userService.findAllUsers();
-        if (list.isEmpty() || list == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        } else {
-            return Response.ok(list, MediaType.APPLICATION_JSON).build();
-        }
+//        UserDTO dto = (UserDTO) ctx.getProperty("tokenObject");
+        List<UserDTO> list = userService.findAllUsers("admin");
+        if (list == null) return Response.status(Response.Status.UNAUTHORIZED).build();
+        if (list.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+        else return Response.ok(list, MediaType.APPLICATION_JSON).build();
+        
 
     }
     // -------------------------------------------------------------------------
 
     //get user by id 
-    @GET
-    @Path("{isbn}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getOneUserById(@PathParam("isbn") int isbn) {
-
-        UserDTO user = userService.getUserById(isbn);
-        if (user == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        } else {
-            return Response.ok(user, MediaType.APPLICATION_JSON).build();
-        }
-
-    }
+//    @GET
+//    @Path("{isbn}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response getOneUserById(@PathParam("isbn") int isbn) {
+//        UserDTO dto = (UserDTO) httpRequest.getAttribute("tokenObject");
+//        UserDTO user = userService.getUserById(isbn, dto.getId(), dto.getRole().getName());
+//        if (user == null) return Response.status(Response.Status.UNAUTHORIZED).build();
+//        if (user.getId() == 0) return Response.status(Response.Status.NOT_FOUND).build();
+//        else return Response.ok(user, MediaType.APPLICATION_JSON).build();
+//
+//    }
 
     //--------------------------------------------------------------------------
     // insert new user to database
