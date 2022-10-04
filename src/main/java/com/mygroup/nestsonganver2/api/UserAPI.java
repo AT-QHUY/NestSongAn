@@ -93,6 +93,7 @@ public class UserAPI {
     //--------------------------------------------------------------------------
     // get user by username and password
     @POST
+    @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response loginUser(UserDTO user) throws NoSuchAlgorithmException {
