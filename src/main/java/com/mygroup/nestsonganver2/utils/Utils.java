@@ -24,6 +24,7 @@ import java.util.logging.Logger;
  * @author huy
  */
 public class Utils {
+
     
     public static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     
@@ -38,7 +39,7 @@ public class Utils {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(dbURL, user, pass);
             //System.out.println("Connect to DB successfully");
-        } catch (Exception ex) {
+        } catch (Exception ex) {    
             ex.printStackTrace();
         }
         return conn;
@@ -54,17 +55,18 @@ public class Utils {
             }
         }
     }
-    
-    public static String hashPassWordMd5(String password) throws NoSuchAlgorithmException{
+
+    public static String hashPassWordMd5(String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] messageDigest = md.digest(password.getBytes());
         BigInteger no = new BigInteger(1, messageDigest);
         String hashtext = no.toString(16);
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
-            }
-            return hashtext;
+        while (hashtext.length() < 32) {
+            hashtext = "0" + hashtext;
+        }
+        return hashtext;
     }
+
     
 //    //  expired=2022-10-0600:00:00|id=1|fullname=admin|role=admin
 //    
@@ -80,4 +82,5 @@ public class Utils {
 //        System.out.println(dto.getRole().getName());
 //    }
 //     
+
 }

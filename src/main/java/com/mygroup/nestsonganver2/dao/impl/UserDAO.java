@@ -77,3 +77,4 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
 
     // ----------------------------------------------------------------------
 }
+
