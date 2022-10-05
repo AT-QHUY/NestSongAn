@@ -8,12 +8,12 @@ com\mygroup\nestsonganver2\mapper\ProductMapper.class
 com\mygroup\nestsonganver2\dto\CategoryDTO.class
 com\mygroup\nestsonganver2\service\CategoryService.class
 com\mygroup\nestsonganver2\utils\SessionUtils.class
+com\mygroup\nestsonganver2\api\Filter.class
 com\mygroup\nestsonganver2\dao\IUserDAO.class
 com\mygroup\nestsonganver2\dao\impl\ProductDAO.class
 com\mygroup\nestsonganver2\dao\IProductDAO.class
 com\mygroup\nestsonganver2\api\CategoryAPI.class
 com\mygroup\nestsonganver2\converter\CategoryConverter.class
-.netbeans_automatic_build
 com\mygroup\nestsonganver2\mapper\UserMapper.class
 com\mygroup\nestsonganver2\entity\UserEntity.class
 com\mygroup\nestsonganver2\entity\ProductEntity.class

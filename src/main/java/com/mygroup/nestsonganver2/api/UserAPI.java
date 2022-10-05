@@ -72,7 +72,7 @@ public class UserAPI {
     @Path("/insert")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response insert(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
+        public Response insert(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
 
         int id = userService.insertUser(user);
         if (id == 0) {

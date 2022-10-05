@@ -12,6 +12,7 @@ D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\CategoryEn
 D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\UserMapper.java
 D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\CategoryDTO.java
 D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\ICategoryDAO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\Filter.java
 D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\CategoryMapper.java
 D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\AbstractDAO.java
 D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\ProductMapper.java

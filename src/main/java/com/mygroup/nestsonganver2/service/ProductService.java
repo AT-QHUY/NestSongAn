@@ -4,6 +4,7 @@
  */
 package com.mygroup.nestsonganver2.service;
 
+import com.mygroup.nestsonganver2.api.Filter;
 import com.mygroup.nestsonganver2.converter.ProductConverter;
 import com.mygroup.nestsonganver2.dao.impl.ProductDAO;
 import com.mygroup.nestsonganver2.dto.ProductDTO;
@@ -37,8 +38,7 @@ public class ProductService {
         if(entityList == null) return null; 
         for (ProductEntity product : entityList) {
             productDTO = ProductConverter.convertEntitytoDTO(product);
-            if (productDTO.getStatus()!=0)
-                list.add(productDTO);
+            list.add(productDTO);
         }
         return list;
     }
@@ -51,8 +51,7 @@ public class ProductService {
         if(entityList == null) return null;      
         for (ProductEntity product : entityList) {
             productDTO = ProductConverter.convertEntitytoDTO(product);
-            if (productDTO.getStatus()!=0)
-                list.add(productDTO);
+            list.add(productDTO);
         }
         return list;
     }
@@ -70,42 +69,50 @@ public class ProductService {
         if(entityList == null) return null;      
         for (ProductEntity product : entityList) {
             productDTO = ProductConverter.convertEntitytoDTO(product);
-            if (productDTO.getStatus()!=0)
-                list.add(productDTO);
+            list.add(productDTO);
         }
         return list;
     }
     
     //get product by ID
-    public List<ProductDTO> getProductById(int Id){
-        List<ProductDTO> list = new ArrayList<>();
+    public ProductDTO getProductById(int Id){
         ProductDTO productDTO;
-        List<ProductEntity> entityList = productDAO.getProductById(Id);
-        if(entityList == null) return null;      
-        for (ProductEntity product : entityList) {
-            productDTO = ProductConverter.convertEntitytoDTO(product);
-            if (productDTO.getStatus()!=0)
-                list.add(productDTO);
-        }
-        return list;
+        ProductEntity entity = productDAO.getProductById(Id);
+        if(entity == null) return null;      
+        productDTO = ProductConverter.convertEntitytoDTO(entity);
+        return productDTO;
+   
     }
     
     public int updateProduct(ProductDTO product) {
         return productDAO.updateProduct(ProductConverter.convertDTOtoEntity(product));
         //Add roleID for user
     }
-    
-//    //search products by name
-//        public List<ProductDTO> filter(ArayList<String> name){
-//        List<ProductDTO> list = new ArrayList<>();
-//        ProductDTO productDTO;
-//        List<ProductEntity> entityList = productDAO.searchByName(name);
-//        if(entityList == null) return null;      
-//        for (ProductEntity product : entityList) {
-//            productDTO = ProductConverter.convertEntitytoDTO(product);
-//            if (productDTO.getStatus()!=0)
-//                list.add(productDTO);
-//        }
-//        return list;
-//    }
+    //use filter
+        public List<ProductDTO> filter(List<Filter> filter){
+        List<ProductDTO> list = new ArrayList<>();
+        ProductDTO productDTO;
+        List<ProductEntity> entityList = productDAO.filter(filter);
+        if(entityList == null) return null;      
+        for (ProductEntity product : entityList) {
+            productDTO = ProductConverter.convertEntitytoDTO(product);
+            list.add(productDTO);
+        }
+        return list;
+    }
+        
+    //get products by gages
+       public List<ProductDTO> getProductByPages(int page,int products){
+        List<ProductDTO> list = new ArrayList<>();
+        ProductDTO productDTO;
+        List<ProductEntity> entityList = productDAO.getProductByPages(page, products);
+        if(entityList == null) return null;      
+        for (ProductEntity product : entityList) {
+            productDTO = ProductConverter.convertEntitytoDTO(product);
+            list.add(productDTO);
+        }
+        return list;
+    } 
 }
+
+
