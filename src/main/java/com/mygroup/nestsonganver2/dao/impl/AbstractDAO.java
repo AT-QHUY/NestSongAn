@@ -73,6 +73,8 @@ public class AbstractDAO<T> implements IDao<T> {
                     statement.setInt(index, (Integer) parameter);
                 } else if (parameter instanceof Date) {
                     statement.setDate(index, (Date) parameter);
+                } else if (parameter instanceof Float) {
+                    statement.setFloat(index, (Float) parameter);
                 }
             }
         } catch (SQLException e) {
