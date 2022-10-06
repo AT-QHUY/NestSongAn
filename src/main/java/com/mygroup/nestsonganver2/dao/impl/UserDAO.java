@@ -41,7 +41,8 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     @Override
     public UserEntity findUser(String username, String password) {
         List<UserEntity> userList = query(UserSQL.login, new UserMapper(), username, password);
-        return (userList.isEmpty() || userList.get(0).getStatus() == 0) ? null : userList.get(0);
+        if(userList == null) return null;
+        return userList.isEmpty() ? null : userList.get(0);
     }
 
     @Override

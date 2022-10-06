@@ -46,13 +46,14 @@ public class UserService {
 
     // ----------------------------------------------------------------------
     // Find User
-    public UserDTO checkLogin(UserDTO user) throws NoSuchAlgorithmException {
+    public String checkLogin(UserDTO user) throws NoSuchAlgorithmException {
         UserEntity userEntity = userDAO.findUser(user.getUsername(), Utils.hashPassWordMd5(user.getPassword()));
         if (userEntity != null) {
             RoleEntity role = roleDAO.getRoleById(userEntity.getRoleId());
             user = UserConverter.convertEntitytoDTO(userEntity, role);
+            return UserConverter.ConvertDTOtoToken(user);
         }
-        return user;
+        return null;
     }
     
     public UserDTO getUserById(int userId, int tokenId, String tokenRole) {
@@ -66,7 +67,7 @@ public class UserService {
 
     private UserDTO getUserById(int userId) {
         UserEntity userEntity = userDAO.findUser(userId);
-        if (userEntity != null) {
+        if (userEntity.getId() != 0) {
             RoleEntity role = roleDAO.getRoleById(userEntity.getRoleId());
             return UserConverter.convertEntitytoDTO(userEntity, role);
         }

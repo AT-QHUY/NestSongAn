@@ -59,18 +59,18 @@ public class UserAPI {
     }
     // -------------------------------------------------------------------------
 
-    //get user by id 
-//    @GET
-//    @Path("{isbn}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response getOneUserById(@PathParam("isbn") int isbn) {
+   // get user by id 
+    @GET
+    @Path("{isbn}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getOneUserById(@PathParam("isbn") int isbn) {
 //        UserDTO dto = (UserDTO) httpRequest.getAttribute("tokenObject");
-//        UserDTO user = userService.getUserById(isbn, dto.getId(), dto.getRole().getName());
-//        if (user == null) return Response.status(Response.Status.UNAUTHORIZED).build();
-//        if (user.getId() == 0) return Response.status(Response.Status.NOT_FOUND).build();
-//        else return Response.ok(user, MediaType.APPLICATION_JSON).build();
-//
-//    }
+        UserDTO user = userService.getUserById(isbn, 1, "admin");
+        if (user == null) return Response.status(Response.Status.UNAUTHORIZED).build();
+        if (user.getId() == 0) return Response.status(Response.Status.NOT_FOUND).build();
+        else return Response.ok(user, MediaType.APPLICATION_JSON).build();
+
+    }
 
     //--------------------------------------------------------------------------
     // insert new user to database
@@ -98,9 +98,9 @@ public class UserAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response loginUser(UserDTO user) throws NoSuchAlgorithmException {
 
-        user = userService.checkLogin(user);
-        if (user != null) {
-            return Response.ok(user, MediaType.APPLICATION_JSON).build();
+        String token = userService.checkLogin(user);
+        if (token != null) {
+            return Response.ok(token, MediaType.APPLICATION_JSON).build();
         } else {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
@@ -129,7 +129,7 @@ public class UserAPI {
     // Update user password
     
     @PUT
-    @Path("{isbn}/update-password")
+    @Path("update-password/{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateUserPassword(@PathParam("isbn") int isbn, UserDTO user) throws NoSuchAlgorithmException {
