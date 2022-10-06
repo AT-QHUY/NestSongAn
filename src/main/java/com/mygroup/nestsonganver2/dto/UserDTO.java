@@ -32,13 +32,13 @@ public class UserDTO {
     private String address;
     private String password;
     private RoleEntity role;
-    private String token;
+
     //missing list employee
 
     public UserDTO() {
     }
 
-    public UserDTO(int id, String username, String fullname, Date dateOfBirth, String phoneNumber, String address, String password, RoleEntity role, String token) {
+    public UserDTO(int id, String username, String fullname, Date dateOfBirth, String phoneNumber, String address, String password, RoleEntity role) {
         this.id = id;
         this.username = username;
         this.fullname = fullname;
@@ -47,7 +47,7 @@ public class UserDTO {
         this.address = address;
         this.password = password;
         this.role = role;
-        this.token = token;
+     
     }
     
     
@@ -58,14 +58,6 @@ public class UserDTO {
 
     public void setRole(RoleEntity role) {
         this.role = role;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public static UserDTO getUserDTO() {

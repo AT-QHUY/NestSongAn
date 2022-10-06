@@ -27,8 +27,7 @@ public class UserConverter {
         dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setAddress(entity.getAddress());
         dto.setPassword(entity.getPassword());
-        dto.setRole(role);
-        dto.setToken(entity.getToken());
+        dto.setRole(role);     
         return dto;
     } 
     
@@ -42,7 +41,6 @@ public class UserConverter {
         entity.setAddress(dto.getAddress());
         entity.setPassword(dto.getPassword());
         entity.setRoleId(dto.getRole().getId());
-        entity.setToken(dto.getToken());
         return entity;
     } 
     
