@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,8 +6,8 @@
  */
 package com.mygroup.nestsonganver2.dao;
 
-import com.mygroup.nestsonganver2.entity.ProductEntity;
 import com.mygroup.nestsonganver2.mapper.RowMapper;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,5 +26,4 @@ public interface IDao<T> {
     int update(String sql, Object... parameters);
 
     Integer insert(String sql, Object... parameters);
-    
 }

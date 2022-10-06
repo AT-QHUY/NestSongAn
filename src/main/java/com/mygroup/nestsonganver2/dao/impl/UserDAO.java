@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -8,7 +8,9 @@ package com.mygroup.nestsonganver2.dao.impl;
 import com.mygroup.nestsonganver2.constant.UserSQL;
 import com.mygroup.nestsonganver2.dao.IUserDAO;
 import com.mygroup.nestsonganver2.entity.UserEntity;
+import com.mygroup.nestsonganver2.mapper.RowMapper;
 import com.mygroup.nestsonganver2.mapper.UserMapper;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,8 +18,6 @@ import java.util.List;
  * @author huy
  */
 public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
-    
-    private static UserMapper userMapper = UserMapper.getInstance();
 
     private static UserDAO userDAO = null;
 
@@ -40,20 +40,23 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     // Find User
     @Override
     public UserEntity findUser(String username, String password) {
-        List<UserEntity> userList = query(UserSQL.login, userMapper, username, password);
-        return (userList.isEmpty() || userList.get(0).getStatus() == 0) ? null : userList.get(0);
+        List<UserEntity> userList = query(UserSQL.login, new UserMapper(), username, password);
+        if(userList == null) return null;
+        return userList.isEmpty() ? null : userList.get(0);
     }
 
     @Override
     public List<UserEntity> findAll() {
-        List<UserEntity> userList = query(UserSQL.findAll, userMapper);
-        return userList.isEmpty() ? null : userList;
+        List<UserEntity> userList = query(UserSQL.findAll, new UserMapper());
+        if (userList == null) return new ArrayList<>();
+        return userList;
     }
 
     @Override
     public UserEntity findUser(int id) {
-        List<UserEntity> userList = query(UserSQL.findById, userMapper, id);
-        return (userList.isEmpty() || userList.get(0).getStatus() == 0) ? null : userList.get(0);
+        List<UserEntity> userList = query(UserSQL.findById, new UserMapper(), id);
+        if(userList == null || userList.isEmpty()) return new UserEntity();
+        return userList.get(0);
     }
 
     // ----------------------------------------------------------------------
@@ -65,7 +68,7 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
 
     @Override
     public int updateUserStatus(int id, int status) {
-        return update(UserSQL.updateStatus, status, id);
+        return update(UserSQL.updateStatus, id, status);
     }
 
     @Override
@@ -75,3 +78,4 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
 
     // ----------------------------------------------------------------------
 }
+

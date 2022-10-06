@@ -5,6 +5,8 @@
  */
 package com.mygroup.nestsonganver2.utils;
 
+import com.mygroup.nestsonganver2.dto.UserDTO;
+import com.mygroup.nestsonganver2.entity.RoleEntity;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -12,6 +14,8 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,21 +25,14 @@ import java.util.logging.Logger;
  */
 public class Utils {
 
-    public static void main(String[] args) throws SQLException {
-
-        System.out.println("This is to test if we can connect to SQLServer");
-        Connection conn = makeConnection();
-        DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
-        System.out.println("Driver name: " + dm.getDriverName());
-        System.out.println("Driver version: " + dm.getDriverVersion());
-        closeConnection(conn);
-    }
-
-    public static Connection makeConnection() {
+    
+    public static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    
+    
+     public static Connection makeConnection() {
         Connection conn = null;
         try {
-
-            String dbURL = "jdbc:sqlserver://nestsongan.cqtchuhryqsc.ap-southeast-1.rds.amazonaws.com:1433;databaseName=NestSongAn";
+            String dbURL = "jdbc:sqlserver://nestsongan.cqtchuhryqsc.ap-southeast-1.rds.amazonaws.com;databaseName=NestSongAn";
             String user = "admin";
             String pass = "thisisadmin";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -68,5 +65,21 @@ public class Utils {
         }
         return hashtext;
     }
+
+    
+//    //  expired=2022-10-0600:00:00|id=1|fullname=admin|role=admin
+//    
+//    public static void main(String[] args) {
+//        UserDTO dto = new UserDTO() ;
+//        dto.setId(1);
+//        dto.setFullname("huyNguyen");
+//        dto.setRole(new RoleEntity(1, "admin"));
+//        String dtoToken = ConvertDTOtoToken(dto);
+//        System.out.println(dtoToken);
+//        String token = "expired=2022-10-06 00:00:00|id=1|fullname=admin|role=admin";
+//        dto = convertTokentoDTO(token);
+//        System.out.println(dto.getRole().getName());
+//    }
+//     
 
 }

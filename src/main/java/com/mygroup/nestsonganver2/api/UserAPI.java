@@ -5,12 +5,16 @@
  */
 package com.mygroup.nestsonganver2.api;
 
+import com.mygroup.nestsonganver2.dao.impl.UserDAO;
 import com.mygroup.nestsonganver2.dto.UserDTO;
+import com.mygroup.nestsonganver2.entity.UserEntity;
 import com.mygroup.nestsonganver2.service.UserService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,6 +23,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -32,37 +38,38 @@ import javax.ws.rs.core.UriInfo;
 public class UserAPI {
 
     private static final UserService userService = UserService.getInstance();
-
+    
+    @Context
+    private ContainerRequestContext ctx;
+    
     @Context
     UriInfo ui;
 
     // Get all user in database
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll() {
+    public Response getAllUsers() {
+//        UserDTO dto = (UserDTO) ctx.getProperty("tokenObject");
+        List<UserDTO> list = userService.findAllUsers("admin");
+        if (list == null) return Response.status(Response.Status.UNAUTHORIZED).build();
+        if (list.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+        else return Response.ok(list, MediaType.APPLICATION_JSON).build();
+        
 
-        List<UserDTO> list = userService.findAllUsers();
-        if (list == null || list.isEmpty() ) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        } else {
-            return Response.ok(list, MediaType.APPLICATION_JSON).build();
-        }
 
     }
     // -------------------------------------------------------------------------
 
-    //get user by id 
+   // get user by id 
     @GET
     @Path("{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getOneById(@PathParam("isbn") int isbn) {
-
-        UserDTO user = userService.getUserById(isbn);
-        if (user == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        } else {
-            return Response.ok(user, MediaType.APPLICATION_JSON).build();
-        }
+    public Response getOneUserById(@PathParam("isbn") int isbn) {
+//        UserDTO dto = (UserDTO) httpRequest.getAttribute("tokenObject");
+        UserDTO user = userService.getUserById(isbn, 1, "admin");
+        if (user == null) return Response.status(Response.Status.UNAUTHORIZED).build();
+        if (user.getId() == 0) return Response.status(Response.Status.NOT_FOUND).build();
+        else return Response.ok(user, MediaType.APPLICATION_JSON).build();
 
     }
 
@@ -72,7 +79,7 @@ public class UserAPI {
     @Path("/insert")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-        public Response insert(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
+ Response insertUser(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
 
         int id = userService.insertUser(user);
         if (id == 0) {
@@ -87,13 +94,14 @@ public class UserAPI {
     //--------------------------------------------------------------------------
     // get user by username and password
     @POST
+    @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response login(UserDTO user) throws NoSuchAlgorithmException {
+    public Response loginUser(UserDTO user) throws NoSuchAlgorithmException {
 
-        user = userService.checkLogin(user);
-        if (user != null) {
-            return Response.ok(user, MediaType.APPLICATION_JSON).build();
+        String token = userService.checkLogin(user);
+        if (token != null) {
+            return Response.ok(token, MediaType.APPLICATION_JSON).build();
         } else {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
@@ -106,7 +114,7 @@ public class UserAPI {
     @Path("{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateOne(@PathParam("isbn") int isbn, UserDTO user) {
+    public Response updateUser(@PathParam("isbn") int isbn, UserDTO user) {
 
         int result;
         user.setId(isbn);
@@ -122,10 +130,10 @@ public class UserAPI {
     // Update user password
     
     @PUT
-    @Path("{isbn}/update-password")
+    @Path("update-password/{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updatePassword(@PathParam("isbn") int isbn, UserDTO user) throws NoSuchAlgorithmException {
+    public Response updateUserPassword(@PathParam("isbn") int isbn, UserDTO user) throws NoSuchAlgorithmException {
 
         int result;       
         result = userService.updateUserPassword(isbn, user.getPassword());
@@ -143,7 +151,7 @@ public class UserAPI {
     @Path("{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteOne(@PathParam("isbn") int isbn) {
+    public Response deleteUser(@PathParam("isbn") int isbn) {
 
         int result ;
         result = userService.updateUserStatus(isbn, 0);

@@ -21,15 +21,15 @@ public class UserSQL {
     
     // Retrive user data
     
-    public static String findAll = "select * from Users";
-    public static String findById = "select * from Users where id = ?";   
-    public static String login = "select * from Users where username = ? and password = ?";
+    public static String findAll = "select * from Users where status = 1";
+    public static String findById = "select * from Users where id = ? and status = 1";   
+    public static String login = "select * from Users where username = ? and password = ? and status = 1";
     
     // ------------------------------------------------------------------------
     
     // Update user
     
-     public static String updateStatus = "update Users set status = ? where id = ?";
+     public static String updateStatus = "update Users set status = ? where user.id = ?";
      public static String updateUser = "update Users \n"
                                      + "set fullname = ? , dateOfBirth = ? , phoneNumber = ? , address = ? , username = ? \n"
                                      + "where id = ? ";
