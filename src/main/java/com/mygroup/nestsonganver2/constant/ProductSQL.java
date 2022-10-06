@@ -20,7 +20,7 @@ public class ProductSQL {
 
     //get product by id  *
     public static String getProductById = "select * from dbo.Products\n"
-            + "where id = ? and status=1";
+            + "where id = ?";
 
     //get product by CateId *
     public static String getProductByCateId = "select * from dbo.Products\n"
@@ -39,7 +39,12 @@ public class ProductSQL {
     //show all product *
     public static String showAll = "select * from dbo.Products where status=1";
 
+    public static String setProductStatus = "update dbo.Products\n"
+            + "set status=?\n"
+            + "where id =?\n";
+
     public static String getProductByPages = "select * from dbo.Products\n"
+            + "where status = 1\n"
             + "order by id\n"
             + "offset ? row\n"
             + "fetch next ? rows only";

@@ -4,7 +4,7 @@
  */
 package com.mygroup.nestsonganver2.service;
 
-import com.mygroup.nestsonganver2.api.Filter;
+import com.mygroup.nestsonganver2.dto.Filter;
 import com.mygroup.nestsonganver2.converter.ProductConverter;
 import com.mygroup.nestsonganver2.dao.impl.ProductDAO;
 import com.mygroup.nestsonganver2.dto.ProductDTO;
@@ -87,6 +87,10 @@ public class ProductService {
     public int updateProduct(ProductDTO product) {
         return productDAO.updateProduct(ProductConverter.convertDTOtoEntity(product));
         //Add roleID for user
+    }
+    
+    public int setProductStatus(int isbn, int status) {
+        return productDAO.setProductStatus( isbn, status);
     }
     //use filter
         public List<ProductDTO> filter(List<Filter> filter){

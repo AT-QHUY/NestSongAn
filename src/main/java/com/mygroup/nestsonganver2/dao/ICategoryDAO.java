@@ -12,5 +12,6 @@ import java.util.List;
  * @author ADMIN
  */
 public interface ICategoryDAO extends IDao<CategoryEntity> {
+    public List<CategoryEntity> getAllCategories();
     public List<CategoryEntity> getCategoryById(int Id);
 }

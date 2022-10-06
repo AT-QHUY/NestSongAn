@@ -5,8 +5,10 @@
 package com.mygroup.nestsonganver2.dao.impl;
 
 import com.mygroup.nestsonganver2.constant.CategorySQL;
+import com.mygroup.nestsonganver2.constant.ProductSQL;
 import com.mygroup.nestsonganver2.dao.ICategoryDAO;
 import com.mygroup.nestsonganver2.entity.CategoryEntity;
+import com.mygroup.nestsonganver2.entity.ProductEntity;
 import com.mygroup.nestsonganver2.mapper.CategoryMapper;
 import java.util.List;
 
@@ -24,6 +26,13 @@ public class CategoryDAO extends AbstractDAO<CategoryEntity> implements ICategor
         }
         return categoryDAO;
     }
+    
+     @Override
+    public List<CategoryEntity> getAllCategories() {
+        List<CategoryEntity> categoryList = query(CategorySQL.getAllCategories, categoryMapper);
+        return categoryList.isEmpty() ? null : categoryList;
+    }
+    
       @Override
     public List<CategoryEntity> getCategoryById(int Id) {
         List<CategoryEntity> CategoryList = query(CategorySQL.getCategoryById, categoryMapper, Id);

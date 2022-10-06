@@ -4,6 +4,7 @@
  */
 package com.mygroup.nestsonganver2.api;
 
+import com.mygroup.nestsonganver2.dto.Filter;
 import com.mygroup.nestsonganver2.dto.ProductDTO;
 import com.mygroup.nestsonganver2.service.ProductService;
 import java.net.URI;
@@ -11,6 +12,7 @@ import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -56,10 +58,9 @@ public class ProductAPI {
     public Response getProductsByName(@PathParam("name") String keyword) {
 
         List<ProductDTO> list = productService.searchByName(keyword);
-        if (list == null || list.isEmpty()) {
+        if (list == null || list.isEmpty()) 
             return Response.status(Response.Status.NOT_FOUND).build();
-        }
-
+ 
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
 
     }
@@ -123,8 +124,21 @@ public class ProductAPI {
         }
         //return ve trang product
     }
-
     
+    @DELETE
+    @Path("deleteProduct/{isbn}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deleteProduct(@PathParam("isbn") int isbn)throws URISyntaxException, NoSuchAlgorithmException {
+        int result = productService.setProductStatus(isbn,0);
+        if (result == 0) 
+            return Response.notModified().build();       
+        else {
+            URI uri = new URI(ui.getBaseUri() + "Product/" + isbn);
+            return Response.created(uri).build();
+        }
+    }
+   
     //filter 
     @POST
     @Path("/filter")

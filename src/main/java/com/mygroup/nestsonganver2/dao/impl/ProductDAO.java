@@ -8,13 +8,8 @@ import com.mygroup.nestsonganver2.constant.ProductSQL;
 import com.mygroup.nestsonganver2.dao.IProductDAO;
 import com.mygroup.nestsonganver2.entity.ProductEntity;
 import com.mygroup.nestsonganver2.mapper.ProductMapper;
-import java.util.ArrayList;
 import java.util.List;
-import com.mygroup.nestsonganver2.api.Filter;
-import com.mygroup.nestsonganver2.constant.UserSQL;
-import com.mygroup.nestsonganver2.entity.UserEntity;
-import java.sql.SQLException;
-
+import com.mygroup.nestsonganver2.dto.Filter;
 /**
  *
  * @author ADMIN
@@ -58,12 +53,17 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
     @Override
     public ProductEntity getProductById(int Id) {
         List<ProductEntity> productList = query(ProductSQL.getProductById, productMapper, Id);
-        return (productList.isEmpty() || productList.get(0).getStatus() == 0) ? null : productList.get(0);
+        return (productList.isEmpty()) ? null : productList.get(0);
     }
 
     @Override
     public int updateProduct(ProductEntity product) {
         return update(ProductSQL.updateProduct, product.getName(), product.getQuantity(), product.getDeal(), product.getDescription(), product.getBasePrice(), product.getCateId());
+    }
+    
+    @Override
+    public int setProductStatus(int isbn, int status) {   
+        return update(ProductSQL.setProductStatus,status, isbn);
     }
 
     @Override

@@ -5,6 +5,7 @@
 package com.mygroup.nestsonganver2.api;
 
 import com.mygroup.nestsonganver2.dto.CategoryDTO;
+import com.mygroup.nestsonganver2.dto.ProductDTO;
 import com.mygroup.nestsonganver2.service.CategoryService;
 import java.util.List;
 import javax.ws.rs.GET;
@@ -28,6 +29,18 @@ public class CategoryAPI {
     @Context
     UriInfo ui;
     
+     @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllCategories() {
+
+        List<CategoryDTO> list = categoryService.getAllCategories();
+        if (list.isEmpty()) 
+            return Response.status(Response.Status.NOT_FOUND).build();
+
+        return Response.ok(list, MediaType.APPLICATION_JSON).build();
+        
+
+    }
     
     @GET
     @Path("{Id}")

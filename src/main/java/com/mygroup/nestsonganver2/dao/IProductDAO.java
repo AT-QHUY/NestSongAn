@@ -4,10 +4,8 @@
  */
 package com.mygroup.nestsonganver2.dao;
 
-import com.mygroup.nestsonganver2.api.Filter;
-import com.mygroup.nestsonganver2.api.ProductAPI;
+import com.mygroup.nestsonganver2.dto.Filter;
 import com.mygroup.nestsonganver2.entity.ProductEntity;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,4 +29,6 @@ public interface IProductDAO extends IDao<ProductEntity> {
     public List<ProductEntity> filter(List<Filter> filter);
     
     public List<ProductEntity> getProductByPages(int offset,int fetch);
+    
+    public int setProductStatus(int isbn, int status) ;
 }

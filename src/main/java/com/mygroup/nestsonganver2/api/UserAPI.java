@@ -42,7 +42,7 @@ public class UserAPI {
     public Response getAll() {
 
         List<UserDTO> list = userService.findAllUsers();
-        if (list.isEmpty() || list == null) {
+        if (list == null || list.isEmpty() ) {
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
