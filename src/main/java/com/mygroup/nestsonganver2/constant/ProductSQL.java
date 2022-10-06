@@ -16,30 +16,37 @@ public class ProductSQL {
 
     //search product by name *
     public static String searchProductByName = "select * from dbo.Products\n"
-            + "where lower(name) like lower(?) ";
+            + "where lower(name) like lower(?) and status=1";
 
     //get product by id  *
     public static String getProductById = "select * from dbo.Products\n"
-            + "where id = ? ";
+            + "where id = ?";
 
     //get product by CateId *
     public static String getProductByCateId = "select * from dbo.Products\n"
-            +"where cateId = ?";
-
+            + "where cateId = ? and status=1";
 
     //update Product 
     public static String updateProduct = "update dbo.Products\n"
             + "set name = ?, quantity = ?, deal = ?, description = ?, basePrice = ?, cateId = ?\n,"
             + "where id=?";
-    
+
     //delete product (by set status = 0 in db, when it was 0 change to 1-undelete )
     public static String deleleProduct = "update dbo.Products\n"
-            +"set status = ?"
-            +"where id=?";
+            + "set status = ?"
+            + "where id=?";
 
     //show all product *
-    public static String showAll = "select * from dbo.Products";
+    public static String showAll = "select * from dbo.Products where status=1";
 
-//    public static String filter="select * from dbo.Products\n";
-    
+    public static String setProductStatus = "update dbo.Products\n"
+            + "set status=?\n"
+            + "where id =?\n";
+
+    public static String getProductByPages = "select * from dbo.Products\n"
+            + "where status = 1\n"
+            + "order by id\n"
+            + "offset ? row\n"
+            + "fetch next ? rows only";
+
 }

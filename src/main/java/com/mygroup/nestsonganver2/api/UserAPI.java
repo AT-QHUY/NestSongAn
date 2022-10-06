@@ -56,6 +56,7 @@ public class UserAPI {
         else return Response.ok(list, MediaType.APPLICATION_JSON).build();
         
 
+
     }
     // -------------------------------------------------------------------------
 
@@ -78,7 +79,7 @@ public class UserAPI {
     @Path("/insert")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response insertUser(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
+ Response insertUser(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
 
         int id = userService.insertUser(user);
         if (id == 0) {

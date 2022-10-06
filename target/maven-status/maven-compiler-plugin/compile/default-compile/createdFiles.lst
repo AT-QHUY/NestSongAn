@@ -9,6 +9,9 @@ com\mygroup\nestsonganver2\dto\CategoryDTO.class
 com\mygroup\nestsonganver2\entity\NewsEntity.class
 com\mygroup\nestsonganver2\service\CategoryService.class
 com\mygroup\nestsonganver2\utils\SessionUtils.class
+<<<<<<< HEAD
+com\mygroup\nestsonganver2\api\Filter.class
+=======
 com\mygroup\nestsonganver2\api\CategoryAPI.class
 com\mygroup\nestsonganver2\converter\CategoryConverter.class
 com\mygroup\nestsonganver2\dao\INewsDAO.class
@@ -33,6 +36,7 @@ com\mygroup\nestsonganver2\mapper\ProductMapper.class
 com\mygroup\nestsonganver2\mapper\RoleMapper.class
 com\mygroup\nestsonganver2\dao\impl\NewsDAO.class
 com\mygroup\nestsonganver2\converter\ImageConverter.class
+>>>>>>> develop
 com\mygroup\nestsonganver2\dao\IUserDAO.class
 com\mygroup\nestsonganver2\dao\impl\ProductDAO.class
 com\mygroup\nestsonganver2\dao\IProductDAO.class

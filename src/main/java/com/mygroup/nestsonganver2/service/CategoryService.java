@@ -27,6 +27,18 @@ public class CategoryService {
         return categoryService;
     }
     
+     public List<CategoryDTO> getAllCategories(){
+        List<CategoryDTO> list = new ArrayList<>();
+        CategoryDTO categoryDTO;
+        List<CategoryEntity> entityList = categoryDAO.getAllCategories();
+        if(entityList == null) return null;      
+        for (CategoryEntity category : entityList) {
+            categoryDTO = CategoryConverter.convertEntitytoDTO(category);
+            list.add(categoryDTO);
+        }
+        return list;
+    }
+    
     public List<CategoryDTO> getCategoryById(int Id){
         List<CategoryDTO> list = new ArrayList<>();
         CategoryDTO categoryDTO;

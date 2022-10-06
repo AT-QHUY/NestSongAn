@@ -4,20 +4,22 @@
  */
 package com.mygroup.nestsonganver2.api;
 
+import com.mygroup.nestsonganver2.dto.Filter;
 import com.mygroup.nestsonganver2.dto.ProductDTO;
 import com.mygroup.nestsonganver2.service.ProductService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -56,10 +58,9 @@ public class ProductAPI {
     public Response getProductsByName(@PathParam("name") String keyword) {
 
         List<ProductDTO> list = productService.searchByName(keyword);
-        if (list == null || list.isEmpty()) {
+        if (list == null || list.isEmpty()) 
             return Response.status(Response.Status.NOT_FOUND).build();
-        }
-
+ 
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
 
     }
@@ -100,39 +101,69 @@ public class ProductAPI {
     @Path("{Id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductById(@PathParam("Id") int Id) {
-        List<ProductDTO> list = productService.getProductById(Id);
-        if (list == null || list.isEmpty()) {
+        ProductDTO product = productService.getProductById(Id);
+        if (product == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
 
-        return Response.ok(list, MediaType.APPLICATION_JSON).build();
+        return Response.ok(product, MediaType.APPLICATION_JSON).build();
     }
     
     @PUT
     @Path("{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateProduct(@PathParam("isbn") int isbn, ProductDTO product) {
+    public Response updateProduct(@PathParam("isbn") int isbn, ProductDTO product)throws URISyntaxException, NoSuchAlgorithmException {
         product.setId(isbn);
         int result = productService.updateProduct(product);
         if (result == 0) 
             return Response.notModified().build();       
-        return Response.ok().build();
+        else {
+            URI uri = new URI(ui.getBaseUri() + "Product/" + isbn);
+            return Response.created(uri).build();
+        }
         //return ve trang product
     }
-//
-//    //filter 
-//    @GET
-//    @Path("filter")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response filterProducts(@PathParam("filter")) {
-//
-//        List<ProductDTO> list = productService.searchByName(name);
-//        if (list == null || list.isEmpty()) {
-//            return Response.status(Response.Status.NOT_FOUND).build();
-//        }
-//
-//        return Response.ok(list, MediaType.APPLICATION_JSON).build();
-//
-//    }
+    
+    @DELETE
+    @Path("deleteProduct/{isbn}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deleteProduct(@PathParam("isbn") int isbn)throws URISyntaxException, NoSuchAlgorithmException {
+        int result = productService.setProductStatus(isbn,0);
+        if (result == 0) 
+            return Response.notModified().build();       
+        else {
+            URI uri = new URI(ui.getBaseUri() + "Product/" + isbn);
+            return Response.created(uri).build();
+        }
+    }
+   
+    //filter 
+    @POST
+    @Path("/filter")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response filterProducts(List<Filter> filter) throws NoSuchAlgorithmException {      
+        List<ProductDTO> list = productService.filter(filter);
+        if (list == null || list.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        return Response.ok(list, MediaType.APPLICATION_JSON).build();
+
+    }
+    
+    //Show products by pages
+    @GET
+    @Path("/page")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getProductByPages(@QueryParam("page") int page, @QueryParam("products") int products) {
+        List<ProductDTO> product = productService.getProductByPages(page, products);
+        if (product == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        return Response.ok(product, MediaType.APPLICATION_JSON).build();
+    }
 }

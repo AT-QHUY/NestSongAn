@@ -32,7 +32,6 @@ public class Utils {
      public static Connection makeConnection() {
         Connection conn = null;
         try {
-
             String dbURL = "jdbc:sqlserver://nestsongan.cqtchuhryqsc.ap-southeast-1.rds.amazonaws.com;databaseName=NestSongAn";
             String user = "admin";
             String pass = "thisisadmin";
