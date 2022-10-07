@@ -52,7 +52,7 @@ public class UserAPI {
 //        UserDTO dto = (UserDTO) ctx.getProperty("tokenObject");
         List<UserDTO> list = userService.findAllUsers("admin");
         if (list == null) return Response.status(Response.Status.UNAUTHORIZED).build();
-        if (list.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+        if (list.isEmpty()) return Response.status(Response.Status.NOT_MODIFIED).build();
         else return Response.ok(list, MediaType.APPLICATION_JSON).build();
         
 
@@ -68,7 +68,7 @@ public class UserAPI {
 //        UserDTO dto = (UserDTO) httpRequest.getAttribute("tokenObject");
         UserDTO user = userService.getUserById(isbn, 1, "admin");
         if (user == null) return Response.status(Response.Status.UNAUTHORIZED).build();
-        if (user.getId() == 0) return Response.status(Response.Status.NOT_FOUND).build();
+        if (user.getId() == 0) return Response.status(Response.Status.NOT_MODIFIED).build();
         else return Response.ok(user, MediaType.APPLICATION_JSON).build();
 
     }
@@ -79,11 +79,11 @@ public class UserAPI {
     @Path("/insert")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
- Response insertUser(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
+    Response insertUser(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
 
         int id = userService.insertUser(user);
         if (id == 0) {
-            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             URI uri = new URI(ui.getBaseUri() + "User/" + id);
             return Response.created(uri).build();
@@ -103,7 +103,7 @@ public class UserAPI {
         if (token != null) {
             return Response.ok(token, MediaType.APPLICATION_JSON).build();
         } else {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         }
 
     }

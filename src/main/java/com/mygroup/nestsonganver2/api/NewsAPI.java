@@ -44,7 +44,7 @@ public class NewsAPI {
     public Response getAllNews() {
         List<NewsDTO> list = newsService.getAllNews();
         if (list.isEmpty()) 
-            return Response.noContent().build();
+        return Response.noContent().build();
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
     }
     
@@ -58,7 +58,7 @@ public class NewsAPI {
         List<ImageDTO> listImage = imgService.getImagesByNewsId(id);
         dto.getListImages().addAll(listImage);
         if (dto.getTitle() == null) 
-            return Response.noContent().build();
+        return Response.notModified().build();
         return Response.ok(dto, MediaType.APPLICATION_JSON).build();
     }
     
@@ -69,8 +69,7 @@ public class NewsAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addNews(NewsDTO dto) throws URISyntaxException {
         int id = newsService.addNews(dto);
-        if (id == 0)
-            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+        if (id == 0) return Response.status(Response.Status.NOT_ACCEPTABLE).build();
         URI uri = new URI(ui.getBaseUri() + "news/" + id);
         return Response.created(uri).build();
     }

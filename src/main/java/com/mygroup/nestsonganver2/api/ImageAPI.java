@@ -67,7 +67,7 @@ public class ImageAPI {
     public Response getAllImages() {
         List<ImageDTO> listImages = imgService.getAllImages();
         if (listImages == null || listImages.isEmpty()) 
-            return Response.status(Response.Status.NO_CONTENT).build();
+        return Response.status(Response.Status.NO_CONTENT).build();
         return Response.ok(listImages, MediaType.APPLICATION_JSON).build();
     }
     
