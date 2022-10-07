@@ -87,4 +87,18 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
         int result = update(BillSQL.updateStatus, status, id);
         return result;
     }
+    
+    @Override
+    public List<BillEntity> findByEmpIdAndStatus(int empId, int status) {
+        List<BillEntity> list = new ArrayList<>();
+        list = query(BillSQL.findByEmpIdAndStatus, new BillMapper(), empId, status);
+        return list;
+    }
+
+    @Override
+    public List<BillEntity> findByCustomerIdAndStatus(int empId, int status) {
+        List<BillEntity> list = new ArrayList<>();
+        list = query(BillSQL.findByCustomerIdAndStatus, new BillMapper(), empId, status);
+        return list;
+    }
 }
