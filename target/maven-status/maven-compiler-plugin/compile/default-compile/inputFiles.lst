@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Silver King\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\UserEntity.java
 C:\Users\Silver King\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IBillDAO.java
 C:\Users\Silver King\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\UserConverter.java
@@ -30,3 +31,97 @@ C:\Users\Silver King\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2
 C:\Users\Silver King\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\BillDetailsAPI.java
 C:\Users\Silver King\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\BillDTO.java
 C:\Users\Silver King\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\UserDTO.java
+=======
+<<<<<<< HEAD
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IProductDAO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\UserDAO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\CategorySQL.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\ProductDTO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\UserEntity.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\Utils.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\CategoryAPI.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IUserDAO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IDao.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\UserService.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\CategoryEntity.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\UserMapper.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\CategoryDTO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\ICategoryDAO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\Filter.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\CategoryMapper.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\AbstractDAO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\ProductMapper.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\ProductAPI.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\UserConverter.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\UserAPI.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\ProductEntity.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\ProductConverter.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\SessionUtils.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\ProductDAO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\CategoryService.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\ProductSQL.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\UserSQL.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\UserDTO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\CategoryDAO.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\RowMapper.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\CategoryConverter.java
+D:\Project\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\ProductService.java
+=======
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\ProductSQL.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\RoleSQL.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\UserDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\NewsDTO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\CategoryConverter.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\Utils.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\ImageEntity.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\ProductEntity.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\NewsDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\NewsMapper.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\UserDTO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\INewsDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\ICategoryDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\CategoryDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\ImageSQL.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\ImageConverter.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IDao.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\CategoryAPI.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\UserAPI.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IRoleDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\NewsConverter.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\CategorySQL.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IUserDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\CategoryService.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IProductDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\UserEntity.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\filter\TokenFilter.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\ProductDTO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\RoleEntity.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IImageDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\UserService.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\ImageService.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\RoleMapper.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\ImageAPI.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\ProductMapper.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\ImageDTO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\RowMapper.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\ProductService.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\UserSQL.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\ImageDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\ProductDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\CategoryDTO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\ProductAPI.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\NewsAPI.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\UserMapper.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\UserConverter.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\CategoryMapper.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\RoleDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\NewsSQL.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\NewsService.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\CategoryEntity.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\ProductConverter.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\NewsEntity.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\AbstractDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\ImageMapper.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\SessionUtils.java
+>>>>>>> develop
+>>>>>>> develop

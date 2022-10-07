@@ -48,7 +48,7 @@ public class BillAPI {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/id/{id}")
+    @Path("/{id}")
     public Response getBillById(@PathParam("id") int id) {
         BillDTO bill = BILLS_SERVICE.getBillById(id);
         if (bill == null) {
@@ -72,7 +72,7 @@ public class BillAPI {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/customerId/{customerId}")
+    @Path("/customer-id/{customerId}")
     public Response getBillByCustomerId(@PathParam("customerId") int customerId) {
         List<BillDTO> list = BILLS_SERVICE.getBillByCustomerId(customerId);
         if (list.isEmpty()) {
@@ -84,7 +84,7 @@ public class BillAPI {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/employeeId/{empId}")
+    @Path("/employee-id/{empId}")
     public Response getBillByEmpId(@PathParam("empId") int empId) {
         List<BillDTO> list = BILLS_SERVICE.getBillByEmpId(empId);
         if (list.isEmpty()) {

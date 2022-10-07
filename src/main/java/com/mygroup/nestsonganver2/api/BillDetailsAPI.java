@@ -64,7 +64,7 @@ public class BillDetailsAPI {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/id/{id}")
+    @Path("/{id}")
     public Response getById(@PathParam("id") int id) {
         BillDetailsDTO billDetails = billDetailsService.findById(id);
         if (billDetails == null) {

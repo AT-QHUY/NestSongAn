@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author huy
  */
 public class SessionUtils {
+
     private static SessionUtils sessionUtil = null;
 
     public static SessionUtils getInstance() {

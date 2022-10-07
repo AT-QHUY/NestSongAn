@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -10,6 +10,7 @@ import com.mygroup.nestsonganver2.dao.IUserDAO;
 import com.mygroup.nestsonganver2.entity.UserEntity;
 import com.mygroup.nestsonganver2.mapper.RowMapper;
 import com.mygroup.nestsonganver2.mapper.UserMapper;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,19 +41,22 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     @Override
     public UserEntity findUser(String username, String password) {
         List<UserEntity> userList = query(UserSQL.login, new UserMapper(), username, password);
-        return (userList.isEmpty() || userList.get(0).getStatus() == 0) ? null : userList.get(0);
+        if(userList == null) return null;
+        return userList.isEmpty() ? null : userList.get(0);
     }
 
     @Override
     public List<UserEntity> findAll() {
         List<UserEntity> userList = query(UserSQL.findAll, new UserMapper());
-        return userList.isEmpty() ? null : userList;
+        if (userList == null) return new ArrayList<>();
+        return userList;
     }
 
     @Override
     public UserEntity findUser(int id) {
         List<UserEntity> userList = query(UserSQL.findById, new UserMapper(), id);
-        return (userList.isEmpty() || userList.get(0).getStatus() == 0) ? null : userList.get(0);
+        if(userList == null || userList.isEmpty()) return new UserEntity();
+        return userList.get(0);
     }
 
     // ----------------------------------------------------------------------
@@ -74,3 +78,4 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
 
     // ----------------------------------------------------------------------
 }
+

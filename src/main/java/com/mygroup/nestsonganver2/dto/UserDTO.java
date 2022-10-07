@@ -5,13 +5,14 @@
  */
 package com.mygroup.nestsonganver2.dto;
 
-import com.mygroup.nestsonganver2.entity.UserEntity;
+import com.mygroup.nestsonganver2.entity.RoleEntity;
 import java.sql.Date;
 
 /**
  *
  * @author huy
  */
+
 public class UserDTO {
     
     private static UserDTO userDTO = null;
@@ -30,14 +31,14 @@ public class UserDTO {
     private String phoneNumber;    
     private String address;
     private String password;
-    private int roleId;
-    private String token;
+    private RoleEntity role;
+
     //missing list employee
 
     public UserDTO() {
     }
 
-    public UserDTO(int id, String username, String fullname, Date dateOfBirth, String phoneNumber, String address, String password, int roleId, String token) {
+    public UserDTO(int id, String username, String fullname, Date dateOfBirth, String phoneNumber, String address, String password, RoleEntity role) {
         this.id = id;
         this.username = username;
         this.fullname = fullname;
@@ -45,26 +46,18 @@ public class UserDTO {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.password = password;
-        this.roleId = roleId;
-        this.token = token;
+        this.role = role;
+     
     }
     
     
 
-    public int getRoleId() {
-        return roleId;
+    public RoleEntity getRole() {
+        return role;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
+    public void setRole(RoleEntity role) {
+        this.role = role;
     }
 
     public static UserDTO getUserDTO() {
@@ -130,7 +123,4 @@ public class UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
-    
 }
