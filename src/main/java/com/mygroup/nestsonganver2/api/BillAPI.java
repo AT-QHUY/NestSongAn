@@ -130,12 +130,36 @@ public class BillAPI {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("update-status/{id}/{status}")
-    public Response uodateStatus(@PathParam("id") int id, @PathParam("status") int status) {
+    public Response updateStatus(@PathParam("id") int id, @PathParam("status") int status) {
         int result = BILLS_SERVICE.updateStatus(id, status);
         if (result == 0) {
             return Response.notModified().build();
         } else {
             return Response.ok().build();
+        }
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/employee-id-status/{empId}/{status}")
+    public Response getBillByEmpIdAndStatus(@PathParam("empId") int empId, @PathParam("status") int status) {
+        List<BillDTO> list = BILLS_SERVICE.getBillByEmpIdAndStatus(empId, status);
+        if (list.isEmpty()) {
+            return Response.notModified().build();
+        } else {
+            return Response.ok(list, MediaType.APPLICATION_JSON).build();
+        }
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/customer-id-status/{customerId}/{status}")
+    public Response getBillByCustomerIdAndStatus(@PathParam("customerId") int customerId, @PathParam("status") int status) {
+        List<BillDTO> list = BILLS_SERVICE.getBillByCUstomerIdAndStatus(customerId, status);
+        if (list.isEmpty()) {
+            return Response.notModified().build();
+        } else {
+            return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
     }
 }

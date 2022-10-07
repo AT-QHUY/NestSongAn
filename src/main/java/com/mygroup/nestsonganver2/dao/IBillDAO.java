@@ -33,4 +33,6 @@ public interface IBillDAO extends IDao<BillEntity> {
     public int updateStatus(int id, int status);
 
     public int updateBill(BillEntity bill);
+    public List<BillEntity> findByEmpIdAndStatus(int empId, int status);
+    public List<BillEntity> findByCustomerIdAndStatus(int empId, int status);
 }

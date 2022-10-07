@@ -97,4 +97,26 @@ public class BillService {
         bill.setId(id);
         return billDAO.updateBill(BillConverter.convertDTOtoEntity(bill));
     }
+    
+    public List<BillDTO> getBillByEmpIdAndStatus(int empId,int status) {
+        List<BillDTO> result = new ArrayList<>();
+        BillDTO dto = null;
+        List<BillEntity> listEntity = billDAO.findByEmpIdAndStatus(empId,status);
+        for (BillEntity billEntity : listEntity) {
+            dto = BillConverter.convertEntitytoDTO(billEntity);
+            result.add(dto);
+        }
+        return result;
+    }
+
+    public List<BillDTO> getBillByCUstomerIdAndStatus(int empId, int status) {
+        List<BillDTO> result = new ArrayList<>();
+        BillDTO dto = null;
+        List<BillEntity> listEntity = billDAO.findByCustomerIdAndStatus(empId, status);
+        for (BillEntity billEntity : listEntity) {
+            dto = BillConverter.convertEntitytoDTO(billEntity);
+            result.add(dto);
+        }
+        return result;
+    }
 }
