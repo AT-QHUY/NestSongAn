@@ -26,7 +26,7 @@ import javax.ws.rs.core.UriInfo;
  * @author dd220
  */
 
-@Path("Image")
+@Path("image")
 public class ImageAPI {
     
     private ImageService imgService = ImageService.getImageService();
@@ -37,7 +37,7 @@ public class ImageAPI {
     
     //Add image
     @POST
-    @Path("Add")
+    @Path("add")
     @Produces (MediaType.APPLICATION_JSON)
     @Consumes (MediaType.APPLICATION_JSON)
     public Response addImage(ImageDTO img) throws Exception {
@@ -74,7 +74,7 @@ public class ImageAPI {
     
     //Get Image by productId
     @GET
-    @Path("Product/{id}")
+    @Path("product/{id}")
     @Produces (MediaType.APPLICATION_JSON)
     public Response getImagesByProductId(@PathParam("id")int productId){
         List<ImageDTO> listImages = imgService.getImagesByProductId(productId);
@@ -85,7 +85,7 @@ public class ImageAPI {
 
     //Get Image by newsId
     @GET
-    @Path("News/{id}")
+    @Path("news/{id}")
     @Produces (MediaType.APPLICATION_JSON)
     public Response getImagesByNewsId(@PathParam("id")int newsId){
         List<ImageDTO> listImages = imgService.getImagesByNewsId(newsId);
@@ -96,7 +96,7 @@ public class ImageAPI {
     
     //Update Image
     @PUT
-    @Path("Update/{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateImage(@PathParam("id")int id, ImageDTO dto) {
@@ -117,7 +117,7 @@ public class ImageAPI {
     
     //Delete Image by ID
     @DELETE
-    @Path("Delete/{id}")
+    @Path("/{id}")
     @Produces (MediaType.APPLICATION_JSON)
     @Consumes (MediaType.APPLICATION_JSON)
     public Response deleteImage(@PathParam("id")int id) {

@@ -39,6 +39,7 @@ public class Utils {
             conn = DriverManager.getConnection(dbURL, user, pass);
             //System.out.println("Connect to DB successfully");
         } catch (Exception ex) {    
+
             ex.printStackTrace();
         }
         return conn;

@@ -21,7 +21,7 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author ADMIN
  */
-@Path("Category")
+@Path("category")
 public class CategoryAPI {
        
     private static final CategoryService categoryService = CategoryService.getInstance();

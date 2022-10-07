@@ -29,7 +29,7 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author ADMIN
  */
-@Path("Product")
+@Path("product")
 public class ProductAPI {
 
     private static final ProductService productService = ProductService.getInstance();
@@ -53,7 +53,7 @@ public class ProductAPI {
 
     //search products by name
     @GET
-    @Path("searchByName/{name}")
+    @Path("search-by-name/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsByName(@PathParam("name") String keyword) {
 
@@ -84,7 +84,7 @@ public class ProductAPI {
 
     //search product by cate ID(show the products in the Category
     @GET
-    @Path("searchByCateId/{cateId}")
+    @Path("search-by-cateid/{cateId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductByCateId(@PathParam("cateId") int cateId) {
 
@@ -126,7 +126,7 @@ public class ProductAPI {
     }
     
     @DELETE
-    @Path("deleteProduct/{isbn}")
+    @Path("/{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteProduct(@PathParam("isbn") int isbn)throws URISyntaxException, NoSuchAlgorithmException {

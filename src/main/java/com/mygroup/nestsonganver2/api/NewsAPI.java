@@ -28,7 +28,7 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author dd220
  */
-@Path("News")
+@Path("news")
 public class NewsAPI {
     
     private NewsService newsService = NewsService.getNewsService();
@@ -64,7 +64,7 @@ public class NewsAPI {
     
     //Add news - havent tested yet
     @POST
-    @Path("Add")   
+    @Path("add")   
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addNews(NewsDTO dto) throws URISyntaxException {
@@ -76,7 +76,7 @@ public class NewsAPI {
     
     //update news by id - haven't tested yet
     @PUT
-    @Path("Update/{id}")
+    @Path("update/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateNews(@PathParam("id") int id, NewsDTO dto) {
@@ -99,7 +99,7 @@ public class NewsAPI {
     
     //Delete news by id
     @DELETE
-    @Path("Delete/{id}")
+    @Path("/{id}")
     public Response deleteNews(@PathParam("id")int id) {
         int check = newsService.deleteNews(id);
         if (check == 0)

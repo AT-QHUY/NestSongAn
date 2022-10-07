@@ -34,7 +34,7 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author huy
  */
-@Path("User")
+@Path("user")
 public class UserAPI {
 
     private static final UserService userService = UserService.getInstance();
