@@ -35,7 +35,7 @@ public class CategoryAPI {
 
         List<CategoryDTO> list = categoryService.getAllCategories();
         if (list.isEmpty()) 
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
 
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
         
@@ -48,7 +48,7 @@ public class CategoryAPI {
     public Response getCategoryById(@PathParam("Id") int Id) {
         List<CategoryDTO> list = categoryService.getCategoryById(Id);
         if (list == null || list.isEmpty()) 
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
 
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
     }

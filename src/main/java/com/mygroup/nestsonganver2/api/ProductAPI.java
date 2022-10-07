@@ -44,7 +44,7 @@ public class ProductAPI {
 
         List<ProductDTO> list = productService.showAllProducts();
         if (list.isEmpty()) 
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
 
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         
@@ -59,7 +59,7 @@ public class ProductAPI {
 
         List<ProductDTO> list = productService.searchByName(keyword);
         if (list == null || list.isEmpty()) 
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
  
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
 
@@ -74,7 +74,7 @@ public class ProductAPI {
         //authentication
         int id = productService.addNewProduct(product);
         if (id == 0) {
-            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             URI uri = new URI(ui.getBaseUri() + "Product/" + id);
             return Response.created(uri).build();
@@ -90,7 +90,7 @@ public class ProductAPI {
 
         List<ProductDTO> list = productService.getProductByCateId(cateId);
         if (list == null || list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         }
 
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
@@ -103,7 +103,7 @@ public class ProductAPI {
     public Response getProductById(@PathParam("Id") int Id) {
         ProductDTO product = productService.getProductById(Id);
         if (product == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         }
 
         return Response.ok(product, MediaType.APPLICATION_JSON).build();
@@ -146,10 +146,8 @@ public class ProductAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response filterProducts(List<Filter> filter) throws NoSuchAlgorithmException {      
         List<ProductDTO> list = productService.filter(filter);
-        if (list == null || list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-
+        if (list == null || list.isEmpty()) 
+            return Response.status(Response.Status.NOT_MODIFIED).build();       
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
 
     }
@@ -161,7 +159,7 @@ public class ProductAPI {
     public Response getProductByPages(@QueryParam("page") int page, @QueryParam("products") int products) {
         List<ProductDTO> product = productService.getProductByPages(page, products);
         if (product == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         }
 
         return Response.ok(product, MediaType.APPLICATION_JSON).build();
