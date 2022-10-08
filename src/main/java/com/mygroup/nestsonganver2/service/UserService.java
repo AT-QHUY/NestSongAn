@@ -22,9 +22,11 @@ import java.util.List;
  */
 public class UserService {
     
-    private RoleDAO roleDAO = RoleDAO.getRoleDAO();
+    private  RoleDAO roleDAO = RoleDAO.getRoleDAO();
     
-    private static final UserDAO userDAO = UserDAO.getInstance();
+    private static UserDAO userDAO = UserDAO.getInstance();
+    
+    private static UserConverter converter = UserConverter.getInstance();
 
     private static UserService userService;
 
@@ -41,17 +43,15 @@ public class UserService {
             return 0;
         }
         user.setPassword(Utils.hashPassWordMd5(user.getPassword()));
-        return userDAO.createNewUser(UserConverter.convertDTOtoEntity(user));
+        return userDAO.createNewUser(converter.convertDTOtoEntity(user));
     }
 
     // ----------------------------------------------------------------------
     // Find User
     public String checkLogin(UserDTO user) throws NoSuchAlgorithmException {
         UserEntity userEntity = userDAO.findUser(user.getUsername(), Utils.hashPassWordMd5(user.getPassword()));
-        if (userEntity != null) {
-            RoleEntity role = roleDAO.getRoleById(userEntity.getRoleId());
-            user = UserConverter.convertEntitytoDTO(userEntity, role);
-            return UserConverter.ConvertDTOtoToken(user);
+        if (userEntity != null && userEntity.getId() != 0) {
+            return converter.ConvertEntitytoToken(userEntity);
         }
         return null;
     }
@@ -68,8 +68,7 @@ public class UserService {
     private UserDTO getUserById(int userId) {
         UserEntity userEntity = userDAO.findUser(userId);
         if (userEntity.getId() != 0) {
-            RoleEntity role = roleDAO.getRoleById(userEntity.getRoleId());
-            return UserConverter.convertEntitytoDTO(userEntity, role);
+            return converter.convertEntitytoDTO(userEntity);
         }
         return new UserDTO();
     }
@@ -80,33 +79,31 @@ public class UserService {
     }
 
     private List<UserDTO> findAllUsers() {
-        List<UserDTO> list = new ArrayList<>();
-        UserDTO userDTO;
+        List<UserDTO> list;
         List<UserEntity> entityList = userDAO.findAll();
-        List<RoleEntity> roleList = roleDAO.getAllRole();
-        for (UserEntity user : entityList) {
-            RoleEntity role= new RoleEntity();
-            if (!roleList.isEmpty()) 
-                for (RoleEntity roleCheck : roleList) 
-                    if (roleCheck.getId() == user.getRoleId()) {
-                        role = roleCheck;
-                        break;
-                    }
-            userDTO = UserConverter.convertEntitytoDTO(user, role);
-            list.add(userDTO);
-        }
+        list = converter.convertEntitytoDTO(entityList);
         return list;
     }
 
     // ----------------------------------------------------------------------
     // Update User
     
+    private int updateUser(UserEntity user, UserEntity oldUser){
+        if(!user.getFullname().isEmpty()) user.setFullname(oldUser.getFullname());
+        if(!user.getAddress().isEmpty()) user.setAddress(oldUser.getAddress());
+        if(!user.getDateOfBirth().toString().isEmpty()) user.setDateOfBirth(oldUser.getDateOfBirth());
+        if(!user.getPhoneNumber().isEmpty()) user.setPhoneNumber(oldUser.getPhoneNumber());
+        return userDAO.updateUser(user);
+    }
+    
     public int updateUser(UserDTO user) {
-        return userDAO.updateUser(UserConverter.convertDTOtoEntity(user));
+        UserEntity oldUser = userDAO.findUser(user.getId());
+        if(oldUser == null || oldUser.getId() == 0) return 0;
+        else return updateUser(converter.convertDTOtoEntity(user), oldUser);
     }
     
     public int updateUserStatus(int id, int status) {
-        return userDAO.updateUserStatus(status, id);
+        return userDAO.updateUserStatus(id, status);
     }
     
     public int updateUserPassword(int id, String password) throws NoSuchAlgorithmException {

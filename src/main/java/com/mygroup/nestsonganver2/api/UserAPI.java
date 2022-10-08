@@ -85,7 +85,7 @@ public class UserAPI {
         if (id == 0) {
             return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
-            URI uri = new URI(ui.getBaseUri() + "User/" + id);
+            URI uri = new URI(ui.getBaseUri() + "user/" + id);
             return Response.created(uri).build();
         }
 

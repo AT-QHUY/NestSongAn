@@ -29,9 +29,9 @@ public class UserSQL {
     
     // Update user
     
-     public static String updateStatus = "update Users set status = ? where user.id = ?";
+     public static String updateStatus = "update Users set status = ? where id = ?";
      public static String updateUser = "update Users \n"
-                                     + "set fullname = ? , dateOfBirth = ? , phoneNumber = ? , address = ? , username = ? \n"
+                                     + "set fullname = ? , dateOfBirth = ? , phoneNumber = ? , address = ? \n"
                                      + "where id = ? ";
      public static String updatePassword ="update Users \n"
                                      + "set password = ? \n"
