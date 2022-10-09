@@ -156,8 +156,8 @@ public class ProductAPI {
     @GET
     @Path("/page")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getProductByPages(@QueryParam("page") int page, @QueryParam("products") int products) {
-        List<ProductDTO> product = productService.getProductByPages(page, products);
+    public Response getProductByPages(@QueryParam("page") int page, @QueryParam("limit") int limit) {
+        List<ProductDTO> product = productService.getProductByPages(page, limit);
         if (product == null) {
             return Response.status(Response.Status.NOT_MODIFIED).build();
         }

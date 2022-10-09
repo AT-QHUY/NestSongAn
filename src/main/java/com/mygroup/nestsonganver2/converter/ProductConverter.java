@@ -4,8 +4,13 @@
  */
 package com.mygroup.nestsonganver2.converter;
 
+import com.mygroup.nestsonganver2.dao.impl.ImageDAO;
+import com.mygroup.nestsonganver2.dto.ImageDTO;
 import com.mygroup.nestsonganver2.dto.ProductDTO;
+import com.mygroup.nestsonganver2.entity.ImageEntity;
 import com.mygroup.nestsonganver2.entity.ProductEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,7 +19,17 @@ import com.mygroup.nestsonganver2.entity.ProductEntity;
 public class ProductConverter {
     // Convert Entitty to DTO
     
-    public static ProductDTO convertEntitytoDTO(ProductEntity entity){
+    private static final ImageDAO imageDAO = new ImageDAO();
+    
+    public List<ProductDTO> convertEntitytoDTO(List<ProductEntity> entityList){
+        List<ProductDTO> DTOList=new ArrayList<>();
+            for (ProductEntity entity : entityList)
+                DTOList.add(convertEntitytoDTO(entity));         
+        return DTOList;
+    }
+    
+    
+    public ProductDTO convertEntitytoDTO(ProductEntity entity){
         ProductDTO dto = new ProductDTO();
         dto.setId(entity.getId());
         dto.setName(entity.getName());
@@ -24,6 +39,7 @@ public class ProductConverter {
         dto.setBasePrice(entity.getBasePrice());
         dto.setCateId(entity.getCateId());
         dto.setStatus(entity.getStatus());
+        dto.setListImages(convertImages(imageDAO.getImagesByProductId(entity.getId())));
         return dto;
     }   
     // -----------------------------------------------------------------------
@@ -44,4 +60,13 @@ public class ProductConverter {
     } 
     
     // -----------------------------------------------------------------------
+    private List<ImageDTO> convertImages(List<ImageEntity> ImageEntityList){
+        List<ImageDTO> listImageDTO = new ArrayList<>();
+            for (ImageEntity entity : ImageEntityList)
+                listImageDTO.add(ImageConverter.ConvertEntityToDTO(entity));
+            return listImageDTO;   
+            
+                
+    }
+    
 }

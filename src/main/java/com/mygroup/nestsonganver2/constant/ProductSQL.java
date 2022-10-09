@@ -28,7 +28,7 @@ public class ProductSQL {
 
     //update Product 
     public static String updateProduct = "update dbo.Products\n"
-            + "set name = ?, quantity = ?, deal = ?, description = ?, basePrice = ?, cateId = ?\n,"
+            + "set name = ?, quantity = ?, deal = ?, description = ?, basePrice = ?, cateId = ?\n"
             + "where id=?";
 
     //delete product (by set status = 0 in db, when it was 0 change to 1-undelete )
