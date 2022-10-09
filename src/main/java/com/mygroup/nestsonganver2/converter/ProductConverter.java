@@ -19,7 +19,7 @@ import java.util.List;
 public class ProductConverter {
     // Convert Entitty to DTO
     
-    private static final ImageDAO imageDAO = new ImageDAO();
+    private static final ImageDAO imageDAO = ImageDAO.getInstance();
     
     public List<ProductDTO> convertEntitytoDTO(List<ProductEntity> entityList){
         List<ProductDTO> DTOList=new ArrayList<>();
