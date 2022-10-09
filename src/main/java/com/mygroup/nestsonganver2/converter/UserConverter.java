@@ -96,7 +96,7 @@ public class UserConverter {
         }
         return dto;
     }
-
+    
     public String ConvertDTOtoToken(UserDTO dto) {
         StringBuilder builder = new StringBuilder();
         LocalDateTime now = LocalDateTime.now().plusHours(1);

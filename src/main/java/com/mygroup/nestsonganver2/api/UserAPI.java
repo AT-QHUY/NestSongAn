@@ -143,7 +143,7 @@ public class UserAPI {
             return Response.ok().build();
         }
 
-    }
+    } 
 
     //--------------------------------------------------------------------------
     // Delete an user by changing status
@@ -160,7 +160,6 @@ public class UserAPI {
         } else {
             return Response.ok().build();
         }
-
     }
     //--------------------------------------------------------------------------
 }

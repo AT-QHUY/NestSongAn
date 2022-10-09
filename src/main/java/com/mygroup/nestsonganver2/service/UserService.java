@@ -36,7 +36,7 @@ public class UserService {
         }
         return userService;
     }
-    // Create User
+    // Create User 
 
     public int insertUser(UserDTO user) throws NoSuchAlgorithmException {
         if (checkLogin(user) == null) {
