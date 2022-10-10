@@ -32,10 +32,6 @@ public class ImageDAO extends AbstractDAO<ImageEntity> implements IImageDAO {
         return instance;
     }
 
-    public static ImageDAO getInstance() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
     private ImageDAO(){}
     
     
