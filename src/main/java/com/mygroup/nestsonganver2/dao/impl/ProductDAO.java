@@ -10,6 +10,7 @@ import com.mygroup.nestsonganver2.entity.ProductEntity;
 import com.mygroup.nestsonganver2.mapper.ProductMapper;
 import java.util.List;
 import com.mygroup.nestsonganver2.dto.Filter;
+import java.text.DecimalFormat;
 /**
  *
  * @author ADMIN
@@ -40,7 +41,8 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
 
     @Override
     public int addNewProduct(ProductEntity product) {
-        int id = insert(ProductSQL.addNewProduct, product.getName(), product.getQuantity(), product.getDeal(), product.getDescription(), product.getBasePrice(), product.getCateId(), product.getStatus());
+        DecimalFormat df = new DecimalFormat("#.0");
+        int id = insert(ProductSQL.addNewProduct, product.getName(), product.getQuantity(), df.format(product.getDeal()), product.getDescription(), df.format(product.getBasePrice()), product.getCateId(), product.getStatus());
         return id;
     }
 
@@ -58,7 +60,8 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
 
     @Override
     public int updateProduct(ProductEntity product) {
-        return update(ProductSQL.updateProduct, product.getName(), product.getQuantity(), product.getDeal(), product.getDescription(), product.getBasePrice(), product.getCateId());
+        DecimalFormat df = new DecimalFormat("#.0");
+        return update(ProductSQL.updateProduct, product.getName(), product.getQuantity(), df.format(product.getDeal()), product.getDescription(), df.format(product.getBasePrice()), product.getCateId(), product.getId());
     }
     
     @Override
@@ -125,9 +128,9 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
     }
     
      @Override
-    public List<ProductEntity> getProductByPages(int page,int products) {
-        int numberOfProducts= products* (page-1);
-        List<ProductEntity> productList = query(ProductSQL.getProductByPages, productMapper, numberOfProducts, products);
+    public List<ProductEntity> getProductByPages(int page,int limit) {
+        int numberOfProducts= limit* (page-1);
+        List<ProductEntity> productList = query(ProductSQL.getProductByPages, productMapper, numberOfProducts, limit);
         return (productList.isEmpty()) ? null : productList;
     }
     
