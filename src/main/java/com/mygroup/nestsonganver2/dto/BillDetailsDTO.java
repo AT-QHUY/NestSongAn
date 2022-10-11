@@ -13,7 +13,7 @@ public class BillDetailsDTO {
     private int id;
     private float price;
     private int quantity;
-    private int productId;
+    private ProductDTO product;
     private int billId;
 
     private static BillDetailsDTO billDetailsDTO = null;
@@ -28,12 +28,20 @@ public class BillDetailsDTO {
     public BillDetailsDTO() {
     }
 
-    public BillDetailsDTO(int id, float price, int quantity, int productId, int billId) {
+    public BillDetailsDTO(int id, float price, int quantity, ProductDTO product, int billId) {
         this.id = id;
         this.price = price;
         this.quantity = quantity;
-        this.productId = productId;
+        this.product = product;
         this.billId = billId;
+    }
+
+    public ProductDTO getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductDTO product) {
+        this.product = product;
     }
 
     public int getId() {
@@ -58,14 +66,6 @@ public class BillDetailsDTO {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
     }
 
     public int getBillId() {
