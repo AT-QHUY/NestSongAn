@@ -25,7 +25,7 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author Silver King
  */
-@Path("bill")
+@Path("bill") 
 public class BillAPI {
 
     private static final BillService BILLS_SERVICE = BillService.getInstance();
@@ -40,19 +40,20 @@ public class BillAPI {
     public Response getAllBill() {
         List<BillDTO> list = BILLS_SERVICE.getAllBill();
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
     }
-
+    
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{id}")
+    @Path("/{id}") 
     public Response getBillById(@PathParam("id") int id) {
         BillDTO bill = BILLS_SERVICE.getBillById(id);
         if (bill == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             return Response.ok(bill, MediaType.APPLICATION_JSON).build();
         }
@@ -64,7 +65,7 @@ public class BillAPI {
     public Response getBillByStatus(@PathParam("status") int status) {
         List<BillDTO> list = BILLS_SERVICE.getBillByStatus(status);
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -76,7 +77,7 @@ public class BillAPI {
     public Response getBillByCustomerId(@PathParam("customerId") int customerId) {
         List<BillDTO> list = BILLS_SERVICE.getBillByCustomerId(customerId);
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -88,7 +89,7 @@ public class BillAPI {
     public Response getBillByEmpId(@PathParam("empId") int empId) {
         List<BillDTO> list = BILLS_SERVICE.getBillByEmpId(empId);
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }

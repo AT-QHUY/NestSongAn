@@ -18,8 +18,7 @@ public class BillDTO {
     private Date date;
     private int status;
     private int customerId;
-    private int empId;
-    
+    private int empId; 
  //   private List<BillDetailsDTO> listBillDetails = new ArrayList<>();
 
     private static BillDTO billDTO = null;
