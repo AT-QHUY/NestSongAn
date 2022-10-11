@@ -44,12 +44,20 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
 
     @Override
     public BillEntity findBillById(int id) {
-        BillEntity result = new BillEntity();
+         BillEntity result = new BillEntity();
+        try{           
         List<BillEntity> list = query(BillSQL.findById, new BillMapper(), id);
         if (!list.isEmpty() || list.get(0) != null) {
             result = list.get(0);
         }
-        return result;
+         return result;
+        }catch(Exception e){
+            System.out.println(e);            
+        }
+        finally{
+             return result;
+        }
+      
     }
 
     @Override
