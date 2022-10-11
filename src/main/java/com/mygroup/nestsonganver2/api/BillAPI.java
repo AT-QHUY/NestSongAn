@@ -52,7 +52,7 @@ public class BillAPI {
     @Path("/{id}") 
     public Response getBillById(@PathParam("id") int id) {
         BillDTO bill = BILLS_SERVICE.getBillById(id);
-        if (bill == null) {
+        if (bill == null || bill.getId() == 0) {
             return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             return Response.ok(bill, MediaType.APPLICATION_JSON).build();
