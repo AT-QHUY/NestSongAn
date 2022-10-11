@@ -20,7 +20,7 @@ public class ProductService {
 
     private static final ProductDAO productDAO = ProductDAO.getInstance();
 
-    private static final ProductConverter productConverter = new ProductConverter();
+    private static final ProductConverter productConverter = ProductConverter.getInstance();
 
     private static ProductService productService;
 

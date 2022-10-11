@@ -85,7 +85,7 @@ public class UserAPI {
         if (id == 0) {
             return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
-            URI uri = new URI(ui.getBaseUri() + "User/" + id);
+            URI uri = new URI(ui.getBaseUri() + "user/" + id);
             return Response.created(uri).build();
         }
 
@@ -143,7 +143,7 @@ public class UserAPI {
             return Response.ok().build();
         }
 
-    }
+    } 
 
     //--------------------------------------------------------------------------
     // Delete an user by changing status
@@ -160,7 +160,6 @@ public class UserAPI {
         } else {
             return Response.ok().build();
         }
-
     }
     //--------------------------------------------------------------------------
 }
