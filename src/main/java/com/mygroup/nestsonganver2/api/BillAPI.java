@@ -11,11 +11,13 @@ import java.net.URISyntaxException;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -40,7 +42,7 @@ public class BillAPI {
     public Response getAllBill() {
         List<BillDTO> list = BILLS_SERVICE.getAllBill();
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.notModified().build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -52,7 +54,7 @@ public class BillAPI {
     public Response getBillById(@PathParam("id") int id) {
         BillDTO bill = BILLS_SERVICE.getBillById(id);
         if (bill == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.notModified().build();
         } else {
             return Response.ok(bill, MediaType.APPLICATION_JSON).build();
         }
@@ -64,7 +66,7 @@ public class BillAPI {
     public Response getBillByStatus(@PathParam("status") int status) {
         List<BillDTO> list = BILLS_SERVICE.getBillByStatus(status);
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.notModified().build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -76,7 +78,7 @@ public class BillAPI {
     public Response getBillByCustomerId(@PathParam("customerId") int customerId) {
         List<BillDTO> list = BILLS_SERVICE.getBillByCustomerId(customerId);
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.notModified().build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -88,7 +90,7 @@ public class BillAPI {
     public Response getBillByEmpId(@PathParam("empId") int empId) {
         List<BillDTO> list = BILLS_SERVICE.getBillByEmpId(empId);
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.notModified().build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -102,7 +104,7 @@ public class BillAPI {
     public Response insertBill(BillDTO bill) throws URISyntaxException {
         int id = BILLS_SERVICE.insertNewBill(bill);
         if (id == 0) {
-            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+            return Response.notModified().build();
         } else {
             URI uri = new URI(ui.getBaseUri() + "bill/" + id);
             return Response.created(uri).build();
@@ -138,11 +140,13 @@ public class BillAPI {
             return Response.ok().build();
         }
     }
-    
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/employee-id-status/{empId}/{status}")
-    public Response getBillByEmpIdAndStatus(@PathParam("empId") int empId, @PathParam("status") int status) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/employee-id-status")
+    public Response getBillByEmpIdAndStatus(@QueryParam("empId") int empId,@QueryParam("Status") int status) {
+        System.out.println(status   );
         List<BillDTO> list = BILLS_SERVICE.getBillByEmpIdAndStatus(empId, status);
         if (list.isEmpty()) {
             return Response.notModified().build();
@@ -150,11 +154,11 @@ public class BillAPI {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
     }
-
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/customer-id-status/{customerId}/{status}")
-    public Response getBillByCustomerIdAndStatus(@PathParam("customerId") int customerId, @PathParam("status") int status) {
+    @Path("/customer-id-status")
+    public Response getBillByCustomerIdAndStatus(@QueryParam("customerId") int customerId,@QueryParam("Status") int status) {
         List<BillDTO> list = BILLS_SERVICE.getBillByCUstomerIdAndStatus(customerId, status);
         if (list.isEmpty()) {
             return Response.notModified().build();

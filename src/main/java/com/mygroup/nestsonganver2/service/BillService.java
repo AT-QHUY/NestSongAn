@@ -18,35 +18,33 @@ import java.util.List;
 public class BillService {
 
     private static final BillDAO billDAO = BillDAO.getInstance();
-    
+
     private static BillService billService = null;
-    
-    public static BillService getInstance(){
-        if (billService==null){
+
+    public static BillService getInstance() {
+        if (billService == null) {
             billService = new BillService();
         }
         return billService;
     }
-    
+
     //--------------------------------------------------------------------------
     //create new bill
-    public int insertNewBill(BillDTO bill){
+    public int insertNewBill(BillDTO bill) {
         return billDAO.createNewBill(BillConverter.convertDTOtoEntity(bill));
     }
-    
+
     //--------------------------------------------------------------------------
     //find bill
-    public List<BillDTO> getAllBill(){
+    public List<BillDTO> getAllBill() {
         List<BillDTO> result = new ArrayList<>();
-        BillDTO dto = null;
         List<BillEntity> listEntity = billDAO.finndAll();
-        for (BillEntity billEntity : listEntity) {
-            dto = BillConverter.convertEntitytoDTO(billEntity);
-            result.add(dto);
+        if (!listEntity.isEmpty()) {
+            result = BillConverter.convertListEntitytoDTO(listEntity);
         }
         return result;
     }
-    
+
     public BillDTO getBillById(int id) {
         BillDTO bill = null;
         BillEntity billEntity = billDAO.findBillById(id);
@@ -55,56 +53,54 @@ public class BillService {
         }
         return bill;
     }
-    
-    public List<BillDTO> getBillByStatus(int status){
+
+    public List<BillDTO> getBillByStatus(int status) {
         List<BillDTO> result = new ArrayList<>();
         BillDTO dto = null;
         List<BillEntity> listEntity = billDAO.findBillByStatus(status);
-        for (BillEntity billEntity : listEntity) {
-            dto = BillConverter.convertEntitytoDTO(billEntity);
-            result.add(dto);
+        if (!listEntity.isEmpty()) {
+            result = BillConverter.convertListEntitytoDTO(listEntity);
         }
         return result;
     }
-    
-      public List<BillDTO> getBillByCustomerId(int customerId){
+
+    public List<BillDTO> getBillByCustomerId(int customerId) {
         List<BillDTO> result = new ArrayList<>();
         BillDTO dto = null;
         List<BillEntity> listEntity = billDAO.findBillByCustomerId(customerId);
-        for (BillEntity billEntity : listEntity) {
-            dto = BillConverter.convertEntitytoDTO(billEntity);
-            result.add(dto);
+        if (!listEntity.isEmpty()) {
+            result = BillConverter.convertListEntitytoDTO(listEntity);
         }
         return result;
-    }  public List<BillDTO> getBillByEmpId(int empId){
+    }
+
+    public List<BillDTO> getBillByEmpId(int empId) {
         List<BillDTO> result = new ArrayList<>();
         BillDTO dto = null;
         List<BillEntity> listEntity = billDAO.findBillByEmpId(empId);
-        for (BillEntity billEntity : listEntity) {
-            dto = BillConverter.convertEntitytoDTO(billEntity);
-            result.add(dto);
+        if (!listEntity.isEmpty()) {
+            result = BillConverter.convertListEntitytoDTO(listEntity);
         }
         return result;
     }
-    
+
     //--------------------------------------------------------------------------
     //update bill
-    public int updateStatus(int id, int status){
+    public int updateStatus(int id, int status) {
         return billDAO.updateStatus(id, status);
     }
-    
-    public int updateBill(int id, BillDTO bill){
+
+    public int updateBill(int id, BillDTO bill) {
         bill.setId(id);
         return billDAO.updateBill(BillConverter.convertDTOtoEntity(bill));
     }
-    
-    public List<BillDTO> getBillByEmpIdAndStatus(int empId,int status) {
+
+    public List<BillDTO> getBillByEmpIdAndStatus(int empId, int status) {
         List<BillDTO> result = new ArrayList<>();
         BillDTO dto = null;
-        List<BillEntity> listEntity = billDAO.findByEmpIdAndStatus(empId,status);
-        for (BillEntity billEntity : listEntity) {
-            dto = BillConverter.convertEntitytoDTO(billEntity);
-            result.add(dto);
+        List<BillEntity> listEntity = billDAO.findByEmpIdAndStatus(empId, status);
+        if (!listEntity.isEmpty()) {
+            result = BillConverter.convertListEntitytoDTO(listEntity);
         }
         return result;
     }
@@ -113,9 +109,8 @@ public class BillService {
         List<BillDTO> result = new ArrayList<>();
         BillDTO dto = null;
         List<BillEntity> listEntity = billDAO.findByCustomerIdAndStatus(empId, status);
-        for (BillEntity billEntity : listEntity) {
-            dto = BillConverter.convertEntitytoDTO(billEntity);
-            result.add(dto);
+        if (!listEntity.isEmpty()) {
+            result = BillConverter.convertListEntitytoDTO(listEntity);
         }
         return result;
     }

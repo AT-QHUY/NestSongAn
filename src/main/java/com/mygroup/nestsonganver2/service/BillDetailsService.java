@@ -40,9 +40,7 @@ public class BillDetailsService {
         List<BillDetailsDTO> result = new ArrayList<>();
         List<BillDetailsEntity> listEntity = billDetailsDAO.findAll();
         if (!listEntity.isEmpty()) {
-            for (BillDetailsEntity billDetailsEntity : listEntity) {
-                result.add(BillDetailsConverter.convertEntitytoDTO(billDetailsEntity));
-            }
+            result = BillDetailsConverter.convertListEntitytoDTO(listEntity);
         }
         return result;
     }
@@ -51,32 +49,30 @@ public class BillDetailsService {
         List<BillDetailsDTO> result = new ArrayList<>();
         List<BillDetailsEntity> listEntity = billDetailsDAO.findByBillId(id);
         if (!listEntity.isEmpty()) {
-            for (BillDetailsEntity billDetailsEntity : listEntity) {
-                result.add(BillDetailsConverter.convertEntitytoDTO(billDetailsEntity));
-            }
+            result = BillDetailsConverter.convertListEntitytoDTO(listEntity);
         }
         return result;
     }
-    
-    public BillDetailsDTO findById(int id){
+
+    public BillDetailsDTO findById(int id) {
         BillDetailsDTO result = null;
         BillDetailsEntity entity = billDetailsDAO.findById(id);
-        if (entity!=null){
+        if (entity != null) {
             result = BillDetailsConverter.convertEntitytoDTO(entity);
         }
         return result;
     }
-    
+
     //--------------------------------------------------------------------------
     //update
-    public int updateBillDetails(int id, BillDetailsDTO billDetails){
+    public int updateBillDetails(int id, BillDetailsDTO billDetails) {
         billDetails.setId(id);
         return billDetailsDAO.updateBillDetails(BillDetailsConverter.convertDTOtoEntity(billDetails));
     }
-    
+
     //--------------------------------------------------------------------------
     //delete 
-    public int deleteBillDetails(BillDetailsDTO billDetails){
+    public int deleteBillDetails(BillDetailsDTO billDetails) {
         return billDetailsDAO.deleteBillDetails(BillDetailsConverter.convertDTOtoEntity(billDetails));
     }
 }

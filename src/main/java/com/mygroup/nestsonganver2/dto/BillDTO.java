@@ -20,7 +20,7 @@ public class BillDTO {
     private int customerId;
     private int empId;
     
- //   private List<BillDetailsDTO> listBillDetails = new ArrayList<>();
+    private List<BillDetailsDTO> listBillDetails;
 
     private static BillDTO billDTO = null;
 
@@ -34,12 +34,21 @@ public class BillDTO {
     public BillDTO() {
     }
 
-    public BillDTO(int id, Date date, int status, int customerId, int empId) {
+    public BillDTO(int id, Date date, int status, int customerId, int empId, List<BillDetailsDTO> listBillDetails) {
         this.id = id;
         this.date = date;
         this.status = status;
         this.customerId = customerId;
         this.empId = empId;
+        this.listBillDetails = listBillDetails;
+    }
+
+    public List<BillDetailsDTO> getListBillDetails() {
+        return listBillDetails;
+    }
+
+    public void setListBillDetails(List<BillDetailsDTO> listBillDetails) {
+        this.listBillDetails = listBillDetails;
     }
 
     public int getId() {

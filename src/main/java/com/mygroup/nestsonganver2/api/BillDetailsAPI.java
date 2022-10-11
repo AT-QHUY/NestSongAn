@@ -42,7 +42,7 @@ public class BillDetailsAPI {
     public Response insertNewBillDetails(BillDetailsDTO billDetails) throws URISyntaxException {
         int id = billDetailsService.insertNewBillDetails(billDetails);
         if (id == 0) {
-            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+            return Response.notModified().build();
         } else {
             URI uri = new URI(ui.getBaseUri() + "bill-details/" + id);
             return Response.created(uri).build();
@@ -56,7 +56,7 @@ public class BillDetailsAPI {
     public Response getAllBillDetails() {
         List<BillDetailsDTO> list = billDetailsService.findAll();
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.notModified().build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -68,7 +68,7 @@ public class BillDetailsAPI {
     public Response getById(@PathParam("id") int id) {
         BillDetailsDTO billDetails = billDetailsService.findById(id);
         if (billDetails == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.notModified().build();
         } else {
             return Response.ok(billDetails, MediaType.APPLICATION_JSON).build();
         }
@@ -80,7 +80,7 @@ public class BillDetailsAPI {
     public Response getByBillId(@PathParam("id") int id) {
         List<BillDetailsDTO> list = billDetailsService.findByBillId(id);
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.notModified().build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
