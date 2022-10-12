@@ -6,8 +6,6 @@ package com.mygroup.nestsonganver2.converter;
 
 import com.mygroup.nestsonganver2.dao.impl.BillDetailsDAO;
 import com.mygroup.nestsonganver2.dto.BillDTO;
-import com.mygroup.nestsonganver2.dto.BillDetailsDTO;
-import com.mygroup.nestsonganver2.entity.BillDetailsEntity;
 import com.mygroup.nestsonganver2.entity.BillEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,20 +16,30 @@ import java.util.List;
  */
 public class BillConverter {
 
-    private static BillDetailsDAO billDetailsDAO = BillDetailsDAO.getInstance();
+    private static final BillDetailsDAO BILL_DETAILS_DAO = BillDetailsDAO.getInstance();
+    private static final BillDetailsConverter BILL_DETAILS_CONVERTER = BillDetailsConverter.getInstance();
 
-    public static BillDTO convertEntitytoDTO(BillEntity entity) {
+    private static BillConverter billConverter = null;
+
+    public static BillConverter getInstance() {
+        if (billConverter == null) {
+            billConverter = new BillConverter();
+        }
+        return billConverter;
+    }
+
+    public BillDTO convertEntitytoDTO(BillEntity entity) {
         BillDTO dto = new BillDTO();
         dto.setId(entity.getId());
         dto.setDate(entity.getDate());
         dto.setStatus(entity.getStatus());
         dto.setCustomerId(entity.getCustomerId());
         dto.setEmpId(entity.getEmpId());
-        dto.setListBillDetails(BillDetailsConverter.convertListEntitytoDTO(billDetailsDAO.findByBillId(entity.getId())));
+        dto.setListBillDetails(BILL_DETAILS_CONVERTER.convertListEntitytoDTO(BILL_DETAILS_DAO.findByBillId(entity.getId())));
         return dto;
     }
 
-    public static BillEntity convertDTOtoEntity(BillDTO dto) {
+    public BillEntity convertDTOtoEntity(BillDTO dto) {
         BillEntity entity = new BillEntity();
         entity.setId(dto.getId());
         entity.setDate(dto.getDate());
@@ -41,19 +49,19 @@ public class BillConverter {
         return entity;
     }
 
-    public static List<BillDTO> convertListEntitytoDTO(List<BillEntity> list) {
+    public List<BillDTO> convertListEntitytoDTO(List<BillEntity> list) {
         List<BillDTO> result = new ArrayList<>();
         for (BillEntity billEntity : list) {
-            BillDTO dto = BillConverter.convertEntitytoDTO(billEntity);
+            BillDTO dto = billConverter.convertEntitytoDTO(billEntity);
             result.add(dto);
         }
         return result;
     }
 
-    public static List<BillEntity> convertListDTOtoEntity(List<BillDTO> list) {
+    public List<BillEntity> convertListDTOtoEntity(List<BillDTO> list) {
         List<BillEntity> result = new ArrayList<>();
         for (BillDTO billDTO : list) {
-            result.add(BillConverter.convertDTOtoEntity(billDTO));
+            result.add(billConverter.convertDTOtoEntity(billDTO));
         }
         return result;
     }

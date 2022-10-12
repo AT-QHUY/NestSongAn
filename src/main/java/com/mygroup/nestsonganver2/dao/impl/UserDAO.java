@@ -63,12 +63,12 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     // Update User
     @Override
     public int updateUser(UserEntity user) {
-        return update(UserSQL.updateUser, user.getFullname(), user.getDateOfBirth(), user.getPhoneNumber(), user.getAddress(), user.getUsername(), user.getId());
+        return update(UserSQL.updateUser, user.getFullname(), user.getDateOfBirth(), user.getPhoneNumber(), user.getAddress(), user.getId());
     }
 
     @Override
     public int updateUserStatus(int id, int status) {
-        return update(UserSQL.updateStatus, id, status);
+        return update(UserSQL.updateStatus, status, id);
     }
 
     @Override

@@ -5,16 +5,12 @@
  */
 package com.mygroup.nestsonganver2.api;
 
-import com.mygroup.nestsonganver2.dao.impl.UserDAO;
 import com.mygroup.nestsonganver2.dto.UserDTO;
-import com.mygroup.nestsonganver2.entity.UserEntity;
 import com.mygroup.nestsonganver2.service.UserService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -23,7 +19,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -85,7 +80,7 @@ public class UserAPI {
         if (id == 0) {
             return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
-            URI uri = new URI(ui.getBaseUri() + "User/" + id);
+            URI uri = new URI(ui.getBaseUri() + "user/" + id);
             return Response.created(uri).build();
         }
 
@@ -143,7 +138,7 @@ public class UserAPI {
             return Response.ok().build();
         }
 
-    }
+    } 
 
     //--------------------------------------------------------------------------
     // Delete an user by changing status
@@ -160,7 +155,6 @@ public class UserAPI {
         } else {
             return Response.ok().build();
         }
-
     }
     //--------------------------------------------------------------------------
 }

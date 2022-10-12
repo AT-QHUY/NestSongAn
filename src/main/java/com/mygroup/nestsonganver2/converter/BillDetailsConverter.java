@@ -19,8 +19,17 @@ import java.util.List;
 public class BillDetailsConverter {
 
     private static ProductDAO productDAO = ProductDAO.getInstance();
-
-    public static BillDetailsDTO convertEntitytoDTO(BillDetailsEntity entity) {
+    
+    private static BillDetailsConverter billDetailsConverter = null;
+    
+    public static BillDetailsConverter getInstance(){
+        if (billDetailsConverter==null){
+            billDetailsConverter = new BillDetailsConverter();
+        }
+        return billDetailsConverter;
+    }
+    
+    public BillDetailsDTO convertEntitytoDTO(BillDetailsEntity entity) {
         BillDetailsDTO dto = new BillDetailsDTO();
         dto.setId(entity.getId());
         dto.setPrice(entity.getPrice());
@@ -35,7 +44,7 @@ public class BillDetailsConverter {
         return dto;
     }
 
-    public static BillDetailsEntity convertDTOtoEntity(BillDetailsDTO dto) {
+    public BillDetailsEntity convertDTOtoEntity(BillDetailsDTO dto) {
         BillDetailsEntity entity = new BillDetailsEntity();
         entity.setId(dto.getId());
         entity.setPrice(dto.getPrice());
@@ -45,18 +54,18 @@ public class BillDetailsConverter {
         return entity;
     }
 
-    public static List<BillDetailsDTO> convertListEntitytoDTO(List<BillDetailsEntity> list) {
+    public List<BillDetailsDTO> convertListEntitytoDTO(List<BillDetailsEntity> list) {
         List<BillDetailsDTO> result = new ArrayList<>();
         for (BillDetailsEntity billDetailsEntity : list) {
-            result.add(BillDetailsConverter.convertEntitytoDTO(billDetailsEntity));
+            result.add(billDetailsConverter.convertEntitytoDTO(billDetailsEntity));
         }
         return result;
     }
 
-    public static List<BillDetailsEntity> convertListDTOtoEntity(List<BillDetailsDTO> list) {
+    public List<BillDetailsEntity> convertListDTOtoEntity(List<BillDetailsDTO> list) {
         List<BillDetailsEntity> result = new ArrayList<>();
         for (BillDetailsDTO billDetailsDTO : list) {
-            result.add(BillDetailsConverter.convertDTOtoEntity(billDetailsDTO));
+            result.add(billDetailsConverter.convertDTOtoEntity(billDetailsDTO));
         }
         return result;
     }

@@ -25,8 +25,9 @@ public class CategoryConverter {
     public static CategoryEntity convertDTOtoEntity(CategoryDTO dto){
         CategoryEntity entity = new CategoryEntity();
         entity.setId(dto.getId());
-        entity.setName(dto.getName());
-       
+        entity.setName(dto.getName());   
         return entity;
     } 
+    
+    
 }

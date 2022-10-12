@@ -5,7 +5,6 @@
 package com.mygroup.nestsonganver2.dto;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +18,6 @@ public class BillDTO {
     private int status;
     private int customerId;
     private int empId;
-    
     private List<BillDetailsDTO> listBillDetails;
 
     private static BillDTO billDTO = null;

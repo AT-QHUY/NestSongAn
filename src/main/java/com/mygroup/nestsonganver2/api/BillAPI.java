@@ -11,7 +11,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -96,6 +95,31 @@ public class BillAPI {
         }
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/employee-id-status")
+    public Response getBillByEmpIdAndStatus(@QueryParam("empId") int empId, @QueryParam("Status") int status) {
+        List<BillDTO> list = BILLS_SERVICE.getBillByEmpIdAndStatus(empId, status);
+        if (list.isEmpty()) {
+            return Response.notModified().build();
+        } else {
+            return Response.ok(list, MediaType.APPLICATION_JSON).build();
+        }
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/customer-id-status")
+    public Response getBillByCustomerIdAndStatus(@QueryParam("customerId") int customerId, @QueryParam("Status") int status) {
+        List<BillDTO> list = BILLS_SERVICE.getBillByCUstomerIdAndStatus(customerId, status);
+        if (list.isEmpty()) {
+            return Response.notModified().build();
+        } else {
+            return Response.ok(list, MediaType.APPLICATION_JSON).build();
+        }
+    }
+
     //--------------------------------------------------------------------------
     //insert bill
     @POST
@@ -131,39 +155,13 @@ public class BillAPI {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("update-status/{id}/{status}")
-    public Response updateStatus(@PathParam("id") int id, @PathParam("status") int status) {
+    @Path("update-status")
+    public Response updateStatus(@QueryParam("id") int id, @QueryParam("status") int status) {
         int result = BILLS_SERVICE.updateStatus(id, status);
         if (result == 0) {
             return Response.notModified().build();
         } else {
             return Response.ok().build();
-        }
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/employee-id-status")
-    public Response getBillByEmpIdAndStatus(@QueryParam("empId") int empId,@QueryParam("Status") int status) {
-        System.out.println(status   );
-        List<BillDTO> list = BILLS_SERVICE.getBillByEmpIdAndStatus(empId, status);
-        if (list.isEmpty()) {
-            return Response.notModified().build();
-        } else {
-            return Response.ok(list, MediaType.APPLICATION_JSON).build();
-        }
-    }
-    
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/customer-id-status")
-    public Response getBillByCustomerIdAndStatus(@QueryParam("customerId") int customerId,@QueryParam("Status") int status) {
-        List<BillDTO> list = BILLS_SERVICE.getBillByCUstomerIdAndStatus(customerId, status);
-        if (list.isEmpty()) {
-            return Response.notModified().build();
-        } else {
-            return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
     }
 }
