@@ -19,6 +19,7 @@ import java.util.List;
 public class BillDetailsConverter {
 
     private static ProductDAO productDAO = ProductDAO.getInstance();
+    private static ProductConverter productConverter = ProductConverter.getInstance();
     
     private static BillDetailsConverter billDetailsConverter = null;
     
@@ -38,7 +39,7 @@ public class BillDetailsConverter {
         if (product == null) {
             dto.setProduct(new ProductDTO());
         } else {
-            dto.setProduct(ProductConverter.convertEntitytoDTO(product));
+            dto.setProduct(productConverter.convertEntitytoDTO(product));
         }
         dto.setBillId(entity.getBillId());
         return dto;

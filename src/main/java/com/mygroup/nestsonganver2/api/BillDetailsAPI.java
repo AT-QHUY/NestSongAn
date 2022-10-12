@@ -57,6 +57,7 @@ public class BillDetailsAPI {
         List<BillDetailsDTO> list = billDetailsService.findAll();
         if (list.isEmpty()) {
             return Response.notModified().build();
+
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -106,7 +107,7 @@ public class BillDetailsAPI {
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/delete/{id}")
+    @Path("/{id}")
     public Response deleteBillDetails(@PathParam("id") int id, BillDetailsDTO billDetails) {
         billDetails.setId(id);
         int result = billDetailsService.deleteBillDetails(billDetails);

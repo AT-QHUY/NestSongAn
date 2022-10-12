@@ -47,6 +47,7 @@ public class BillDetailsService {
 
     public List<BillDetailsDTO> findByBillId(int id) {
         List<BillDetailsDTO> result = new ArrayList<>();
+
         List<BillDetailsEntity> listEntity = BILL_DETAILS_DAO.findByBillId(id);
         if (!listEntity.isEmpty()) {
             result = BILL_DETAILS_CONVERTER.convertListEntitytoDTO(listEntity);
