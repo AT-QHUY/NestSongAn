@@ -73,9 +73,7 @@ public class ProductConverter {
         List<ImageDTO> listImageDTO = new ArrayList<>();
             for (ImageEntity entity : ImageEntityList)
                 listImageDTO.add(ImageConverter.ConvertEntityToDTO(entity));
-            return listImageDTO;   
-            
-                
+            return listImageDTO;                 
     }
     
 }
