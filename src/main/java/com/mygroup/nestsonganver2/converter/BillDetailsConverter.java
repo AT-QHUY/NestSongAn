@@ -14,13 +14,14 @@ import com.mygroup.nestsonganver2.entity.BillDetailsEntity;
  */
 public class BillDetailsConverter {
     private static ProductDAO productDAO = ProductDAO.getInstance();
+    private static ProductConverter productConverter = ProductConverter.getInstance();
     
     public static BillDetailsDTO convertEntitytoDTO(BillDetailsEntity entity){
         BillDetailsDTO dto = new BillDetailsDTO();
         dto.setId(entity.getId());
         dto.setPrice(entity.getPrice());
         dto.setQuantity(entity.getQuantity());
-        dto.setProduct(ProductConverter.convertEntitytoDTO(productDAO.getProductById(entity.getId())));
+        dto.setProduct(productConverter.convertEntitytoDTO(productDAO.getProductById(entity.getId())));
         dto.setBillId(entity.getBillId());
         return dto;
     }

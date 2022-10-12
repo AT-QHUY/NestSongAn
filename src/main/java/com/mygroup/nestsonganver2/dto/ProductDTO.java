@@ -4,6 +4,9 @@
  */
 package com.mygroup.nestsonganver2.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author ADMIN
@@ -18,6 +21,8 @@ public class ProductDTO {
     private float basePrice;
     private int cateId;
     private int status;
+
+    private List<ImageDTO> listImages = new ArrayList<>();
 
     public ProductDTO() {
     }
@@ -96,7 +101,13 @@ public class ProductDTO {
     public void setStatus(int status) {
         this.status = status;
     }
-    
-    
+
+    public List<ImageDTO> getListImages() {
+        return listImages;
+    }
+
+    public void setListImages(List<ImageDTO> listImages) {
+        this.listImages = listImages;
+    }
 
 }

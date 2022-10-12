@@ -50,7 +50,7 @@ public class BillDetailsService {
     public List<BillDetailsDTO> findByBillId(int id) {
         List<BillDetailsDTO> result = new ArrayList<>();
         List<BillDetailsEntity> listEntity = billDetailsDAO.findByBillId(id);
-        if (!listEntity.isEmpty()) {
+        if (listEntity!= null && !listEntity.isEmpty()) {
             for (BillDetailsEntity billDetailsEntity : listEntity) {
                 result.add(BillDetailsConverter.convertEntitytoDTO(billDetailsEntity));
             }

@@ -56,7 +56,7 @@ public class BillDetailsAPI {
     public Response getAllBillDetails() {
         List<BillDetailsDTO> list = billDetailsService.findAll();
         if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -68,7 +68,7 @@ public class BillDetailsAPI {
     public Response getById(@PathParam("id") int id) {
         BillDetailsDTO billDetails = billDetailsService.findById(id);
         if (billDetails == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             return Response.ok(billDetails, MediaType.APPLICATION_JSON).build();
         }
@@ -79,8 +79,8 @@ public class BillDetailsAPI {
     @Path("/bill-id/{id}")
     public Response getByBillId(@PathParam("id") int id) {
         List<BillDetailsDTO> list = billDetailsService.findByBillId(id);
-        if (list.isEmpty()) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+        if (list == null || list.isEmpty()) {
+            return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }
@@ -106,7 +106,7 @@ public class BillDetailsAPI {
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/delete/{id}")
+    @Path("/{id}")
     public Response deleteBillDetails(@PathParam("id") int id, BillDetailsDTO billDetails) {
         billDetails.setId(id);
         int result = billDetailsService.deleteBillDetails(billDetails);

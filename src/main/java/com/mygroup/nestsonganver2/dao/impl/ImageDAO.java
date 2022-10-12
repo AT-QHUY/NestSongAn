@@ -31,7 +31,7 @@ public class ImageDAO extends AbstractDAO<ImageEntity> implements IImageDAO {
             instance = new ImageDAO();
         return instance;
     }
-    
+
     private ImageDAO(){}
     
     

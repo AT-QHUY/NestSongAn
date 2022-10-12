@@ -50,7 +50,7 @@ public class BillService {
     public BillDTO getBillById(int id) {
         BillDTO bill = null;
         BillEntity billEntity = billDAO.findBillById(id);
-        if (billEntity != null) {
+        if (billEntity != null  ) {
             bill = BillConverter.convertEntitytoDTO(billEntity);
         }
         return bill;
