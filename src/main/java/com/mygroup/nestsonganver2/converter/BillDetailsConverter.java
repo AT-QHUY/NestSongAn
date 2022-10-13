@@ -35,7 +35,7 @@ public class BillDetailsConverter {
         dto.setId(entity.getId());
         dto.setPrice(entity.getPrice());
         dto.setQuantity(entity.getQuantity());
-        ProductEntity product = productDAO.getProductById(entity.getId());
+        ProductEntity product = productDAO.getProductById(entity.getProductId());
         if (product == null) {
             dto.setProduct(new ProductDTO());
         } else {
