@@ -101,7 +101,11 @@ public class ProductService {
 
     //use filter
     public List<ProductDTO> filter(Filter filter) {
-        List<ProductEntity> entityList = productDAO.filter(filter);
+        List<ProductEntity> entityList;
+        if (filter.getName()==null && filter.getLowPrice()==0 && filter.getHighPrice()==0 && filter.getDeal()==0 &&filter.getDeal()==0)
+            entityList = productDAO.showAll(); 
+        else 
+            entityList = productDAO.filter(filter);
         if (entityList == null) {
             return null;
         }
