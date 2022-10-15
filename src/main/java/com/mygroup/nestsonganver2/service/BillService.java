@@ -5,7 +5,9 @@
 package com.mygroup.nestsonganver2.service;
 
 import com.mygroup.nestsonganver2.converter.BillConverter;
+import com.mygroup.nestsonganver2.converter.BillDetailsConverter;
 import com.mygroup.nestsonganver2.dao.impl.BillDAO;
+import com.mygroup.nestsonganver2.dao.impl.BillDetailsDAO;
 import com.mygroup.nestsonganver2.dto.BillDTO;
 import com.mygroup.nestsonganver2.entity.BillEntity;
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ import java.util.List;
 public class BillService {
 
     private static final BillDAO billDAO = BillDAO.getInstance();
+    private static final BillDetailsConverter BILL_DETAILS_CONVERTER = BillDetailsConverter.getInstance();
+    private static final BillDetailsDAO BILL_DETAILS_DAO = BillDetailsDAO.getInstance();
     private static final BillConverter BILL_CONVERTER = BillConverter.getInstance();
     private static BillService billService = null;
 
@@ -31,7 +35,17 @@ public class BillService {
     //--------------------------------------------------------------------------
     //create new bill
     public int insertNewBill(BillDTO bill) {
-        return billDAO.createNewBill(BILL_CONVERTER.convertDTOtoEntity(bill));
+        int resultBill = billDAO.createNewBill(BILL_CONVERTER.convertDTOtoEntity(bill));
+        if (resultBill !=0 ) {
+            int resultBillDetails = BILL_DETAILS_DAO.insertNewListBillDetails(BILL_DETAILS_CONVERTER.convertListDTOtoEntity(bill.getListBillDetails()),resultBill);
+            if (resultBill != 0) {
+                return resultBill;
+            } else {
+                return 0;
+            }
+        } else {
+            return 0;
+        }
     }
 
     //--------------------------------------------------------------------------

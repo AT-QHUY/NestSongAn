@@ -4,12 +4,12 @@
  */
 package com.mygroup.nestsonganver2.entity;
 
-import java.sql.Date;
 
 /**
  *
  * @author Silver King
  */
+import java.sql.Date;
 public class BillEntity {
     private int id;
     private Date date;
