@@ -144,7 +144,7 @@ public class ProductAPI {
     @Path("/filter")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterProducts(List<Filter> filter) throws NoSuchAlgorithmException {      
+    public Response filterProducts(Filter filter) throws NoSuchAlgorithmException {      
         List<ProductDTO> list = productService.filter(filter);
         if (list == null || list.isEmpty()) 
             return Response.status(Response.Status.NOT_MODIFIED).build();       
@@ -164,4 +164,6 @@ public class ProductAPI {
 
         return Response.ok(product, MediaType.APPLICATION_JSON).build();
     }
+    
+
 }

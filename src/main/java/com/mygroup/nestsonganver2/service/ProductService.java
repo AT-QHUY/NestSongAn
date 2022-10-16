@@ -100,7 +100,7 @@ public class ProductService {
     }
 
     //use filter
-    public List<ProductDTO> filter(List<Filter> filter) {
+    public List<ProductDTO> filter(Filter filter) {
         List<ProductEntity> entityList = productDAO.filter(filter);
         if (entityList == null) {
             return null;

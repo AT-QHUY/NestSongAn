@@ -70,60 +70,53 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
     }
 
     @Override
-    public List<ProductEntity> filter(List<Filter> filter) {
+    public List<ProductEntity> filter(Filter filter) {
         List<ProductEntity> productList = query(ProductSQL.showAll, productMapper);
         if (productList==null)
             return null;
-        else
-        while (!filter.isEmpty()) {
-            productList = checkFilter(productList, filter.get(0).getName(), filter.get(0).getProperties());
-            filter.remove(0);
-        }
-         return (productList ==null ||productList.isEmpty()) ? null : productList;
+        productList = checkFilter(productList, filter);
+        
+       return (productList ==null ||productList.isEmpty()) ? null : productList;
     }
 
-    private List<ProductEntity> checkFilter(List<ProductEntity> productList, String object, String properties) {
-        switch (object) {
-            case "priceLow":
-                for (int i = 0; i < productList.size();) {
-                    if (productList.get(i).getBasePrice() < Float.parseFloat(properties)) {
-                        productList.remove(i);
-                    }else i++;
-                }
-                return productList;
-            case "priceHigh":
-                for (int i = 0; i < productList.size();) {
-                    if (productList.get(i).getBasePrice() > Float.parseFloat(properties)) {
-                        productList.remove(i);
-                    }else i++;
-                }
-                return productList;
-            case "deal":
-                for (int i = 0; i != productList.size();) {
-                    if (productList.get(i).getDeal() < Float.parseFloat(properties)) {
-                        productList.remove(i);
-                    }else i++;
-                }
-
-                return productList;
-
-            case "name":
-                for (int i = 0; i < productList.size();) {
-                    if (!productList.get(i).getName().toLowerCase().contains(properties.toLowerCase())) {
-                        productList.remove(i);
+    private List<ProductEntity> checkFilter(List<ProductEntity> productList, Filter filter) {
+       
+        if (filter.getName()!=null){
+        for (int i = 0; i < productList.size();) {  
+            int count=0;
+            for (int j=0; j<filter.getName().size(); j++){
+                if (productList.get(i).getName().toLowerCase().contains(filter.getName().get(j)))
+                 count++;
+                
                     }
-                    else i++;
+            if (count==0) productList.remove(i);
+                else i++;
                 }
-                return productList;
-            case "cateId":
+        }      
+        if (filter.getLowPrice()!=0)
                 for (int i = 0; i < productList.size();) {
-                    if (productList.get(i).getCateId() != Integer.parseInt(properties)) {
+                    if (productList.get(i).getBasePrice() < filter.getLowPrice()) {
                         productList.remove(i);
-                    } else i++;
+                    }else i++;
                 }
-
-                return productList;
-        }
+        if (filter.getHighPrice()!=0)
+                for (int i = 0; i < productList.size();) {
+                    if (productList.get(i).getBasePrice() > filter.getHighPrice()) {
+                        productList.remove(i);
+                    }else i++;
+                }
+        if (filter.getCateId()!=0)
+                for (int i = 0; i < productList.size();) {
+                    if (productList.get(i).getCateId()!= filter.getCateId()) {
+                        productList.remove(i);
+                    }else i++;
+                }
+        if (filter.getDeal()!=0)
+                for (int i = 0; i < productList.size();) {
+                    if (productList.get(i).getDeal() != filter.getDeal()) {
+                        productList.remove(i);
+                    }else i++;
+                }
         return productList;
     }
     
@@ -134,4 +127,10 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
         return (productList.isEmpty()) ? null : productList;
     }
     
+    @Override 
+    public int substractQuantity(int id, int quantity){
+        List<ProductEntity> productList = query(ProductSQL.getProductById, productMapper,id);
+        int newQuantity= productList.get(0).getQuantity() - quantity;
+        return update(ProductSQL.setProductStatus,newQuantity, id);
+    }
 }
