@@ -64,7 +64,7 @@ public class CartAPI {
     }
     
     @PUT
-    @Path("/update/user/{userId}/cart-line-items")
+    @Path("/update/cart-line-items/user/{userId}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateCartLineItemsQuantiy(BillDetailsDTO bd, @PathParam("userId") int userId) {
@@ -80,7 +80,7 @@ public class CartAPI {
     }
     
     @DELETE
-    @Path("/delete/user/{userId}/cart-line-items")
+    @Path("/delete/cart-line-items/user/{userId}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteCartlineItems(BillDetailsDTO bd, @PathParam("userId")int userId) {
