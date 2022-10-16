@@ -44,15 +44,22 @@ public class BillDetailsDAO extends AbstractDAO<BillDetailsEntity> implements IB
 
     @Override
     public BillDetailsEntity findById(int id) {
-        List<BillDetailsEntity> list = new ArrayList<>();
-        list = query(BillDetailsSQL.findById, new BillDetailsMapper(), id);
-        return (list.isEmpty() || list.get(0) == null) ? null : list.get(0);
+        List<BillDetailsEntity> list = query(BillDetailsSQL.findById, new BillDetailsMapper(), id);
+        BillDetailsEntity result = new BillDetailsEntity();
+        if (!list.isEmpty()){
+            result = list.get(0);
+        }
+        return result;
     }
 
     @Override
     public List<BillDetailsEntity> findByBillId(int id) {
+        List<BillDetailsEntity> result = new ArrayList<>();
         List<BillDetailsEntity> list = query(BillDetailsSQL.findByBillId, new BillDetailsMapper(), id);
-        return (list.isEmpty() || list.get(0) == null) ? null : list;
+        if (!list.isEmpty()) {
+            result = list;
+        }
+        return result;
     }
 
     //update bill
@@ -69,7 +76,7 @@ public class BillDetailsDAO extends AbstractDAO<BillDetailsEntity> implements IB
         if (billStatus == 1) //bill is a cart
         {
             return update(BillDetailsSQL.delete, billDetails.getId());
-        } 
+        }
         return 0;
     }
 

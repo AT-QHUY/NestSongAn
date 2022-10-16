@@ -45,6 +45,19 @@ public class CartAPI {
         if (items == null) return Response.status(Response.Status.NOT_MODIFIED).build();
         else return Response.ok(items, MediaType.APPLICATION_JSON).build();
     }
+    
+    //Buy 
+    @GET
+    @Path("/buy/customer/{customerId}") 
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response buy(@PathParam("customerId")int customerId) {
+        if (cartService.buy(customerId)) {
+            return Response.ok().build();
+        }
+        return Response.notModified().build();
+    }
+    
     //update quantity of item
     @PUT
     @Path("/update/cart-line-items/user/{userId}")

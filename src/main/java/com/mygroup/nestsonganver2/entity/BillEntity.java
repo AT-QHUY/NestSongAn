@@ -13,7 +13,7 @@ import java.time.LocalDate;
  */
 public class BillEntity {
     private int id;
-    private LocalDate date;
+    private Date date;
     private int status;
     private int customerId;
     private int empId;
@@ -21,7 +21,7 @@ public class BillEntity {
     public BillEntity() {
     }
 
-    public BillEntity(int id, LocalDate date, int status, int customerId, int empId) {
+    public BillEntity(int id, Date date, int status, int customerId, int empId) {
         this.id = id;
         this.date = date;
         this.status = status;
@@ -37,11 +37,11 @@ public class BillEntity {
         this.id = id;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

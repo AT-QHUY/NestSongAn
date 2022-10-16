@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,7 +100,7 @@ public class AbstractDAO<T> implements IDao<T> {
             connection.commit();
             connection.setAutoCommit(true);
             return result;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e);
             return 0;
         } finally {

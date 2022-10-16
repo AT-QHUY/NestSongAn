@@ -22,8 +22,7 @@ public class BillMapper implements RowMapper<BillEntity>{
         try{
             BillEntity bill = new BillEntity();
             bill.setId(rs.getInt("id"));
-            String date = rs.getString("date");
-            bill.setDate(LocalDate.parse(date));
+            bill.setDate(rs.getDate("date"));
             bill.setStatus(rs.getInt("status"));
             bill.setCustomerId(rs.getInt("customerId"));
             bill.setEmpId(rs.getInt("empId"));
