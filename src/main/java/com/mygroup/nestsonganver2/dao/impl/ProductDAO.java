@@ -82,7 +82,7 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
     }
 
     private List<ProductEntity> checkFilter(List<ProductEntity> productList, Filter filter) {
-        if (filter.getName() != null && !filter.getName().equals("")) {
+        if (filter.getName() != null && !filter.getName().isEmpty()) {
             for (int i = 0; i < productList.size();) {
                 int count = 0;
                 for (int j = 0; j < filter.getName().size(); j++) {
