@@ -31,6 +31,8 @@ public class BillDetailsService {
     //--------------------------------------------------------------------------
     //insert new bill details
     public int insertNewBillDetails(BillDetailsDTO billDetails) {
+        float price = billDetails.getQuantity() * billDetails.getProduct().getBasePrice() - billDetails.getQuantity() * billDetails.getProduct().getBasePrice() * billDetails.getProduct().getDeal();
+        billDetails.setPrice(price);
         return billDetailsDAO.insertNewBillDetails(BillDetailsConverter.convertDTOtoEntity(billDetails));
     }
 

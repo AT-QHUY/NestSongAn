@@ -5,6 +5,7 @@
 package com.mygroup.nestsonganver2.dto;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class BillDTO {
 
     private int id;
-    private Date date;
+    private LocalDate date;
     private int status;
     private int customerId;
     private int empId; 
@@ -33,7 +34,7 @@ public class BillDTO {
     public BillDTO() {
     }
 
-    public BillDTO(int id, Date date, int status, int customerId, int empId) {
+    public BillDTO(int id, LocalDate date, int status, int customerId, int empId) {
         this.id = id;
         this.date = date;
         this.status = status;
@@ -49,11 +50,11 @@ public class BillDTO {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

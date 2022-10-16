@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.time.LocalDate;
 
 /**
  *
@@ -21,7 +22,8 @@ public class BillMapper implements RowMapper<BillEntity>{
         try{
             BillEntity bill = new BillEntity();
             bill.setId(rs.getInt("id"));
-            bill.setDate(rs.getDate("date"));
+            String date = rs.getString("date");
+            bill.setDate(LocalDate.parse(date));
             bill.setStatus(rs.getInt("status"));
             bill.setCustomerId(rs.getInt("customerId"));
             bill.setEmpId(rs.getInt("empId"));

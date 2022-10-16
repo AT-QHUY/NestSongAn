@@ -5,6 +5,7 @@
 package com.mygroup.nestsonganver2.entity;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.sql.Date;
  */
 public class BillEntity {
     private int id;
-    private Date date;
+    private LocalDate date;
     private int status;
     private int customerId;
     private int empId;
@@ -20,7 +21,7 @@ public class BillEntity {
     public BillEntity() {
     }
 
-    public BillEntity(int id, Date date, int status, int customerId, int empId) {
+    public BillEntity(int id, LocalDate date, int status, int customerId, int empId) {
         this.id = id;
         this.date = date;
         this.status = status;
@@ -36,11 +37,11 @@ public class BillEntity {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
