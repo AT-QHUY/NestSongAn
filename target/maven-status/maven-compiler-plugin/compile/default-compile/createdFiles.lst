@@ -15,6 +15,7 @@ com\mygroup\nestsonganver2\constant\BillSQL.class
 com\mygroup\nestsonganver2\converter\BillDetailsConverter.class
 com\mygroup\nestsonganver2\converter\BillConverter.class
 com\mygroup\nestsonganver2\api\CategoryAPI.class
+com\mygroup\nestsonganver2\api\CartAPI.class
 com\mygroup\nestsonganver2\converter\CategoryConverter.class
 com\mygroup\nestsonganver2\dto\BillDTO.class
 com\mygroup\nestsonganver2\dto\Filter.class
@@ -72,4 +73,5 @@ com\mygroup\nestsonganver2\converter\ProductConverter.class
 com\mygroup\nestsonganver2\utils\Utils.class
 com\mygroup\nestsonganver2\dto\UserDTO.class
 com\mygroup\nestsonganver2\dao\IBillDetailsDAO.class
+com\mygroup\nestsonganver2\service\CartService.class
 com\mygroup\nestsonganver2\dao\IRoleDAO.class

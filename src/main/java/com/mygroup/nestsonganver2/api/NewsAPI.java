@@ -43,6 +43,11 @@ public class NewsAPI {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllNews() {
         List<NewsDTO> list = newsService.getAllNews();
+        for (NewsDTO news : list) {
+            List<ImageDTO> listImage = imgService.getImagesByNewsId(news.getId());
+            if (!listImage.isEmpty())
+                news.getListImages().add(listImage.get(0));
+        }
         if (list.isEmpty()) 
         return Response.noContent().build();
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
