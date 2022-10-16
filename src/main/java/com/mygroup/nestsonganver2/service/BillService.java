@@ -83,7 +83,18 @@ public class BillService {
         }
         return result;
     }
-
+//<<<<<<< HEAD
+//    
+//    public BillDTO getLastBill(int userId) {
+//        BillEntity bill = billDAO.findLastBill(userId);
+//        if (bill == null) return null;
+//        BillDTO dto = BillConverter.convertEntitytoDTO(bill);
+//        return dto;
+//    }
+//    
+//=======
+//
+//>>>>>>> dfa784021f881b50e14031edf9b3689be68b313e
     //--------------------------------------------------------------------------
     //update bill
     public int updateStatus(int id, int status) {
