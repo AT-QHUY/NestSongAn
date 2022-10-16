@@ -32,9 +32,12 @@ public class AbstractDAO<T> implements IDao<T> {
         ResultSet resultSet = null;
         try {
             connection = Utils.makeConnection();
+            connection.setAutoCommit(false);
             statement = connection.prepareStatement(sql);
             setParameter(statement, parameters);
             resultSet = statement.executeQuery();
+            connection.commit();
+            connection.setAutoCommit(true);
             while (resultSet.next()) {
                 results.add(mapper.mapRow(resultSet));
             }
@@ -89,9 +92,12 @@ public class AbstractDAO<T> implements IDao<T> {
         int result = 0;
         try {
             connection = Utils.makeConnection();
+            connection.setAutoCommit(false);
             statement = connection.prepareStatement(sql);
             setParameter(statement, parameters);
             result = statement.executeUpdate();
+            connection.commit();
+            connection.setAutoCommit(true);
             return result;
         } catch (SQLException e) {
             System.out.println(e);
@@ -119,9 +125,12 @@ public class AbstractDAO<T> implements IDao<T> {
         try {
             int id = 0;
             connection = Utils.makeConnection();
+            connection.setAutoCommit(false);
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             setParameter(statement, parameters);
             statement.executeUpdate();
+            connection.commit();
+            connection.setAutoCommit(true);
             resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
                 id = resultSet.getInt(1);

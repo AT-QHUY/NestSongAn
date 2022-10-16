@@ -26,35 +26,8 @@ import javax.ws.rs.core.Response;
 @Path("cart")
 public class CartAPI {
     private CartService cartService = CartService.gettCartSerivce();
-
-    //1 is cart; 2 is proccesing ;3 is complete; 4 is cancle
     
-    //Create cartLine 
-//    @GET
-//    @Path("/add")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response createCartLine(@QueryParam("userId")int userId, @QueryParam("productId")int productId, @QueryParam("quantity")int quantity ) {
-//        BillDTO bill = billService.getLastBill(userId);
-//        if (bill == null || bill.getDate() == null) {
-//            
-//        }
-//        
-//    }
-    
-    // get all bill
-//    @GET
-//    @Path("/customer/{id}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response getCartLine(@PathParam("id")int customerId) {
-//        if (this.cartLine.isEmpty())
-//            this.cartLine = billService.getBillByCUstomerIdAndStatus(customerId, 1);
-//
-//        if (this.cartLine.isEmpty()) 
-//            return Response.status(Response.Status.NO_CONTENT).build();
-//        return Response.ok(cartLine, MediaType.APPLICATION_JSON).build();
-//    }
-    
-    // get all BillDetails of all bills belong to current customer
+    // get cart lines items
     @GET
     @Path("/customer/{customerId}/cart-line-items")
     @Produces(MediaType.APPLICATION_JSON)
@@ -63,6 +36,16 @@ public class CartAPI {
         return Response.ok(cartLineItems, MediaType.APPLICATION_JSON).build();
     }
     
+    @POST
+    @Path("/add/customer/{customerId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addToCart(BillDetailsDTO bd, @PathParam("customerId")int customerId) {
+        List<BillDetailsDTO> items = cartService.addToCart(bd, customerId);
+        if (items == null) return Response.status(Response.Status.NOT_MODIFIED).build();
+        else return Response.ok(items, MediaType.APPLICATION_JSON).build();
+    }
+    //update quantity of item
     @PUT
     @Path("/update/cart-line-items/user/{userId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -79,6 +62,8 @@ public class CartAPI {
         return Response.ok("Update successfull", MediaType.TEXT_PLAIN).build();
     }
     
+    
+    //delete item in cart
     @DELETE
     @Path("/delete/cart-line-items/user/{userId}")
     @Produces(MediaType.APPLICATION_JSON)
