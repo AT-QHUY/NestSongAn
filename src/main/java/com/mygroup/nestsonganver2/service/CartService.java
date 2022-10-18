@@ -10,6 +10,7 @@ import com.mygroup.nestsonganver2.dto.ProductDTO;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -74,7 +75,9 @@ public class CartService {
     private void resetCartLineItems (int billID) {
         this.CartLineItems = billDetailsService.findByBillId(billID);
     }
-
+    private float calculateTotalMoney(int quantity, float deal, float basePrice) {
+        return quantity * basePrice - quantity * basePrice * deal;
+    }
     
     public List<BillDetailsDTO> getCartLineItems(int customerId) {
         setCartBill(customerId);
@@ -89,19 +92,20 @@ public class CartService {
             if (item.getProduct().getId() == bd.getProduct().getId()) {
                 int newQuantity = item.getQuantity() + bd.getQuantity();
                 item.setQuantity(newQuantity);
-                float newPrice = newQuantity * item.getProduct().getBasePrice() - newQuantity * item.getProduct().getBasePrice() * item.getProduct().getDeal();
+                float newPrice = calculateTotalMoney(newQuantity, bd.getProduct().getDeal(), bd.getProduct().getBasePrice());
                 item.setPrice(newPrice);
                 billDetailsService.updateBillDetails(item.getId(), item);
-                this.CartLineItems.add(bd);
-//                resetCartLineItems(userId);
+//                this.CartLineItems.add(bd);
+//                resetCartLineItems(userId); 
                 return this.CartLineItems;
             }
         } 
         bd.setBillId(this.bill.getId());
-        ProductDTO newProduct = productService.getProductById(bd.getProduct().getId());
-        bd.setProduct(newProduct);
+//        ProductDTO newProduct = productService.getProductById(bd.getProduct().getId());
+//        bd.setProduct(newProduct);
 //        if (billDetailsService.insertNewBillDetails(bd) > 0) {
-            billDetailsService.insertNewBillDetails(bd);
+        billDetailsService.insertNewBillDetails(bd);
+        this.CartLineItems.add(bd);
             resetCartLineItems(this.bill.getId());
             return this.CartLineItems;
 //        }
@@ -111,6 +115,7 @@ public class CartService {
     // -1: update fail ; 0: not find billdetail; 1: update successfully
     public int updateQuantity(int bdId, int quantity, int billId, int userId) {
         setCartBill(userId);
+        resetCartLineItems(billId);
         BillDetailsDTO bd = billDetailsService.findById(bdId);
         if (billId == this.bill.getId()) {
             if (bd == null) return 0;
@@ -118,7 +123,12 @@ public class CartService {
             float price = quantity * bd.getProduct().getBasePrice() - quantity * bd.getProduct().getBasePrice() * bd.getProduct().getDeal() ;
             bd.setPrice(price);
             if (billDetailsService.updateBillDetails(bdId, bd) > 0) {
-                resetCartLineItems(billId);
+                for (BillDetailsDTO item : this.CartLineItems) {
+                    if (item.getId() == bd.getId()) {
+                        item.setQuantity(bd.getQuantity());
+                        item.setPrice(bd.getPrice()) ;
+                    } 
+                }
                 return 1;
             }   
         }
@@ -128,13 +138,19 @@ public class CartService {
     // -1: delete fail ; 0: not find billdetail; 1: delete successfully
     public int deleteBillDetail(int bdId, int userId) {
         setCartBill(userId);
-        
         BillDetailsDTO deleteBD = billDetailsService.findById(bdId);
         if (deleteBD == null) return 0;
         if (deleteBD.getBillId() == bill.getId())
         {
             if (billDetailsService.deleteBillDetails(deleteBD) > 0){
-                resetCartLineItems(this.bill.getId());
+                Iterator<BillDetailsDTO> iter = this.CartLineItems.iterator();
+                while (iter.hasNext()) {
+                    BillDetailsDTO del = iter.next();
+                    if (del.getId() == bdId) {
+                        this.CartLineItems.remove(del);
+                        break;
+                    }
+                }
                 return 1;
             }
             else return -1;
