@@ -150,4 +150,10 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
         int newQuantity = productList.get(0).getQuantity() - quantity;
         return update(ProductSQL.setProductStatus, newQuantity, id);
     }
+
+    @Override
+    public List<ProductEntity> getByStatus(int status) {
+        List<ProductEntity> productList = query(ProductSQL.getByStatus,productMapper, status);
+        return productList.isEmpty() ? null : productList;
+    }
 }

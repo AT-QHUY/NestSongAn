@@ -47,8 +47,17 @@ public class ProductAPI {
             return Response.status(Response.Status.NOT_MODIFIED).build();
 
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
-        
+    }
+    
+    @GET
+    @Path("/status")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByStatus(ProductDTO product){
+        List<ProductDTO> list = productService.getByStatus(product.getStatus());
+        if (list.isEmpty()) 
+            return Response.status(Response.Status.NOT_MODIFIED).build();
 
+            return Response.ok(list, MediaType.APPLICATION_JSON).build();
     }
 
     //search products by name

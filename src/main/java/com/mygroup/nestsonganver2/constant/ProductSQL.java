@@ -13,7 +13,10 @@ public class ProductSQL {
     //add a new product *
     public static String addNewProduct = "insert dbo.Products (name, quantity, deal, description, basePrice, cateId, status)\n"
             + "Values (?,?,?,?,?,?,?)";
-
+    //get by status
+    public static String getByStatus = "select * from dbo.Products\n"
+            + "where status = ?";
+    
     //search product by name *
     public static String searchProductByName = "select * from dbo.Products\n"
             + "where lower(name) like lower(?) and status=1";
@@ -37,7 +40,7 @@ public class ProductSQL {
             + "where id=?";
 
     //show all product *
-    public static String showAll = "select * from dbo.Products where status=1";
+    public static String showAll = "select * from dbo.Products";
 
     public static String setProductStatus = "update dbo.Products\n"
             + "set status=?\n"

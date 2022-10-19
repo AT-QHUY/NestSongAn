@@ -39,6 +39,15 @@ public class ProductService {
         }
         return productConverter.convertEntitytoDTO(entityList);
     }
+    
+    // get product by status
+    public List<ProductDTO> getByStatus(int status) {
+        List<ProductEntity> entityList = productDAO.getByStatus(status);
+        if (entityList == null) {
+            return null;
+        }
+        return productConverter.convertEntitytoDTO(entityList);
+    }
 
     //search products by name
     public List<ProductDTO> searchByName(String keyword) {

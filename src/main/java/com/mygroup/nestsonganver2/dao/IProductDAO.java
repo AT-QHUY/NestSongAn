@@ -15,6 +15,8 @@ import java.util.List;
 public interface IProductDAO extends IDao<ProductEntity> {
 
     public List<ProductEntity> showAll();
+    
+    public List<ProductEntity> getByStatus(int status);
 
     public List<ProductEntity> searchByName(String keyword);
 
