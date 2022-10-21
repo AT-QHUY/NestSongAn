@@ -72,7 +72,8 @@ public class CartAPI {
             return Response.notModified().build();
         if (check == 0) 
             return Response.noContent().build();
-        return Response.ok("Update successfull", MediaType.TEXT_PLAIN).build();
+        List<BillDetailsDTO> listDto = cartService.getCartLineItems(userId);
+        return Response.ok(listDto, MediaType.APPLICATION_JSON).build();
     }
     
     
@@ -87,6 +88,7 @@ public class CartAPI {
             return Response.notModified().build();
         if (check == 0)
             return Response.noContent().build();
-        return Response.ok(bd.getId() + " has been deteled", MediaType.TEXT_PLAIN).build();
+        List<BillDetailsDTO> listDto = cartService.getCartLineItems(userId);
+        return Response.ok(listDto, MediaType.APPLICATION_JSON).build();
     }
 }
