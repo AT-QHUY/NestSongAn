@@ -79,11 +79,11 @@ public class CartAPI {
     
     //delete item in cart
     @DELETE
-    @Path("/delete/cart-line-items/user/{userId}")
+    @Path("/cart-line-items/user")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteCartlineItems(BillDetailsDTO bd, @PathParam("userId")int userId) {
-        int check = cartService.deleteBillDetail(bd.getId(), userId);
+    public Response deleteCartlineItems(@QueryParam("userId")int userId, @QueryParam("id") int cartId) {
+        int check = cartService.deleteBillDetail(cartId, userId);
         if(check == -1) 
             return Response.notModified().build();
         if (check == 0)

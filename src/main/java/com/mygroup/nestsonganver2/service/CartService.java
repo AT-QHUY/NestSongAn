@@ -138,6 +138,7 @@ public class CartService {
     // -1: delete fail ; 0: not find billdetail; 1: delete successfully
     public int deleteBillDetail(int bdId, int userId) {
         setCartBill(userId);
+        setCartLineItems(bill.getId());
         BillDetailsDTO deleteBD = billDetailsService.findById(bdId);
         if (deleteBD == null) return 0;
         if (deleteBD.getBillId() == bill.getId())
