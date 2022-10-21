@@ -138,5 +138,16 @@ public class ProductService {
         }
         return productConverter.convertEntitytoDTO(entityList);
     }
+    
+    //get all count product 
+    public int countAllProduct(){
+        try{
+            int count = productDAO.countAllProduct();
+        return count;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
+    }
 
 }

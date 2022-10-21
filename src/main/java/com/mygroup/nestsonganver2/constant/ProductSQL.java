@@ -21,7 +21,16 @@ public class ProductSQL {
             + "order by id\n"
             + "offset ? row\n"
             + "fetch next ? rows only";
-
+    
+    //count all product
+    public static String countAllProduct = "select count(id) as total\n"
+            + "from dbo.Products\n";
+            
+    //count by status
+    public static String countProductByStatus = "select count(id) as total\n"
+            + "from dbo.Products\n"
+            + "where status = ?";
+    
     //search product by name *
     public static String searchProductByName = "select * from dbo.Products\n"
             + "where lower(name) like lower(?) and status=1";

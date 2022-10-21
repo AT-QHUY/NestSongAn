@@ -87,6 +87,15 @@ public class ProductAPI {
         return Response.ok(product, MediaType.APPLICATION_JSON).build();
     }
     
+    //Get count all product
+    @GET
+    @Path("/count/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCountAllProduct(){
+        int count = productService.countAllProduct();
+        return Response.ok(count, MediaType.APPLICATION_JSON).build();
+    }
+    
 
     //add new product
     @POST

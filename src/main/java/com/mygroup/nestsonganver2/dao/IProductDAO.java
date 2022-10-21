@@ -37,4 +37,6 @@ public interface IProductDAO extends IDao<ProductEntity> {
     public int substractQuantity(int id, int quantity);
     
     public List<ProductEntity> getAllByPages(int page , int limit);
+    
+    public int countAllProduct();
 }
