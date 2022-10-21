@@ -157,12 +157,27 @@ public class ProductAPI {
         //return ve trang product
     }
     
+    // Reactive product
     @DELETE
     @Path("/{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteProduct(@PathParam("isbn") int isbn)throws URISyntaxException, NoSuchAlgorithmException {
         int result = productService.setProductStatus(isbn,0);
+        if (result == 0) 
+            return Response.notModified().build();       
+        else {
+            URI uri = new URI(ui.getBaseUri() + "product/" + isbn);
+            return Response.created(uri).build();
+        }
+    }
+    
+    @PUT
+    @Path("/reactive/{isbn}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response reactiveProduct(@PathParam("isbn") int isbn)throws URISyntaxException, NoSuchAlgorithmException {
+        int result = productService.setProductStatus(isbn,1);
         if (result == 0) 
             return Response.notModified().build();       
         else {
