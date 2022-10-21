@@ -129,5 +129,14 @@ public class ProductService {
         }
         return productConverter.convertEntitytoDTO(entityList);
     }
+    
+    //get all by gages
+    public List<ProductDTO> getAllByPages(int page, int limit) {
+        List<ProductEntity> entityList = productDAO.getAllByPages(page, limit);
+        if (entityList == null) {
+            return null;
+        }
+        return productConverter.convertEntitytoDTO(entityList);
+    }
 
 }

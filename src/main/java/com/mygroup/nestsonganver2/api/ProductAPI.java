@@ -73,6 +73,20 @@ public class ProductAPI {
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
 
     }
+    
+     //Get all product by pages
+    @GET
+    @Path("/page/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllByPages(@QueryParam("page") int page, @QueryParam("limit") int limit) {
+        List<ProductDTO> product = productService.getAllByPages(page, limit);
+        if (product == null) {
+            return Response.status(Response.Status.NOT_MODIFIED).build();
+        }
+
+        return Response.ok(product, MediaType.APPLICATION_JSON).build();
+    }
+    
 
     //add new product
     @POST
@@ -173,6 +187,8 @@ public class ProductAPI {
 
         return Response.ok(product, MediaType.APPLICATION_JSON).build();
     }
+    
+   
     
 
 }

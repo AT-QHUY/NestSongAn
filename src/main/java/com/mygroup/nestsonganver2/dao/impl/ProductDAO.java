@@ -156,4 +156,11 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
         List<ProductEntity> productList = query(ProductSQL.getByStatus,productMapper, status);
         return productList.isEmpty() ? null : productList;
     }
+
+    @Override
+    public List<ProductEntity> getAllByPages(int page, int limit) {
+        int numberOfProducts = limit * (page - 1);
+        List<ProductEntity> productList = query(ProductSQL.getAllByPages, productMapper, numberOfProducts, limit);
+        return (productList.isEmpty()) ? null : productList;
+    }
 }

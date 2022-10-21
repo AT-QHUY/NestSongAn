@@ -16,7 +16,12 @@ public class ProductSQL {
     //get by status
     public static String getByStatus = "select * from dbo.Products\n"
             + "where status = ?";
-    
+    //get all by page
+    public static String getAllByPages = "select * from dbo.Products\n"
+            + "order by id\n"
+            + "offset ? row\n"
+            + "fetch next ? rows only";
+
     //search product by name *
     public static String searchProductByName = "select * from dbo.Products\n"
             + "where lower(name) like lower(?) and status=1";
@@ -52,7 +57,7 @@ public class ProductSQL {
             + "offset ? row\n"
             + "fetch next ? rows only";
 
-    public static String SubstractQuantity= "update* from dbo.Products\n"
-            +"set status = ?"
-            +"where id = ?";
+    public static String SubstractQuantity = "update* from dbo.Products\n"
+            + "set status = ?"
+            + "where id = ?";
 }
