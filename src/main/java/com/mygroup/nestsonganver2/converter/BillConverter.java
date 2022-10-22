@@ -36,6 +36,9 @@ public class BillConverter {
         dto.setCustomerId(entity.getCustomerId());
         dto.setEmpId(entity.getEmpId());
         dto.setListBillDetails(BILL_DETAILS_CONVERTER.convertListEntitytoDTO(BILL_DETAILS_DAO.findByBillId(entity.getId())));
+        dto.setTotalPrice(entity.getTotalPrice());
+        dto.setAddress(entity.getAddress());
+        dto.setPhoneNumber(entity.getPhoneNumber());
         return dto;
     }
 
@@ -46,6 +49,9 @@ public class BillConverter {
         entity.setStatus(dto.getStatus());
         entity.setCustomerId(dto.getCustomerId());
         entity.setEmpId(dto.getEmpId());
+        entity.setTotalPrice(dto.getTotalPrice());
+        entity.setAddress(dto.getAddress());
+        entity.setPhoneNumber(dto.getPhoneNumber());
         return entity;
     }
 

@@ -48,7 +48,7 @@ public class BillDetailsConverter {
     public BillDetailsEntity convertDTOtoEntity(BillDetailsDTO dto) {
         BillDetailsEntity entity = new BillDetailsEntity();
         entity.setId(dto.getId());
-        entity.setPrice(dto.getPrice());
+        entity.setPrice(dto.getProduct().getBasePrice()*(1-dto.getProduct().getDeal()));
         entity.setQuantity(dto.getQuantity());
         entity.setProductId(dto.getProduct().getId());
         entity.setBillId(dto.getBillId());
