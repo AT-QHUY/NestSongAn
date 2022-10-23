@@ -15,6 +15,8 @@ import java.util.List;
 public interface IProductDAO extends IDao<ProductEntity> {
 
     public List<ProductEntity> showAll();
+    
+    public List<ProductEntity> getByStatus(int status);
 
     public List<ProductEntity> searchByName(String keyword);
 
@@ -26,9 +28,15 @@ public interface IProductDAO extends IDao<ProductEntity> {
     
     public int updateProduct(ProductEntity product);
     
-    public List<ProductEntity> filter(List<Filter> filter);
+    public List<ProductEntity> filter(Filter filter);
     
     public List<ProductEntity> getProductByPages(int offset,int fetch);
     
     public int setProductStatus(int isbn, int status) ;
+    
+    public int substractQuantity(int id, int quantity);
+    
+    public List<ProductEntity> getAllByPages(int page , int limit);
+    
+    public int countAllProduct();
 }

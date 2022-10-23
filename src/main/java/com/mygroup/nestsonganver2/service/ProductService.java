@@ -39,6 +39,15 @@ public class ProductService {
         }
         return productConverter.convertEntitytoDTO(entityList);
     }
+    
+    // get product by status
+    public List<ProductDTO> getByStatus(int status) {
+        List<ProductEntity> entityList = productDAO.getByStatus(status);
+        if (entityList == null) {
+            return null;
+        }
+        return productConverter.convertEntitytoDTO(entityList);
+    }
 
     //search products by name
     public List<ProductDTO> searchByName(String keyword) {
@@ -100,8 +109,12 @@ public class ProductService {
     }
 
     //use filter
-    public List<ProductDTO> filter(List<Filter> filter) {
-        List<ProductEntity> entityList = productDAO.filter(filter);
+    public List<ProductDTO> filter(Filter filter) {
+        List<ProductEntity> entityList;
+        if (filter.getName()==null && filter.getLowPrice()==0 && filter.getHighPrice()==0 && filter.getDeal()==0 &&filter.getDeal()==0)
+            entityList = productDAO.showAll(); 
+        else 
+            entityList = productDAO.filter(filter);
         if (entityList == null) {
             return null;
         }
@@ -115,6 +128,26 @@ public class ProductService {
             return null;
         }
         return productConverter.convertEntitytoDTO(entityList);
+    }
+    
+    //get all by gages
+    public List<ProductDTO> getAllByPages(int page, int limit) {
+        List<ProductEntity> entityList = productDAO.getAllByPages(page, limit);
+        if (entityList == null) {
+            return null;
+        }
+        return productConverter.convertEntitytoDTO(entityList);
+    }
+    
+    //get all count product 
+    public int countAllProduct(){
+        try{
+            int count = productDAO.countAllProduct();
+        return count;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
     }
 
 }

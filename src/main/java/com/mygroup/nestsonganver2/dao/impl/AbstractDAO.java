@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +33,12 @@ public class AbstractDAO<T> implements IDao<T> {
         ResultSet resultSet = null;
         try {
             connection = Utils.makeConnection();
+            connection.setAutoCommit(false);
             statement = connection.prepareStatement(sql);
             setParameter(statement, parameters);
             resultSet = statement.executeQuery();
+            connection.commit();
+            connection.setAutoCommit(true);
             while (resultSet.next()) {
                 results.add(mapper.mapRow(resultSet));
             }
@@ -89,11 +93,14 @@ public class AbstractDAO<T> implements IDao<T> {
         int result = 0;
         try {
             connection = Utils.makeConnection();
+            connection.setAutoCommit(false);
             statement = connection.prepareStatement(sql);
             setParameter(statement, parameters);
             result = statement.executeUpdate();
+            connection.commit();
+            connection.setAutoCommit(true);
             return result;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e);
             return 0;
         } finally {
@@ -119,9 +126,12 @@ public class AbstractDAO<T> implements IDao<T> {
         try {
             int id = 0;
             connection = Utils.makeConnection();
+            connection.setAutoCommit(false);
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             setParameter(statement, parameters);
             statement.executeUpdate();
+            connection.commit();
+            connection.setAutoCommit(true);
             resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
                 id = resultSet.getInt(1);
@@ -145,6 +155,43 @@ public class AbstractDAO<T> implements IDao<T> {
 
             } catch (SQLException e) {
                 System.out.println(e);
+                return 0;
+            }
+        }
+    }
+
+    @Override
+    public int queryCount(String sql, Object... parameters) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = Utils.makeConnection();
+            connection.setAutoCommit(false);
+            statement = connection.prepareStatement(sql);
+            setParameter(statement, parameters);
+            resultSet = statement.executeQuery();
+            connection.commit();
+            connection.setAutoCommit(true);
+            while(resultSet.next()){
+                return resultSet.getInt("total");
+            }
+            return 0;
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
                 return 0;
             }
         }
