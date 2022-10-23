@@ -34,6 +34,18 @@ public class BillDetailsDAO extends AbstractDAO<BillDetailsEntity> implements IB
         return id;
     }
 
+    public int insertNewListBillDetails(List<BillDetailsEntity> billDetails, int billID) {
+        int checkResult = 0;
+        for (BillDetailsEntity billDetail : billDetails) {
+            billDetail.setBillId(billID);
+            checkResult = insertNewBillDetails(billDetail);
+            if (checkResult == 0) {
+                return 0;
+            }
+        }
+        return checkResult;
+    }
+
     //find bill
     @Override
     public List<BillDetailsEntity> findAll() {
@@ -46,7 +58,7 @@ public class BillDetailsDAO extends AbstractDAO<BillDetailsEntity> implements IB
     public BillDetailsEntity findById(int id) {
         List<BillDetailsEntity> list = query(BillDetailsSQL.findById, new BillDetailsMapper(), id);
         BillDetailsEntity result = new BillDetailsEntity();
-        if (!list.isEmpty()){
+        if (!list.isEmpty()) {
             result = list.get(0);
         }
         return result;
