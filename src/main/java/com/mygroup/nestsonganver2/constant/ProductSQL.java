@@ -11,7 +11,7 @@ package com.mygroup.nestsonganver2.constant;
 public class ProductSQL {
 
     //add a new product *
-    public static String addNewProduct = "insert dbo.Products (name, quantity, deal, description, basePrice, cateId, status)\n"
+    public static String addNewProduct = "insert into dbo.Products (name, quantity, deal, description, basePrice, cateId, status)\n"
             + "Values (?,?,?,?,?,?,?)";
     //get by status
     public static String getByStatus = "select * from dbo.Products\n"

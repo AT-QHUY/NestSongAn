@@ -49,7 +49,7 @@ public class ProductAPI {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
     }
     
-    @GET
+    @POST
     @Path("/status")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByStatus(ProductDTO product){
@@ -98,7 +98,7 @@ public class ProductAPI {
     
 
     //add new product
-    @POST
+    @PUT
     @Path("/add")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -141,6 +141,7 @@ public class ProductAPI {
         return Response.ok(product, MediaType.APPLICATION_JSON).build();
     }
     
+    // update a product
     @PUT
     @Path("{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -156,6 +157,7 @@ public class ProductAPI {
         }
         //return ve trang product
     }
+    
     
     // Reactive product
     @DELETE

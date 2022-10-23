@@ -42,8 +42,7 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
 
     @Override
     public int addNewProduct(ProductEntity product) {
-        DecimalFormat df = new DecimalFormat("#.0");
-        int id = insert(ProductSQL.addNewProduct, product.getName(), product.getQuantity(), df.format(product.getDeal()), product.getDescription(), df.format(product.getBasePrice()), product.getCateId(), product.getStatus());
+        int id = insert(ProductSQL.addNewProduct, product.getName(), product.getQuantity(), product.getDeal(), product.getDescription(), product.getBasePrice(), product.getCateId(), product.getStatus());
         return id;
     }
 
