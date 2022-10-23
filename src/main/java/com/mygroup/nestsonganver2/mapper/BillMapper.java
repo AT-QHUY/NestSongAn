@@ -15,22 +15,25 @@ import java.time.LocalDate;
  *
  * @author Silver King
  */
-public class BillMapper implements RowMapper<BillEntity>{
+public class BillMapper implements RowMapper<BillEntity> {
 
     @Override
     public BillEntity mapRow(ResultSet rs) {
-        try{
+        try {
             BillEntity bill = new BillEntity();
             bill.setId(rs.getInt("id"));
             bill.setDate(rs.getDate("date"));
             bill.setStatus(rs.getInt("status"));
             bill.setCustomerId(rs.getInt("customerId"));
             bill.setEmpId(rs.getInt("empId"));
+            bill.setTotalPrice(rs.getFloat("TotalPrice"));
+            bill.setAddress(rs.getString("address"));
+            bill.setPhoneNumber(rs.getString("phoneNumber"));
             return bill;
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
-    
+
 }

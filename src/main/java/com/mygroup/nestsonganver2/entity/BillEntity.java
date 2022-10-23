@@ -103,4 +103,6 @@ public class BillEntity {
     public void setEmpId(int empId) {
         this.empId = empId;
     }
+
 }
+

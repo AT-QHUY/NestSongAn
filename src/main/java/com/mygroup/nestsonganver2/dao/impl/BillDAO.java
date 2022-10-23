@@ -29,8 +29,14 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
     //create new bill
     @Override
     public int createNewBill(BillEntity bill) {
-        int id = insert(BillSQL.insertNew, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId());
+        int id = insert(BillSQL.insertNew, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId(), bill.getTotalPrice(), bill.getAddress(), bill.getPhoneNumber());
         return id;
+    }
+    
+    @Override
+    public int createNewCart(BillEntity bill){
+        int id = insert(BillSQL.insertNewCart, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId());
+        return  id;
     }
 
     //--------------------------------------------------------------------------
@@ -44,20 +50,19 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
 
     @Override
     public BillEntity findBillById(int id) {
-         BillEntity result = new BillEntity();
-        try{           
-        List<BillEntity> list = query(BillSQL.findById, new BillMapper(), id);
-        if (!list.isEmpty()) {
-            result = list.get(0);
+        BillEntity result = new BillEntity();
+        try {
+            List<BillEntity> list = query(BillSQL.findById, new BillMapper(), id);
+            if (!list.isEmpty()) {
+                result = list.get(0);
+            }
+            return result;
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            return result;
         }
-         return result;
-        }catch(Exception e){
-            System.out.println(e);            
-        }
-        finally{
-             return result;
-        }
-      
+
     }
 
     @Override
@@ -92,17 +97,21 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
     // update bill
     @Override
     public int updateBill(BillEntity bill) {
-        int result = update(BillSQL.updateBill, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId(), bill.getId());
+        int result = update(BillSQL.updateBill, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId(), bill.getTotalPrice(), bill.getAddress(), bill.getPhoneNumber(), bill.getId());
         return result;
     }
 
     //delete (update status)
     @Override
     public int updateStatus(int id, int status) {
+        int oldStatus = getInstance().findBillById(id).getStatus();
+        if (oldStatus == 3) {
+            return 0;
+        }
         int result = update(BillSQL.updateStatus, status, id);
         return result;
     }
-    
+
     @Override
     public List<BillEntity> findByEmpIdAndStatus(int empId, int status) {
         List<BillEntity> list = new ArrayList<>();

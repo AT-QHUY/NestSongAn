@@ -57,7 +57,6 @@ public class BillDetailsAPI {
         List<BillDetailsDTO> list = billDetailsService.findAll();
         if (list.isEmpty()) {
             return Response.notModified().build();
-
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
         }

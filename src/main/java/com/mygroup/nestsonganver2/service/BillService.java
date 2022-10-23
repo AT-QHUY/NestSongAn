@@ -47,6 +47,11 @@ public class BillService {
             return 0;
         }
     }
+    
+    public int insertNewCart(BillDTO bill){
+        int resultBill = billDAO.createNewBill(BILL_CONVERTER.convertDTOtoEntity(bill));
+        return  resultBill;
+    }
 
     //--------------------------------------------------------------------------
     //find bill
@@ -130,10 +135,10 @@ public class BillService {
         return result;
     }
 
-    public List<BillDTO> getBillByCUstomerIdAndStatus(int empId, int status) {
+    public List<BillDTO> getBillByCUstomerIdAndStatus(int customerID, int status) {
         List<BillDTO> result = new ArrayList<>();
         BillDTO dto = null;
-        List<BillEntity> listEntity = billDAO.findByCustomerIdAndStatus(empId, status);
+        List<BillEntity> listEntity = billDAO.findByCustomerIdAndStatus(customerID, status);
         if (!listEntity.isEmpty()) {
             result = BILL_CONVERTER.convertListEntitytoDTO(listEntity);
         }

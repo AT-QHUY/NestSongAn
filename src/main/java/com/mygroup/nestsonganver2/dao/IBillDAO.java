@@ -15,7 +15,8 @@ public interface IBillDAO extends IDao<BillEntity> {
 
 // create new bill
     public int createNewBill(BillEntity bill);
-
+    
+    public int createNewCart(BillEntity bill);
 //------------------------------------------------------------------------------
 //find bill
     public List<BillEntity> finndAll();

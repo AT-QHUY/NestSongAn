@@ -32,6 +32,7 @@ public class BillDTO {
     public BillDTO() {
     }
 
+
     public BillDTO(int id, Date date, int status, int customerId, int empId, List<BillDetailsDTO> listBillDetails, float TotalPrice, String address, String phoneNumber) {
         this.id = id;
         this.date = date;
