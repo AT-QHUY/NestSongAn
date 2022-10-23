@@ -4,7 +4,9 @@
  */
 package com.mygroup.nestsonganver2.api;
 
+import com.mygroup.nestsonganver2.dto.BillDTO;
 import com.mygroup.nestsonganver2.dto.BillDetailsDTO;
+import com.mygroup.nestsonganver2.dto.UserDTO;
 import com.mygroup.nestsonganver2.service.CartService;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -47,13 +49,14 @@ public class CartAPI {
     }
     
     //Buy 
-    @GET
-    @Path("/buy/customer/{customerId}") 
+    @POST
+    @Path("/buy/customer") 
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response buy(@PathParam("customerId")int customerId) {
-        if (cartService.buy(customerId)) {
-            return Response.ok().build();
+    public Response buy(UserDTO user) {
+        BillDTO bill = cartService.buy(user);
+        if (bill != null) {
+            return Response.ok(bill, MediaType.APPLICATION_JSON).build();
         }
         return Response.notModified().build();
     }
