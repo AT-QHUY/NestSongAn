@@ -38,7 +38,7 @@ public class BillService {
         int resultBill = billDAO.createNewBill(BILL_CONVERTER.convertDTOtoEntity(bill));
         if (resultBill !=0 ) {
             int resultBillDetails = BILL_DETAILS_DAO.insertNewListBillDetails(BILL_DETAILS_CONVERTER.convertListDTOtoEntity(bill.getListBillDetails()),resultBill);
-            if (resultBill != 0) {
+            if (resultBillDetails != 0) {
                 return resultBill;
             } else {
                 return 0;
@@ -75,7 +75,6 @@ public class BillService {
 
     public List<BillDTO> getBillByStatus(int status) {
         List<BillDTO> result = new ArrayList<>();
-        BillDTO dto = null;
         List<BillEntity> listEntity = billDAO.findBillByStatus(status);
         if (!listEntity.isEmpty()) {
             result = BILL_CONVERTER.convertListEntitytoDTO(listEntity);
@@ -85,7 +84,6 @@ public class BillService {
 
     public List<BillDTO> getBillByCustomerId(int customerId) {
         List<BillDTO> result = new ArrayList<>();
-        BillDTO dto = null;
         List<BillEntity> listEntity = billDAO.findBillByCustomerId(customerId);
         if (!listEntity.isEmpty()) {
             result = BILL_CONVERTER.convertListEntitytoDTO(listEntity);
@@ -95,7 +93,6 @@ public class BillService {
 
     public List<BillDTO> getBillByEmpId(int empId) {
         List<BillDTO> result = new ArrayList<>();
-        BillDTO dto = null;
         List<BillEntity> listEntity = billDAO.findBillByEmpId(empId);
         if (!listEntity.isEmpty()) {
             result = BILL_CONVERTER.convertListEntitytoDTO(listEntity);
@@ -127,7 +124,6 @@ public class BillService {
 
     public List<BillDTO> getBillByEmpIdAndStatus(int empId, int status) {
         List<BillDTO> result = new ArrayList<>();
-        BillDTO dto = null;
         List<BillEntity> listEntity = billDAO.findByEmpIdAndStatus(empId, status);
         if (!listEntity.isEmpty()) {
             result = BILL_CONVERTER.convertListEntitytoDTO(listEntity);
@@ -137,7 +133,6 @@ public class BillService {
 
     public List<BillDTO> getBillByCUstomerIdAndStatus(int customerID, int status) {
         List<BillDTO> result = new ArrayList<>();
-        BillDTO dto = null;
         List<BillEntity> listEntity = billDAO.findByCustomerIdAndStatus(customerID, status);
         if (!listEntity.isEmpty()) {
             result = BILL_CONVERTER.convertListEntitytoDTO(listEntity);
