@@ -21,6 +21,7 @@ public class ProductDTO {
     private float basePrice;
     private int cateId;
     private int status;
+    private String image;
 
     private List<ImageDTO> listImages = new ArrayList<>();
 
@@ -36,6 +37,14 @@ public class ProductDTO {
         this.basePrice = basePrice;
         this.cateId = cateId;
         this.status = status;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getId() {

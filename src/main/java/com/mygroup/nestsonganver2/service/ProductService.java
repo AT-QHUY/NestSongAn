@@ -7,6 +7,7 @@ package com.mygroup.nestsonganver2.service;
 import com.mygroup.nestsonganver2.dto.Filter;
 import com.mygroup.nestsonganver2.converter.ProductConverter;
 import com.mygroup.nestsonganver2.dao.impl.ProductDAO;
+import com.mygroup.nestsonganver2.dto.ImageDTO;
 import com.mygroup.nestsonganver2.dto.ProductDTO;
 import com.mygroup.nestsonganver2.entity.ProductEntity;
 import java.security.NoSuchAlgorithmException;
@@ -21,6 +22,8 @@ public class ProductService {
     private static final ProductDAO productDAO = ProductDAO.getInstance();
 
     private static final ProductConverter productConverter = ProductConverter.getInstance();
+    
+    private static final ImageService imageService = ImageService.getImageService();
 
     private static ProductService productService;
 
@@ -60,7 +63,14 @@ public class ProductService {
 
     //add a new product
     public int addNewProduct(ProductDTO product) throws NoSuchAlgorithmException {
-        return productDAO.addNewProduct(ProductConverter.convertDTOtoEntity(product));
+        int result = productDAO.addNewProduct(ProductConverter.convertDTOtoEntity(product));
+        if(result != 0) {
+            ImageDTO imgDTO = new ImageDTO();
+            imgDTO.setImgPath(product.getImage());
+            imgDTO.setProductId(result);
+            result = imageService.addImage(imgDTO);
+        }
+        return result;
     }
 
     //get products by CateId
