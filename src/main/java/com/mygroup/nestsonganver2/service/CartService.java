@@ -48,7 +48,7 @@ public class CartService {
                 newBill.setEmpId(1);
                 newBill.setDate(Date.valueOf(LocalDate.now()));
                 billService.insertNewCart(newBill);
-                cartBill  = billService.getBillByStatus(1);
+                cartBill  = billService.getBillByCUstomerIdAndStatus(userId, 1);
                 if (!cartBill.isEmpty())
                 this.bill = cartBill.get(0);
             }
