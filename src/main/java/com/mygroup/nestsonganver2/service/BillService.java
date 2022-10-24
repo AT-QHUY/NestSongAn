@@ -49,7 +49,7 @@ public class BillService {
     }
     
     public int insertNewCart(BillDTO bill){
-        int resultBill = billDAO.createNewBill(BILL_CONVERTER.convertDTOtoEntity(bill));
+        int resultBill = billDAO.createNewCart(BILL_CONVERTER.convertDTOtoEntity(bill));
         return  resultBill;
     }
 
