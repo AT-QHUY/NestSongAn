@@ -4,37 +4,73 @@
  */
 package com.mygroup.nestsonganver2.dto;
 
+import java.util.List;
+
 
 /**
  *
  * @author ADMIN
  */
 public class Filter {
-    public String name;
-    public String properties;
+    public List<String> name;
+    public float lowPrice;
+    public float highPrice;
+    public float deal;
+    public int cateId;
 
     public Filter() {
     }
 
-    public Filter(String name, String properties) {
+    public Filter(List<String> name, float lowPrice, float highPrice, float deal, int cateId) {
         this.name = name;
-        this.properties = properties;
+        this.lowPrice = lowPrice;
+        this.highPrice = highPrice;
+        this.deal = deal;
+        this.cateId = cateId;
     }
 
-    public String getName() {
+    public List<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(List<String> name) {
         this.name = name;
     }
 
-    public String getProperties() {
-        return properties;
+    public float getLowPrice() {
+        return lowPrice;
     }
 
-    public void setProperties(String properties) {
-        this.properties = properties;
+    public void setLowPrice(float lowPrice) {
+        this.lowPrice = lowPrice;
     }
+
+    public float getHighPrice() {
+        return highPrice;
+    }
+
+    public void setHighPrice(float highPrice) {
+        this.highPrice = highPrice;
+    }
+
+    public float getDeal() {
+        return deal;
+    }
+
+    public void setDeal(float deal) {
+        this.deal = deal;
+    }
+
+    public int getCateId() {
+        return cateId;
+    }
+
+    public void setCateId(int cateId) {
+        this.cateId = cateId;
+    }
+    
+    
+
+   
 
 }

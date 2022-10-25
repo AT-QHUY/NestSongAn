@@ -26,4 +26,6 @@ public interface IDao<T> {
     int update(String sql, Object... parameters);
 
     Integer insert(String sql, Object... parameters);
+    
+    int queryCount(String sql, Object... parameters);
 }

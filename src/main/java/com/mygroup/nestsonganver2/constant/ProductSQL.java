@@ -11,9 +11,26 @@ package com.mygroup.nestsonganver2.constant;
 public class ProductSQL {
 
     //add a new product *
-    public static String addNewProduct = "insert dbo.Products (name, quantity, deal, description, basePrice, cateId, status)\n"
+    public static String addNewProduct = "insert into dbo.Products (name, quantity, deal, description, basePrice, cateId, status)\n"
             + "Values (?,?,?,?,?,?,?)";
-
+    //get by status
+    public static String getByStatus = "select * from dbo.Products\n"
+            + "where status = ?";
+    //get all by page
+    public static String getAllByPages = "select * from dbo.Products\n"
+            + "order by id\n"
+            + "offset ? row\n"
+            + "fetch next ? rows only";
+    
+    //count all product
+    public static String countAllProduct = "select count(id) as total\n"
+            + "from dbo.Products\n";
+            
+    //count by status
+    public static String countProductByStatus = "select count(id) as total\n"
+            + "from dbo.Products\n"
+            + "where status = ?";
+    
     //search product by name *
     public static String searchProductByName = "select * from dbo.Products\n"
             + "where lower(name) like lower(?) and status=1";
@@ -37,7 +54,7 @@ public class ProductSQL {
             + "where id=?";
 
     //show all product *
-    public static String showAll = "select * from dbo.Products where status=1";
+    public static String showAll = "select * from dbo.Products";
 
     public static String setProductStatus = "update dbo.Products\n"
             + "set status=?\n"
@@ -49,4 +66,7 @@ public class ProductSQL {
             + "offset ? row\n"
             + "fetch next ? rows only";
 
+    public static String SubstractQuantity = "update* from dbo.Products\n"
+            + "set status = ?"
+            + "where id = ?";
 }

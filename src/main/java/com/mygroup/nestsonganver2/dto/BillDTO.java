@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mygroup.nestsonganver2.dto;
 
 
@@ -36,15 +32,6 @@ public class BillDTO {
     public BillDTO() {
     }
 
-//    public BillDTO(int id, Date date, int status, int customerId, int empId, List<BillDetailsDTO> listBillDetails, float TotalPrice) {
-//        this.id = id;
-//        this.date = date;
-//        this.status = status;
-//        this.customerId = customerId;
-//        this.empId = empId;
-//        this.listBillDetails = listBillDetails;
-//        this.TotalPrice = TotalPrice;
-//    }
 
     public BillDTO(int id, Date date, int status, int customerId, int empId, List<BillDetailsDTO> listBillDetails, float TotalPrice, String address, String phoneNumber) {
         this.id = id;

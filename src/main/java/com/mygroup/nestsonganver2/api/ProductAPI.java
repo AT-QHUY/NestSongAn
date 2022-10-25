@@ -47,8 +47,17 @@ public class ProductAPI {
             return Response.status(Response.Status.NOT_MODIFIED).build();
 
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
-        
+    }
+    
+    @POST
+    @Path("/status")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByStatus(ProductDTO product){
+        List<ProductDTO> list = productService.getByStatus(product.getStatus());
+        if (list.isEmpty()) 
+            return Response.status(Response.Status.NOT_MODIFIED).build();
 
+            return Response.ok(list, MediaType.APPLICATION_JSON).build();
     }
 
     //search products by name
@@ -64,9 +73,32 @@ public class ProductAPI {
         return Response.ok(list, MediaType.APPLICATION_JSON).build();
 
     }
+    
+     //Get all product by pages
+    @GET
+    @Path("/page/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllByPages(@QueryParam("page") int page, @QueryParam("limit") int limit) {
+        List<ProductDTO> product = productService.getAllByPages(page, limit);
+        if (product == null) {
+            return Response.status(Response.Status.NOT_MODIFIED).build();
+        }
+
+        return Response.ok(product, MediaType.APPLICATION_JSON).build();
+    }
+    
+    //Get count all product
+    @GET
+    @Path("/count/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCountAllProduct(){
+        int count = productService.countAllProduct();
+        return Response.ok(count, MediaType.APPLICATION_JSON).build();
+    }
+    
 
     //add new product
-    @POST
+    @PUT
     @Path("/add")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -76,7 +108,7 @@ public class ProductAPI {
         if (id == 0) {
             return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
-            URI uri = new URI(ui.getBaseUri() + "Product/" + id);
+            URI uri = new URI(ui.getBaseUri() + "product/" + id);
             return Response.created(uri).build();
         }
 
@@ -109,6 +141,7 @@ public class ProductAPI {
         return Response.ok(product, MediaType.APPLICATION_JSON).build();
     }
     
+    // update a product
     @PUT
     @Path("{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -119,12 +152,14 @@ public class ProductAPI {
         if (result == 0) 
             return Response.notModified().build();       
         else {
-            URI uri = new URI(ui.getBaseUri() + "Product/" + isbn);
+            URI uri = new URI(ui.getBaseUri() + "product/" + isbn);
             return Response.created(uri).build();
         }
         //return ve trang product
     }
     
+    
+    // Reactive product
     @DELETE
     @Path("/{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -134,7 +169,21 @@ public class ProductAPI {
         if (result == 0) 
             return Response.notModified().build();       
         else {
-            URI uri = new URI(ui.getBaseUri() + "Product/" + isbn);
+            URI uri = new URI(ui.getBaseUri() + "product/" + isbn);
+            return Response.created(uri).build();
+        }
+    }
+    
+    @PUT
+    @Path("/reactive/{isbn}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response reactiveProduct(@PathParam("isbn") int isbn)throws URISyntaxException, NoSuchAlgorithmException {
+        int result = productService.setProductStatus(isbn,1);
+        if (result == 0) 
+            return Response.notModified().build();       
+        else {
+            URI uri = new URI(ui.getBaseUri() + "product/" + isbn);
             return Response.created(uri).build();
         }
     }
@@ -144,7 +193,7 @@ public class ProductAPI {
     @Path("/filter")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterProducts(List<Filter> filter) throws NoSuchAlgorithmException {      
+    public Response filterProducts(Filter filter) throws NoSuchAlgorithmException {      
         List<ProductDTO> list = productService.filter(filter);
         if (list == null || list.isEmpty()) 
             return Response.status(Response.Status.NOT_MODIFIED).build();       
@@ -164,4 +213,8 @@ public class ProductAPI {
 
         return Response.ok(product, MediaType.APPLICATION_JSON).build();
     }
+    
+   
+    
+
 }

@@ -85,6 +85,13 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
         list = query(BillSQL.findByEmpId, new BillMapper(), empId);
         return list;
     }
+    
+    public BillEntity findLastBill(int userId) {
+        List<BillEntity> list = new ArrayList<>();
+        list = query ("SELECT TOP 1 * FROM Bills WHERE [customerId] = ? ORDER BY id DESC ", new BillMapper(), userId);
+        if (list.isEmpty() || list == null) return null;
+        return list.get(0);
+    }
 
     //--------------------------------------------------------------------------
     // update bill
