@@ -74,14 +74,13 @@ public class UserAPI {
     @Path("/insert")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    Response insertUser(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
+    public Response insertUser(UserDTO user) throws URISyntaxException, NoSuchAlgorithmException {
 
-        int id = userService.insertUser(user);
-        if (id == 0) {
+            String token = userService.insertUser(user);
+        if (token == null) {
             return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
-            URI uri = new URI(ui.getBaseUri() + "user/" + id);
-            return Response.created(uri).build();
+            return Response.ok(token, MediaType.APPLICATION_JSON).build();
         }
 
     }

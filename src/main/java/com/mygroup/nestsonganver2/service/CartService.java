@@ -7,6 +7,7 @@ package com.mygroup.nestsonganver2.service;
 import com.mygroup.nestsonganver2.dto.BillDTO;
 import com.mygroup.nestsonganver2.dto.BillDetailsDTO;
 import com.mygroup.nestsonganver2.dto.ProductDTO;
+import com.mygroup.nestsonganver2.dto.UserDTO;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class CartService {
     
     private void setCartBill(int userId) {
         if (this.bill == null) {
-            List<BillDTO> cartBill  = billService.getBillByStatus(1);
+            List<BillDTO> cartBill  = billService.getBillByCUstomerIdAndStatus(userId ,1);
             if (!cartBill.isEmpty()) 
                 this.bill = cartBill.get(0);
             else {
@@ -46,23 +47,38 @@ public class CartService {
                 newBill.setStatus(1);
                 newBill.setEmpId(1);
                 newBill.setDate(Date.valueOf(LocalDate.now()));
-                billService.insertNewBill(newBill);
-                cartBill  = billService.getBillByStatus(1);
+                billService.insertNewCart(newBill);
+                cartBill  = billService.getBillByCUstomerIdAndStatus(userId, 1);
                 if (!cartBill.isEmpty())
                 this.bill = cartBill.get(0);
             }
         }
     }
     
-    public boolean buy(int customerId) {
-        setCartBill(customerId);
+    private float calTotalPrice() {
+        float total = 0;
+        for (BillDetailsDTO bdDTO : this.CartLineItems){
+            total += bdDTO.getPrice();
+        }
+        return total;
+    }
+    
+    public BillDTO buy(UserDTO user) {
+        setCartBill(user.getId()); 
+        setCartLineItems(this.bill.getId());
         this.bill.setDate(Date.valueOf(LocalDate.now()));
-        if (billService.updateStatus(this.bill.getId(), 2) > 0) {
+        this.bill.setAddress(user.getAddress());
+        this.bill.setPhoneNumber(user.getPhoneNumber());
+        this.bill.setTotalPrice(calTotalPrice());
+        this.bill.setEmpId(1);
+        this.bill.setStatus(2);
+        if (billService.updateBill(this.bill.getId(), bill) > 0) {
+            BillDTO result = this.bill;
             this.bill = null;
             this.CartLineItems = null;
-            return true;
+            return result;
         }
-        return false;
+        return null;
     }   
     
     private void setCartLineItems(int billID) {
@@ -95,21 +111,16 @@ public class CartService {
                 float newPrice = calculateTotalMoney(newQuantity, bd.getProduct().getDeal(), bd.getProduct().getBasePrice());
                 item.setPrice(newPrice);
                 billDetailsService.updateBillDetails(item.getId(), item);
-//                this.CartLineItems.add(bd);
-//                resetCartLineItems(userId); 
+                this.bill.setTotalPrice(calTotalPrice());
                 return this.CartLineItems;
             }
         } 
         bd.setBillId(this.bill.getId());
-//        ProductDTO newProduct = productService.getProductById(bd.getProduct().getId());
-//        bd.setProduct(newProduct);
-//        if (billDetailsService.insertNewBillDetails(bd) > 0) {
         billDetailsService.insertNewBillDetails(bd);
         this.CartLineItems.add(bd);
-            resetCartLineItems(this.bill.getId());
-            return this.CartLineItems;
-//        }
-//        return new ArrayList<>();
+        resetCartLineItems(this.bill.getId());
+        this.bill.setTotalPrice(calTotalPrice());
+        return this.CartLineItems;
     }
     
     // -1: update fail ; 0: not find billdetail; 1: update successfully

@@ -38,12 +38,13 @@ public class UserService {
     }
     // Create User 
 
-    public int insertUser(UserDTO user) throws NoSuchAlgorithmException {
-        if (checkLogin(user) == null) {
-            return 0;
+    public String insertUser(UserDTO user) throws NoSuchAlgorithmException {
+        if (checkUserName(user.getUsername()) == 1 ) {
+            return null;
         }
         user.setPassword(Utils.hashPassWordMd5(user.getPassword()));
-        return userDAO.createNewUser(converter.convertDTOtoEntity(user));
+        int id = userDAO.createNewUser(converter.convertDTOtoEntity(user));
+        return converter.ConvertEntitytoToken(userDAO.findUser(id));
     }
 
     // ----------------------------------------------------------------------
@@ -54,6 +55,12 @@ public class UserService {
             return converter.ConvertEntitytoToken(userEntity);
         }
         return null;
+    }
+    
+    public int checkUserName(String username){
+        UserEntity entity = userDAO.findUser(username);
+        if(entity != null && entity.getId() != 0) return 1;
+        return 0;
     }
     
     public UserDTO getUserById(int userId, int tokenId, String tokenRole) {
