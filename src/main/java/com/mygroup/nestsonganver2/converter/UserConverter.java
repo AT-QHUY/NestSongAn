@@ -62,7 +62,7 @@ public class UserConverter {
         entity.setPhoneNumber(dto.getPhoneNumber());
         entity.setAddress(dto.getAddress());
         entity.setPassword(dto.getPassword());
-        entity.setRoleId(dto.getRole().getId());
+        entity.setRoleId((dto.getRole()==null)?2:dto.getRole().getId());
         return entity;
     }
 
@@ -116,5 +116,7 @@ public class UserConverter {
         builder.append("role=").append((roleDao.getRoleById(entity.getRoleId())).getName());
         return builder.toString();
     }
-
+    
+    
+    
 }
