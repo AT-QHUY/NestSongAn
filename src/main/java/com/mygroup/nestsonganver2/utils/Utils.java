@@ -16,6 +16,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,8 +67,17 @@ public class Utils {
         }
         return hashtext;
     }
-
     
+    public static String GetOTP(int length) {
+        String number = "1234567890";
+        Random ran = new Random();
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int value = ran.nextInt(10);
+            result.append(value);
+        }
+        return result.toString();
+    }
 //    expired=2022-10-0600:00:00|id=1|fullname=admin|role=admin
 //    
 //    public static void main(String[] args) {
