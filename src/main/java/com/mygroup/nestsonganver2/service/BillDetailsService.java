@@ -6,9 +6,11 @@ package com.mygroup.nestsonganver2.service;
 
 import com.mygroup.nestsonganver2.converter.BillDetailsConverter;
 import com.mygroup.nestsonganver2.dao.impl.BillDetailsDAO;
+import com.mygroup.nestsonganver2.dao.impl.ProductDAO;
 import com.mygroup.nestsonganver2.dto.BillDetailsDTO;
 import com.mygroup.nestsonganver2.dto.ProductDTO;
 import com.mygroup.nestsonganver2.entity.BillDetailsEntity;
+import com.mygroup.nestsonganver2.entity.ProductEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ import java.util.List;
  * @author Silver King
  */
 public class BillDetailsService {
-
+    private static final ProductDAO PRODUCT_DAO = ProductDAO.getInstance();
     private static final BillDetailsDAO BILL_DETAILS_DAO = BillDetailsDAO.getInstance();
     private static final BillDetailsConverter BILL_DETAILS_CONVERTER = BillDetailsConverter.getInstance();
     private static BillDetailsService billDetailsService = null;
@@ -32,7 +34,7 @@ public class BillDetailsService {
     //--------------------------------------------------------------------------
     //insert new bill details
     public int insertNewBillDetails(BillDetailsDTO billDetails) {
-        ProductDTO product = billDetails.getProduct();
+        ProductEntity product = PRODUCT_DAO.getProductById(billDetails.getProduct().getId());
         BillDetailsEntity billDetailsEntity = BILL_DETAILS_CONVERTER.convertDTOtoEntity(billDetails);
         billDetailsEntity.setPrice(product.getBasePrice());
         return BILL_DETAILS_DAO.insertNewBillDetails(billDetailsEntity);

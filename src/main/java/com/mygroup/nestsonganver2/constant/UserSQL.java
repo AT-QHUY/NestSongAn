@@ -13,9 +13,9 @@ public class UserSQL {
     
     // Create user
     
-    public static String insertNew = "INSERT  [dbo].[Users] (fullname, dateOfBirth, phoneNumber, address, username, password)\n"
+    public static String insertNew = "INSERT  [dbo].[Users] (fullname, phoneNumber, address, username, password)\n"
                                    + "VALUES\n"
-                                   + "(?, ?, ?, ?, ?, ?)";
+                                   + "(?, ?, ?, ?, ?)";
     
     // ------------------------------------------------------------------------
     
@@ -24,6 +24,7 @@ public class UserSQL {
     public static String findAll = "select * from Users where status = 1";
     public static String findById = "select * from Users where id = ? and status = 1";   
     public static String login = "select * from Users where username = ? and password = ? and status = 1";
+    public static String findByUsername = "select * from Users where username = ?";
     
     // ------------------------------------------------------------------------
     

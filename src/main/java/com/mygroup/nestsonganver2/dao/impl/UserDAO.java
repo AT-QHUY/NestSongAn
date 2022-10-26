@@ -32,7 +32,7 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     @Override
     public int createNewUser(UserEntity user) {
 
-        int id = insert(UserSQL.insertNew, user.getFullname(), user.getDateOfBirth(), user.getPhoneNumber(), user.getAddress(), user.getUsername(), user.getPassword());
+        int id = insert(UserSQL.insertNew, user.getFullname(), user.getPhoneNumber(), user.getAddress(), user.getUsername(), user.getPassword());
         return id;
     }
 
@@ -77,5 +77,12 @@ public class UserDAO extends AbstractDAO<UserEntity> implements IUserDAO {
     }
 
     // ----------------------------------------------------------------------
+
+    @Override
+    public UserEntity findUser(String username) {
+        List<UserEntity> list = query(UserSQL.findByUsername, new UserMapper(), username);
+        if(list != null && !list.isEmpty()) return list.get(0);
+        return new UserEntity();
+    }
 }
 

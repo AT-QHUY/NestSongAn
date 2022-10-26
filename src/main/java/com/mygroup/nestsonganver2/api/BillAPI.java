@@ -11,6 +11,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -152,13 +153,27 @@ public class BillAPI {
     }
 
     //--------------------------------------------------------------------------
-    //delete (change status)
+    // (change status)
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("update-status")
     public Response updateStatus(@QueryParam("id") int id, @QueryParam("status") int status) {
         int result = BILLS_SERVICE.updateStatus(id, status);
+        if (result == 0) {
+            return Response.notModified().build();
+        } else {
+            return Response.ok().build();
+        }
+    }
+    
+    //--------------------------------------------------------------------------
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("delete/{id}")
+    public Response deleteOrder(@PathParam("id") int id){
+          int result = BILLS_SERVICE.updateStatus(id, 4);
         if (result == 0) {
             return Response.notModified().build();
         } else {

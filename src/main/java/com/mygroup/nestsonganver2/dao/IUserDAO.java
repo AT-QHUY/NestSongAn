@@ -23,6 +23,8 @@ public interface IUserDAO extends IDao<UserEntity> {
     // Find User
     
     public UserEntity findUser(String username, String password);
+    
+    public UserEntity findUser(String username);
 
     public UserEntity findUser(int id);
     

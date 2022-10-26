@@ -45,7 +45,7 @@ public class BillDetailsConverter {
         return dto;
     }
 
-    public static BillDetailsEntity convertDTOtoEntity(BillDetailsDTO dto) {
+    public  BillDetailsEntity convertDTOtoEntity(BillDetailsDTO dto) {
         BillDetailsEntity entity = new BillDetailsEntity();
         entity.setId(dto.getId());
         entity.setPrice(dto.getProduct().getBasePrice()*(1-dto.getProduct().getDeal()));
@@ -57,17 +57,17 @@ public class BillDetailsConverter {
 
     public List<BillDetailsDTO> convertListEntitytoDTO(List<BillDetailsEntity> list) {
         List<BillDetailsDTO> result = new ArrayList<>();
-        for (BillDetailsEntity billDetailsEntity : list) {
+        list.forEach(billDetailsEntity -> {
             result.add(billDetailsConverter.convertEntitytoDTO(billDetailsEntity));
-        }
+        });
         return result;
     }
 
     public List<BillDetailsEntity> convertListDTOtoEntity(List<BillDetailsDTO> list) {
         List<BillDetailsEntity> result = new ArrayList<>();
-        for (BillDetailsDTO billDetailsDTO : list) {
+        list.forEach(billDetailsDTO -> {
             result.add(billDetailsConverter.convertDTOtoEntity(billDetailsDTO));
-        }
+        });
         return result;
     }
 }
