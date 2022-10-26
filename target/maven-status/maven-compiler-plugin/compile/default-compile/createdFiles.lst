@@ -46,12 +46,15 @@ com\mygroup\nestsonganver2\mapper\RoleMapper.class
 com\mygroup\nestsonganver2\dao\impl\BillDAO.class
 com\mygroup\nestsonganver2\dao\impl\NewsDAO.class
 com\mygroup\nestsonganver2\service\BillService.class
+com\mygroup\nestsonganver2\constant\MailService.class
 com\mygroup\nestsonganver2\converter\ImageConverter.class
 com\mygroup\nestsonganver2\dao\IUserDAO.class
 com\mygroup\nestsonganver2\dao\impl\ProductDAO.class
 com\mygroup\nestsonganver2\dao\IProductDAO.class
 com\mygroup\nestsonganver2\api\NewsAPI.class
+com\mygroup\nestsonganver2\constant\MailService$1.class
 com\mygroup\nestsonganver2\mapper\UserMapper.class
+com\mygroup\nestsonganver2\utils\MailConfig.class
 com\mygroup\nestsonganver2\entity\ProductEntity.class
 com\mygroup\nestsonganver2\api\ImageAPI.class
 com\mygroup\nestsonganver2\dao\impl\AbstractDAO.class

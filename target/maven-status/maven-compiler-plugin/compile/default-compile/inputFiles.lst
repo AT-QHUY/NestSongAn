@@ -39,6 +39,7 @@ D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\ICategoryDAO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\RoleEntity.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\BillService.java
+D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\MailConfig.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\BillConverter.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\AbstractDAO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\ProductDTO.java
@@ -75,3 +76,4 @@ D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\BillSQL.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\NewsConverter.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\ProductSQL.java
+D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\MailService.java

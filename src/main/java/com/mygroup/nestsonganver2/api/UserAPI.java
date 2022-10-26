@@ -100,7 +100,15 @@ public class UserAPI {
         } else {
             return Response.status(Response.Status.NOT_MODIFIED).build();
         }
-
+    }
+    
+    // Register
+    @POST
+    @Path("/register")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response register(UserDTO user) {
+        return null;
     }
 
     //--------------------------------------------------------------------------
