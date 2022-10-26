@@ -25,6 +25,7 @@ com\mygroup\nestsonganver2\entity\ImageEntity.class
 com\mygroup\nestsonganver2\entity\UserEntity.class
 com\mygroup\nestsonganver2\constant\ImageSQL.class
 com\mygroup\nestsonganver2\constant\RoleSQL.class
+com\mygroup\nestsonganver2\service\MailService.class
 com\mygroup\nestsonganver2\mapper\CategoryMapper.class
 com\mygroup\nestsonganver2\filter\TokenFilter.class
 com\mygroup\nestsonganver2\constant\CategorySQL.class
@@ -47,11 +48,13 @@ com\mygroup\nestsonganver2\dao\impl\BillDAO.class
 com\mygroup\nestsonganver2\dao\impl\NewsDAO.class
 com\mygroup\nestsonganver2\service\BillService.class
 com\mygroup\nestsonganver2\converter\ImageConverter.class
+com\mygroup\nestsonganver2\api\OTPAPI.class
 com\mygroup\nestsonganver2\dao\IUserDAO.class
 com\mygroup\nestsonganver2\dao\impl\ProductDAO.class
 com\mygroup\nestsonganver2\dao\IProductDAO.class
 com\mygroup\nestsonganver2\api\NewsAPI.class
 com\mygroup\nestsonganver2\mapper\UserMapper.class
+com\mygroup\nestsonganver2\utils\MailConfig.class
 com\mygroup\nestsonganver2\entity\ProductEntity.class
 com\mygroup\nestsonganver2\api\ImageAPI.class
 com\mygroup\nestsonganver2\dao\impl\AbstractDAO.class
@@ -73,5 +76,6 @@ com\mygroup\nestsonganver2\converter\ProductConverter.class
 com\mygroup\nestsonganver2\utils\Utils.class
 com\mygroup\nestsonganver2\dto\UserDTO.class
 com\mygroup\nestsonganver2\dao\IBillDetailsDAO.class
+com\mygroup\nestsonganver2\service\MailService$1.class
 com\mygroup\nestsonganver2\service\CartService.class
 com\mygroup\nestsonganver2\dao\IRoleDAO.class
