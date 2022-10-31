@@ -10,8 +10,8 @@ package com.mygroup.nestsonganver2.constant;
  */
 public class BillSQL {
     //create new bill
-    public static String insertNew = "INSERT INTO Bills (date,status,customerId,empId,TotalPrice,address,phoneNumber)\n"
-                                        + "VALUES(?,?,?,?,?,?,?)";
+    public static String insertNew = "INSERT INTO Bills (date,status,customerId,empId,TotalPrice,address,phoneNumber,payment_status_id)\n"
+                                        + "VALUES(?,?,?,?,?,?,?,?)";
     public static String insertNewCart = "INSERT INTO Bills (date,status,customerId,empId)\n"
                                         + "VALUES(?,?,?,?)";
     
@@ -26,7 +26,8 @@ public class BillSQL {
     //--------------------------------------------------------------------------
     //Update bill
     public static String updateStatus = "update Bills set status = ? where id = ?";
-    public static String updateBill = "update Bills set date = ?, status = ?, customerId = ?, empId = ?, TotalPrice=?, address=?, phoneNumber=? where id=?";
+    public static String updateBill = "update Bills set date = ?, status = ?, customerId = ?, empId = ?, "
+                                    + " TotalPrice=?, address=?, phoneNumber=?,  payment_status_id = ? where id=?";
     
     //--------------------------------------------------------------------------
     

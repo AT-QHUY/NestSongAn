@@ -72,6 +72,7 @@ public class CartService {
         this.bill.setTotalPrice(calTotalPrice());
         this.bill.setEmpId(1);
         this.bill.setStatus(2);
+        this.bill.setPaymentStatusCodeId(user.getPaymentStatusCodeId());
         if (billService.updateBill(this.bill.getId(), bill) > 0) {
             BillDTO result = this.bill;
             this.bill = null;

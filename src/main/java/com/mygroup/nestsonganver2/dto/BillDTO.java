@@ -19,6 +19,8 @@ public class BillDTO {
     private float TotalPrice;
     private String address;
     private String phoneNumber;
+    private String paymentStatusCode;
+    private int paymentStatusCodeId;
     
     private static BillDTO billDTO = null;
 
@@ -33,7 +35,8 @@ public class BillDTO {
     }
 
 
-    public BillDTO(int id, Date date, int status, int customerId, int empId, List<BillDetailsDTO> listBillDetails, float TotalPrice, String address, String phoneNumber) {
+    public BillDTO(int id, Date date, int status, int customerId, int empId, List<BillDetailsDTO> listBillDetails,
+                   float TotalPrice, String address, String phoneNumber, String paymentStatusCode, int paymentStatusCodeId ) {
         this.id = id;
         this.date = date;
         this.status = status;
@@ -43,7 +46,36 @@ public class BillDTO {
         this.TotalPrice = TotalPrice;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.paymentStatusCode = paymentStatusCode;
+        this.paymentStatusCodeId = paymentStatusCodeId;
     }
+
+    public String getPaymentStatusCode() {
+        return paymentStatusCode;
+    }
+
+    public void setPaymentStatusCode(String paymentStatusCode) {
+        this.paymentStatusCode = paymentStatusCode;
+    }
+
+    public static BillDTO getBillDTO() {
+        return billDTO;
+    }
+
+    public static void setBillDTO(BillDTO billDTO) {
+        BillDTO.billDTO = billDTO;
+    }
+
+    public int getPaymentStatusCodeId() {
+        return paymentStatusCodeId;
+    }
+
+    public void setPaymentStatusCodeId(int paymentStatusCodeId) {
+        this.paymentStatusCodeId = paymentStatusCodeId;
+    }
+    
+    
+    
 
     public String getAddress() {
         return address;

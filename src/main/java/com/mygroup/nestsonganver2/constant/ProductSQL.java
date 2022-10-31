@@ -54,7 +54,7 @@ public class ProductSQL {
             + "where id=?";
 
     //show all product *
-    public static String showAll = "select * from dbo.Products";
+    public static String showAll = "select * from dbo.Products where status = 1";
 
     public static String setProductStatus = "update dbo.Products\n"
             + "set status=?\n"

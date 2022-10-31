@@ -16,20 +16,22 @@ public class BillEntity {
     private float TotalPrice;
     private String address;
     private String phoneNumber;
+    private int paymentStatusId;
 
     public BillEntity() {
     }
 
-    public BillEntity(int id, Date date, int status, int customerId, int empId, float TotalPrice) {
+    public BillEntity(int id, Date date, int status, int customerId, int empId, float TotalPrice,int paymentStatusId) {
         this.id = id;
         this.date = date;
         this.status = status;
         this.customerId = customerId;
         this.empId = empId;
         this.TotalPrice = TotalPrice;
+        this.paymentStatusId = paymentStatusId;
     }
 
-    public BillEntity(int id, Date date, int status, int customerId, int empId, float TotalPrice, String address, String phoneNumber) {
+    public BillEntity(int id, Date date, int status, int customerId, int empId, float TotalPrice, String address, String phoneNumber, int paymentStatusId) {
         this.id = id;
         this.date = date;
         this.status = status;
@@ -38,6 +40,7 @@ public class BillEntity {
         this.TotalPrice = TotalPrice;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.paymentStatusId = paymentStatusId;
     }
 
     public String getAddress() {
@@ -103,6 +106,16 @@ public class BillEntity {
     public void setEmpId(int empId) {
         this.empId = empId;
     }
+
+    public int getPaymentStatusId() {
+        return paymentStatusId;
+    }
+
+    public void setPaymentStatusId(int paymentStatusId) {
+        this.paymentStatusId = paymentStatusId;
+    }
+    
+    
 
 }
 

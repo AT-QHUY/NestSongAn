@@ -29,14 +29,15 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
     //create new bill
     @Override
     public int createNewBill(BillEntity bill) {
-        int id = insert(BillSQL.insertNew, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId(), bill.getTotalPrice(), bill.getAddress(), bill.getPhoneNumber());
+        int id = insert(BillSQL.insertNew, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId(),
+                         bill.getTotalPrice(), bill.getAddress(), bill.getPhoneNumber(), bill.getPaymentStatusId());
         return id;
     }
-    
+
     @Override
-    public int createNewCart(BillEntity bill){
+    public int createNewCart(BillEntity bill) {
         int id = insert(BillSQL.insertNewCart, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId());
-        return  id;
+        return id;
     }
 
     //--------------------------------------------------------------------------
@@ -85,11 +86,13 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
         list = query(BillSQL.findByEmpId, new BillMapper(), empId);
         return list;
     }
-    
+
     public BillEntity findLastBill(int userId) {
         List<BillEntity> list = new ArrayList<>();
-        list = query ("SELECT TOP 1 * FROM Bills WHERE [customerId] = ? ORDER BY id DESC ", new BillMapper(), userId);
-        if (list.isEmpty() || list == null) return null;
+        list = query("SELECT TOP 1 * FROM Bills WHERE [customerId] = ? ORDER BY id DESC ", new BillMapper(), userId);
+        if (list.isEmpty() || list == null) {
+            return null;
+        }
         return list.get(0);
     }
 
@@ -97,7 +100,8 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
     // update bill
     @Override
     public int updateBill(BillEntity bill) {
-        int result = update(BillSQL.updateBill, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId(), bill.getTotalPrice(), bill.getAddress(), bill.getPhoneNumber(), bill.getId());
+        int result = update(BillSQL.updateBill, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId(),
+                            bill.getTotalPrice(), bill.getAddress(), bill.getPhoneNumber(), bill.getPaymentStatusId(), bill.getId());
         return result;
     }
 

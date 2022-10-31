@@ -32,6 +32,8 @@ public class UserDTO {
     private String address;
     private String password;
     private RoleEntity role;
+    private int paymentStatusCodeId;
+    private int status;
 
     //missing list employee
 
@@ -48,6 +50,24 @@ public class UserDTO {
         this.password = password;
         this.role = role;
      
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
+    
+
+    public int getPaymentStatusCodeId() {
+        return paymentStatusCodeId;
+    }
+
+    public void setPaymentStatusCodeId(int paymentStatusCodeId) {
+        this.paymentStatusCodeId = paymentStatusCodeId;
     }
     
     

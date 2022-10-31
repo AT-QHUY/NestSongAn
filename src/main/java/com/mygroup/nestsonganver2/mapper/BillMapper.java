@@ -29,6 +29,7 @@ public class BillMapper implements RowMapper<BillEntity> {
             bill.setTotalPrice(rs.getFloat("TotalPrice"));
             bill.setAddress(rs.getString("address"));
             bill.setPhoneNumber(rs.getString("phoneNumber"));
+            bill.setPaymentStatusId(rs.getInt("payment_status_id"));
             return bill;
         } catch (SQLException ex) {
             Logger.getLogger(UserMapper.class.getName()).log(Level.SEVERE, null, ex);
