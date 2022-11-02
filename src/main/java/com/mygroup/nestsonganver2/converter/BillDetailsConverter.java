@@ -6,27 +6,46 @@ package com.mygroup.nestsonganver2.converter;
 
 import com.mygroup.nestsonganver2.dao.impl.ProductDAO;
 import com.mygroup.nestsonganver2.dto.BillDetailsDTO;
+import com.mygroup.nestsonganver2.dto.ProductDTO;
 import com.mygroup.nestsonganver2.entity.BillDetailsEntity;
+import com.mygroup.nestsonganver2.entity.ProductEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Silver King
  */
 public class BillDetailsConverter {
+
     private static ProductDAO productDAO = ProductDAO.getInstance();
     private static ProductConverter productConverter = ProductConverter.getInstance();
     
-    public static BillDetailsDTO convertEntitytoDTO(BillDetailsEntity entity){
+    private static BillDetailsConverter billDetailsConverter = null;
+    
+    public static BillDetailsConverter getInstance(){
+        if (billDetailsConverter==null){
+            billDetailsConverter = new BillDetailsConverter();
+        }
+        return billDetailsConverter;
+    }
+    
+    public BillDetailsDTO convertEntitytoDTO(BillDetailsEntity entity) {
         BillDetailsDTO dto = new BillDetailsDTO();
         dto.setId(entity.getId());
         dto.setPrice(entity.getPrice());
         dto.setQuantity(entity.getQuantity());
-        dto.setProduct(productConverter.convertEntitytoDTO(productDAO.getProductById(entity.getId())));
+        ProductEntity product = productDAO.getProductById(entity.getProductId());
+        if (product == null) {
+            dto.setProduct(new ProductDTO());
+        } else {
+            dto.setProduct(productConverter.convertEntitytoDTO(product));
+        }
         dto.setBillId(entity.getBillId());
         return dto;
     }
-    
-    public static BillDetailsEntity convertDTOtoEntity(BillDetailsDTO dto){
+
+    public BillDetailsEntity convertDTOtoEntity(BillDetailsDTO dto) {
         BillDetailsEntity entity = new BillDetailsEntity();
         entity.setId(dto.getId());
         entity.setPrice(dto.getPrice());
@@ -34,5 +53,21 @@ public class BillDetailsConverter {
         entity.setProductId(dto.getProduct().getId());
         entity.setBillId(dto.getBillId());
         return entity;
+    }
+
+    public List<BillDetailsDTO> convertListEntitytoDTO(List<BillDetailsEntity> list) {
+        List<BillDetailsDTO> result = new ArrayList<>();
+        for (BillDetailsEntity billDetailsEntity : list) {
+            result.add(billDetailsConverter.convertEntitytoDTO(billDetailsEntity));
+        }
+        return result;
+    }
+
+    public List<BillDetailsEntity> convertListDTOtoEntity(List<BillDetailsDTO> list) {
+        List<BillDetailsEntity> result = new ArrayList<>();
+        for (BillDetailsDTO billDetailsDTO : list) {
+            result.add(billDetailsConverter.convertDTOtoEntity(billDetailsDTO));
+        }
+        return result;
     }
 }

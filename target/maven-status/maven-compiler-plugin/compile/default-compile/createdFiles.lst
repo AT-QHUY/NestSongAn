@@ -12,9 +12,11 @@ com\mygroup\nestsonganver2\entity\NewsEntity.class
 com\mygroup\nestsonganver2\service\CategoryService.class
 com\mygroup\nestsonganver2\utils\SessionUtils.class
 com\mygroup\nestsonganver2\constant\BillSQL.class
+com\mygroup\nestsonganver2\constant\CommentSQL.class
 com\mygroup\nestsonganver2\converter\BillDetailsConverter.class
 com\mygroup\nestsonganver2\converter\BillConverter.class
 com\mygroup\nestsonganver2\api\CategoryAPI.class
+com\mygroup\nestsonganver2\converter\CommentConverter.class
 com\mygroup\nestsonganver2\converter\CategoryConverter.class
 com\mygroup\nestsonganver2\dto\BillDTO.class
 com\mygroup\nestsonganver2\dto\Filter.class
@@ -29,8 +31,11 @@ com\mygroup\nestsonganver2\filter\TokenFilter.class
 com\mygroup\nestsonganver2\constant\CategorySQL.class
 com\mygroup\nestsonganver2\dao\IDao.class
 com\mygroup\nestsonganver2\dao\impl\RoleDAO.class
+com\mygroup\nestsonganver2\entity\CommentEntity.class
 com\mygroup\nestsonganver2\dao\IBillDAO.class
 com\mygroup\nestsonganver2\dao\impl\UserDAO.class
+com\mygroup\nestsonganver2\dto\CommentDTO.class
+com\mygroup\nestsonganver2\mapper\CommentMapper.class
 com\mygroup\nestsonganver2\mapper\ImageMapper.class
 com\mygroup\nestsonganver2\service\ImageService.class
 com\mygroup\nestsonganver2\service\NewsService.class
@@ -38,6 +43,8 @@ com\mygroup\nestsonganver2\converter\NewsConverter.class
 com\mygroup\nestsonganver2\api\BillDetailsAPI.class
 com\mygroup\nestsonganver2\entity\BillEntity.class
 com\mygroup\nestsonganver2\api\UserAPI.class
+com\mygroup\nestsonganver2\dao\impl\CommentDAO.class
+com\mygroup\nestsonganver2\api\CommentAPI.class
 com\mygroup\nestsonganver2\dao\impl\CategoryDAO.class
 com\mygroup\nestsonganver2\mapper\NewsMapper.class
 com\mygroup\nestsonganver2\mapper\ProductMapper.class
@@ -45,6 +52,8 @@ com\mygroup\nestsonganver2\mapper\RoleMapper.class
 com\mygroup\nestsonganver2\dao\impl\BillDAO.class
 com\mygroup\nestsonganver2\dao\impl\NewsDAO.class
 com\mygroup\nestsonganver2\service\BillService.class
+com\mygroup\nestsonganver2\service\CommentService.class
+com\mygroup\nestsonganver2\dao\ICommentDAO.class
 com\mygroup\nestsonganver2\converter\ImageConverter.class
 com\mygroup\nestsonganver2\dao\IUserDAO.class
 com\mygroup\nestsonganver2\dao\impl\ProductDAO.class

@@ -49,4 +49,7 @@ public class ProductSQL {
             + "offset ? row\n"
             + "fetch next ? rows only";
 
+    public static String SubstractQuantity= "update* from dbo.Products\n"
+            +"set status = ?"
+            +"where id = ?";
 }

@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class BillDetailsService {
 
-    private static final BillDetailsDAO billDetailsDAO = BillDetailsDAO.getInstance();
-
+    private static final BillDetailsDAO BILL_DETAILS_DAO = BillDetailsDAO.getInstance();
+    private static final BillDetailsConverter BILL_DETAILS_CONVERTER = BillDetailsConverter.getInstance();
     private static BillDetailsService billDetailsService = null;
 
     public static BillDetailsService getInstance() {
@@ -31,52 +31,49 @@ public class BillDetailsService {
     //--------------------------------------------------------------------------
     //insert new bill details
     public int insertNewBillDetails(BillDetailsDTO billDetails) {
-        return billDetailsDAO.insertNewBillDetails(BillDetailsConverter.convertDTOtoEntity(billDetails));
+        return BILL_DETAILS_DAO.insertNewBillDetails(BILL_DETAILS_CONVERTER.convertDTOtoEntity(billDetails));
     }
 
     //--------------------------------------------------------------------------
     //find bill details by...
     public List<BillDetailsDTO> findAll() {
         List<BillDetailsDTO> result = new ArrayList<>();
-        List<BillDetailsEntity> listEntity = billDetailsDAO.findAll();
+        List<BillDetailsEntity> listEntity = BILL_DETAILS_DAO.findAll();
         if (!listEntity.isEmpty()) {
-            for (BillDetailsEntity billDetailsEntity : listEntity) {
-                result.add(BillDetailsConverter.convertEntitytoDTO(billDetailsEntity));
-            }
+            result = BILL_DETAILS_CONVERTER.convertListEntitytoDTO(listEntity);
         }
         return result;
     }
 
     public List<BillDetailsDTO> findByBillId(int id) {
         List<BillDetailsDTO> result = new ArrayList<>();
-        List<BillDetailsEntity> listEntity = billDetailsDAO.findByBillId(id);
+
+        List<BillDetailsEntity> listEntity = BILL_DETAILS_DAO.findByBillId(id);
         if (!listEntity.isEmpty()) {
-            for (BillDetailsEntity billDetailsEntity : listEntity) {
-                result.add(BillDetailsConverter.convertEntitytoDTO(billDetailsEntity));
-            }
+            result = BILL_DETAILS_CONVERTER.convertListEntitytoDTO(listEntity);
         }
         return result;
     }
-    
-    public BillDetailsDTO findById(int id){
+
+    public BillDetailsDTO findById(int id) {
         BillDetailsDTO result = null;
-        BillDetailsEntity entity = billDetailsDAO.findById(id);
-        if (entity!=null){
-            result = BillDetailsConverter.convertEntitytoDTO(entity);
+        BillDetailsEntity entity = BILL_DETAILS_DAO.findById(id);
+        if (entity != null) {
+            result = BILL_DETAILS_CONVERTER.convertEntitytoDTO(entity);
         }
         return result;
     }
-    
+
     //--------------------------------------------------------------------------
     //update
-    public int updateBillDetails(int id, BillDetailsDTO billDetails){
+    public int updateBillDetails(int id, BillDetailsDTO billDetails) {
         billDetails.setId(id);
-        return billDetailsDAO.updateBillDetails(BillDetailsConverter.convertDTOtoEntity(billDetails));
+        return BILL_DETAILS_DAO.updateBillDetails(BILL_DETAILS_CONVERTER.convertDTOtoEntity(billDetails));
     }
-    
+
     //--------------------------------------------------------------------------
     //delete 
-    public int deleteBillDetails(BillDetailsDTO billDetails){
-        return billDetailsDAO.deleteBillDetails(BillDetailsConverter.convertDTOtoEntity(billDetails));
+    public int deleteBillDetails(BillDetailsDTO billDetails) {
+        return BILL_DETAILS_DAO.deleteBillDetails(BILL_DETAILS_CONVERTER.convertDTOtoEntity(billDetails));
     }
 }

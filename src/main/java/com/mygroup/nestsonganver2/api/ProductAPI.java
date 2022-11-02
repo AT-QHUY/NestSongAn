@@ -76,7 +76,7 @@ public class ProductAPI {
         if (id == 0) {
             return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
-            URI uri = new URI(ui.getBaseUri() + "Product/" + id);
+            URI uri = new URI(ui.getBaseUri() + "product/" + id);
             return Response.created(uri).build();
         }
 
@@ -119,7 +119,7 @@ public class ProductAPI {
         if (result == 0) 
             return Response.notModified().build();       
         else {
-            URI uri = new URI(ui.getBaseUri() + "Product/" + isbn);
+            URI uri = new URI(ui.getBaseUri() + "product/" + isbn);
             return Response.created(uri).build();
         }
         //return ve trang product
@@ -134,7 +134,7 @@ public class ProductAPI {
         if (result == 0) 
             return Response.notModified().build();       
         else {
-            URI uri = new URI(ui.getBaseUri() + "Product/" + isbn);
+            URI uri = new URI(ui.getBaseUri() + "product/" + isbn);
             return Response.created(uri).build();
         }
     }
@@ -144,7 +144,7 @@ public class ProductAPI {
     @Path("/filter")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterProducts(List<Filter> filter) throws NoSuchAlgorithmException {      
+    public Response filterProducts(Filter filter) throws NoSuchAlgorithmException {      
         List<ProductDTO> list = productService.filter(filter);
         if (list == null || list.isEmpty()) 
             return Response.status(Response.Status.NOT_MODIFIED).build();       
@@ -164,4 +164,6 @@ public class ProductAPI {
 
         return Response.ok(product, MediaType.APPLICATION_JSON).build();
     }
+    
+
 }

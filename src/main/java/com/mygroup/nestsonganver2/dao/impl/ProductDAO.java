@@ -11,6 +11,7 @@ import com.mygroup.nestsonganver2.mapper.ProductMapper;
 import java.util.List;
 import com.mygroup.nestsonganver2.dto.Filter;
 import java.text.DecimalFormat;
+
 /**
  *
  * @author ADMIN
@@ -63,75 +64,98 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
         DecimalFormat df = new DecimalFormat("#.0");
         return update(ProductSQL.updateProduct, product.getName(), product.getQuantity(), df.format(product.getDeal()), product.getDescription(), df.format(product.getBasePrice()), product.getCateId(), product.getId());
     }
-    
+
     @Override
-    public int setProductStatus(int isbn, int status) {   
-        return update(ProductSQL.setProductStatus,status, isbn);
+    public int setProductStatus(int isbn, int status) {
+        return update(ProductSQL.setProductStatus, status, isbn);
     }
 
     @Override
-    public List<ProductEntity> filter(List<Filter> filter) {
+    public List<ProductEntity> filter(Filter filter) {
         List<ProductEntity> productList = query(ProductSQL.showAll, productMapper);
-        if (productList==null)
+        if (productList == null) {
             return null;
-        else
-        while (!filter.isEmpty()) {
-            productList = checkFilter(productList, filter.get(0).getName(), filter.get(0).getProperties());
-            filter.remove(0);
         }
-         return (productList ==null ||productList.isEmpty()) ? null : productList;
+        productList = checkFilter(productList, filter);
+
+        return (productList == null || productList.isEmpty()) ? null : productList;
     }
 
-    private List<ProductEntity> checkFilter(List<ProductEntity> productList, String object, String properties) {
-        switch (object) {
-            case "priceLow":
-                for (int i = 0; i < productList.size();) {
-                    if (productList.get(i).getBasePrice() < Float.parseFloat(properties)) {
+    private List<ProductEntity> checkFilter(List<ProductEntity> productList, Filter filter) {
+        int count = 0;
+        if (filter.getName() != null && !filter.getName().isEmpty()) {
+            for (int i = 0; i < productList.size();) {
+                for (int j = 0; j < filter.getName().size(); j++) {
+                    if (!filter.getName().get(j).equals("100g") && !filter.getName().get(j).equals("50g")){
+                    if (!productList.get(i).getName().toLowerCase().contains(filter.getName().get(j))) {
                         productList.remove(i);
-                    }else i++;
-                }
-                return productList;
-            case "priceHigh":
-                for (int i = 0; i < productList.size();) {
-                    if (productList.get(i).getBasePrice() > Float.parseFloat(properties)) {
-                        productList.remove(i);
-                    }else i++;
-                }
-                return productList;
-            case "deal":
-                for (int i = 0; i != productList.size();) {
-                    if (productList.get(i).getDeal() < Float.parseFloat(properties)) {
-                        productList.remove(i);
-                    }else i++;
-                }
-
-                return productList;
-
-            case "name":
-                for (int i = 0; i < productList.size();) {
-                    if (!productList.get(i).getName().toLowerCase().contains(properties.toLowerCase())) {
-                        productList.remove(i);
+                        break;
+                    }else
+                    {
+                        if (productList.get(i).getName().toLowerCase().contains(filter.getName().get(j))) {
+                        count++;
                     }
-                    else i++;
+                    }
+                    if (count == 0) {
+                    productList.remove(i);
+                } else {
+                    i++;
                 }
-                return productList;
-            case "cateId":
-                for (int i = 0; i < productList.size();) {
-                    if (productList.get(i).getCateId() != Integer.parseInt(properties)) {
-                        productList.remove(i);
-                    } else i++;
+                } 
+            }
+      
+            }
+        }
+        if (filter.getLowPrice() != 0) {
+            for (int i = 0; i < productList.size();) {
+                if (productList.get(i).getBasePrice() < filter.getLowPrice()) {
+                    productList.remove(i);
+                } else {
+                    i++;
                 }
-
-                return productList;
+            }
+        }
+        if (filter.getHighPrice() != 0) {
+            for (int i = 0; i < productList.size();) {
+                if (productList.get(i).getBasePrice() > filter.getHighPrice()) {
+                    productList.remove(i);
+                } else {
+                    i++;
+                }
+            }
+        }
+        if (filter.getCateId() != 0) {
+            for (int i = 0; i < productList.size();) {
+                if (productList.get(i).getCateId() != filter.getCateId()) {
+                    productList.remove(i);
+                } else {
+                    i++;
+                }
+            }
+        }
+        if (filter.getDeal() != 0) {
+            for (int i = 0; i < productList.size();) {
+                if (productList.get(i).getDeal() != filter.getDeal()) {
+                    productList.remove(i);
+                } else {
+                    i++;
+                }
+            }
         }
         return productList;
     }
-    
-     @Override
-    public List<ProductEntity> getProductByPages(int page,int limit) {
-        int numberOfProducts= limit* (page-1);
+
+    @Override
+    public List<ProductEntity> getProductByPages(int page, int limit) {
+        int numberOfProducts = limit * (page - 1);
         List<ProductEntity> productList = query(ProductSQL.getProductByPages, productMapper, numberOfProducts, limit);
         return (productList.isEmpty()) ? null : productList;
     }
-    
+
+    @Override
+    public int substractQuantity(int id, int quantity) {
+        List<ProductEntity> productList = query(ProductSQL.getProductById, productMapper, id);
+        int newQuantity = productList.get(0).getQuantity() - quantity;
+        return update(ProductSQL.setProductStatus, newQuantity, id);
+    }
 }
