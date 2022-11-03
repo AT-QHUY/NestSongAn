@@ -81,20 +81,28 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
     }
 
     private List<ProductEntity> checkFilter(List<ProductEntity> productList, Filter filter) {
+        int count = 0;
         if (filter.getName() != null && !filter.getName().isEmpty()) {
             for (int i = 0; i < productList.size();) {
-                int count = 0;
                 for (int j = 0; j < filter.getName().size(); j++) {
-                    if (productList.get(i).getName().toLowerCase().contains(filter.getName().get(j))) {
+                    if (!filter.getName().get(j).equals("100g") && !filter.getName().get(j).equals("50g")){
+                    if (!productList.get(i).getName().toLowerCase().contains(filter.getName().get(j))) {
+                        productList.remove(i);
+                        break;
+                    }else
+                    {
+                        if (productList.get(i).getName().toLowerCase().contains(filter.getName().get(j))) {
                         count++;
                     }
-
-                }
-                if (count == 0) {
+                    }
+                    if (count == 0) {
                     productList.remove(i);
                 } else {
                     i++;
                 }
+                } 
+            }
+      
             }
         }
         if (filter.getLowPrice() != 0) {
