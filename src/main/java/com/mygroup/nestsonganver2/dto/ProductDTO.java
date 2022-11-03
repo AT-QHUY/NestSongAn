@@ -24,6 +24,9 @@ public class ProductDTO {
     private String image;
 
     private List<ImageDTO> listImages = new ArrayList<>();
+    
+     private List<String> listStringImages = new ArrayList<>();
+
 
     public ProductDTO() {
     }
@@ -119,4 +122,13 @@ public class ProductDTO {
         this.listImages = listImages;
     }
 
+    public List<String> getListStringImages() {
+        return listStringImages;
+    }
+
+    public void setListStringImages(List<String> listStringImages) {
+        this.listStringImages = listStringImages;
+    }
+
+    
 }

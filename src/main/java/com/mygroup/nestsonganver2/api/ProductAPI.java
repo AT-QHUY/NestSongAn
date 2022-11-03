@@ -98,7 +98,7 @@ public class ProductAPI {
     
 
     //add new product
-    @PUT
+    @POST
     @Path("/add")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -175,11 +175,11 @@ public class ProductAPI {
     }
     
     @PUT
-    @Path("/reactive/{isbn}")
+    @Path("/status/{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response reactiveProduct(@PathParam("isbn") int isbn)throws URISyntaxException, NoSuchAlgorithmException {
-        int result = productService.setProductStatus(isbn,1);
+    public Response reactiveProduct(@PathParam("isbn") int isbn, ProductDTO dto)throws URISyntaxException, NoSuchAlgorithmException {
+        int result = productService.setProductStatus(isbn, dto.getStatus());
         if (result == 0) 
             return Response.notModified().build();       
         else {
