@@ -64,6 +64,14 @@ public class UserService {
         }
         return 0;
     }
+    
+    public String checkLogin(String email){
+        UserEntity entity = userDAO.findUser(email);
+        if (entity != null && entity.getId() != 0) {
+            return converter.ConvertEntitytoToken(entity);
+        }
+        return null;
+    }
 
     public UserDTO getUserById(int userId, int tokenId, String tokenRole) {
         if (tokenRole.equalsIgnoreCase("admin")

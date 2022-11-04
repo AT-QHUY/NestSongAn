@@ -57,6 +57,21 @@ public class UserAPI {
         }
 
     }
+    
+    @POST
+    @Path("login-google")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getLoginGoogle(UserDTO dto) {
+        String token = userService.checkLogin(dto.getUsername());
+        if (token == null) {
+            return Response.status(Response.Status.NOT_MODIFIED).build();
+        }
+        else {
+            return Response.ok(token, MediaType.APPLICATION_JSON).build();
+        }
+
+    }
     // -------------------------------------------------------------------------
 
     // Get user by page

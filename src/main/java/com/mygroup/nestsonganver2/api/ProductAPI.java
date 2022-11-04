@@ -59,6 +59,18 @@ public class ProductAPI {
 
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
     }
+    
+    @GET
+    @Path("count-on-bill")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCountOnBill() {
+
+        List<ProductDTO> list = productService.getCountOnBill();
+        if (list == null || list.isEmpty()) 
+            return Response.status(Response.Status.NOT_MODIFIED).build();
+
+            return Response.ok(list, MediaType.APPLICATION_JSON).build();
+    }
 
     //search products by name
     @GET
