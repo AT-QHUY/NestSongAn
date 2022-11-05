@@ -29,9 +29,10 @@ public class CommentMapper implements RowMapper{
         try {
             CommentEntity comment = new CommentEntity();
             comment.setId(rs.getInt("id"));
+            comment.setUserId(rs.getInt("userId"));
             comment.setProductId(rs.getInt("productId"));
             comment.setComment(rs.getString("comment"));
-
+            comment.setRating(rs.getInt("rating"));
             return comment;
         } catch (SQLException ex) {
             Logger.getLogger(CommentMapper.class.getName()).log(Level.SEVERE, null, ex);

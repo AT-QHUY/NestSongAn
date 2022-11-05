@@ -28,4 +28,6 @@ public interface IDao<T> {
     Integer insert(String sql, Object... parameters);
     
     int queryCount(String sql, Object... parameters);
+    
+    double getRating(String sql, Object... parameters);
 }

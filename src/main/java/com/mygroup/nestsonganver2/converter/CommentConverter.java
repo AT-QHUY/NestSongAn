@@ -15,8 +15,10 @@ public class CommentConverter {
     public static CommentDTO convertEntitytoDTO(CommentEntity entity){
         CommentDTO dto = new CommentDTO();
         dto.setId(entity.getId());
+        dto.setUserId(entity.getUserId());
         dto.setProductId(entity.getProductId());
         dto.setComment(entity.getComment());
+        dto.setRating(entity.getRating());
         return dto;
     }   
     // -----------------------------------------------------------------------
@@ -26,8 +28,10 @@ public class CommentConverter {
     public static CommentEntity convertDTOtoEntity(CommentDTO dto){
         CommentEntity entity = new CommentEntity();
         entity.setId(dto.getId());
+        entity.setUserId(dto.getUserId());
         entity.setProductId(dto.getProductId());
         entity.setComment(dto.getComment());
+        entity.setRating(dto.getRating());
         return entity;
     } 
 }
