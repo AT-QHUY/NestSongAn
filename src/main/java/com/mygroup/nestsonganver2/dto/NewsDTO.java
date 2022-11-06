@@ -20,7 +20,8 @@ public class NewsDTO {
     private String title;
     private int empId;
     private String imagePath;
-    
+    private NewsCategoryEntity cate;
+
     private List<ImageDTO> listImages = new ArrayList<>(); 
     
     public NewsDTO() {
@@ -33,6 +34,25 @@ public class NewsDTO {
         this.shortDescription = shortDescription;
         this.empId = empId;
     }
+
+    public NewsDTO(int id, String description, String shortDescription, String title, int empId, NewsCategoryEntity cate) {
+        this.id = id;
+        this.description = description;
+        this.shortDescription = shortDescription;
+        this.title = title;
+        this.empId = empId;
+        this.cate = cate;
+    }
+
+    public NewsCategoryEntity getCate() {
+        return cate;
+    }
+
+    public void setCate(NewsCategoryEntity cate) {
+        this.cate = cate;
+    }
+    
+    
 
     public int getId() {
         return id;

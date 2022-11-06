@@ -12,6 +12,7 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\BillDetailsDAO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\PaymentStatusDAO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\BillDetailsAPI.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\NewsCategorySQL.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\CategoryDAO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\BillStatusService.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IDao.java
@@ -69,6 +70,7 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\NewsConverter.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\CategorySQL.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IUserDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\INewsCategoryDAO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\CategoryService.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\BillDetailsConverter.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IProductDAO.java
@@ -83,6 +85,7 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IImageDAO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\RoleMapper.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\BillConverter.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\NewsCategoryService.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\BillStatusDTO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\PaymentStatusMapper.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\ProductService.java
@@ -92,11 +95,14 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\CartAPI.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\BillStatusEntity.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\RoleDTO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\NewsCategoryMapper.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\ProductAPI.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\NewsAPI.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\UserMapper.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\PaymentStatusSQL.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\NewsCategoryEntity.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\NewsSQL.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\CategoryEntity.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\NewsCategoryDAO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\PaymentStatusEntity.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\AbstractDAO.java
