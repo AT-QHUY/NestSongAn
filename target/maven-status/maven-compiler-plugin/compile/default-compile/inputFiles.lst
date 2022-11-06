@@ -15,8 +15,10 @@ D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\RoleEntity.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\BillService.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\MailService.java
+D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\NewsCategorySQL.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\MailConfig.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\AbstractDAO.java
+D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\INewsCategoryDAO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\Utils.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\ImageDTO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\BillMapper.java
@@ -55,6 +57,7 @@ D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\BillDetailsEntity.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IUserDAO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\UserConverter.java
+D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\NewsCategoryDAO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\UserDTO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\PaymentStatusEntity.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\BillAPI.java
@@ -66,9 +69,11 @@ D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IBillDetailsDAO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\NewsDTO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\NewsMapper.java
+D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\NewsCategoryService.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\PaymentStatusDAO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\BillDTO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\NewsAPI.java
+D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\NewsCategoryMapper.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\ICategoryDAO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\BillStatusEntity.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\BillConverter.java
@@ -77,6 +82,7 @@ D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\ImageAPI.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\ProductService.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\OTPAPI.java
+D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\NewsCategoryEntity.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\CategorySQL.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\BillStatusDTO.java
 D:\FPT\SWP391\Product\Clone\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\ImageDAO.java
