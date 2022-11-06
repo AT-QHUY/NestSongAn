@@ -176,5 +176,6 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
         dtoList = query(ProductSQL.totalProductOnBill, productMapper.mapRowWithTotalOnBill);
         return (dtoList.isEmpty()) ? null : dtoList;
     }
+    
 
 }

@@ -6,6 +6,7 @@ package com.mygroup.nestsonganver2.service;
 
 import com.mygroup.nestsonganver2.converter.NewsConverter;
 import com.mygroup.nestsonganver2.dao.impl.NewsDAO;
+import com.mygroup.nestsonganver2.dto.ImageDTO;
 import com.mygroup.nestsonganver2.dto.NewsDTO;
 import com.mygroup.nestsonganver2.entity.NewsCategoryEntity;
 import com.mygroup.nestsonganver2.entity.NewsEntity;
@@ -18,6 +19,7 @@ import java.util.List;
  */
 public class NewsService {
 
+    public ImageService imageService = ImageService.getImageService();
     public static NewsService instance;
 
     public static NewsService getNewsService() {
@@ -146,6 +148,14 @@ public class NewsService {
         add.setCateId(dto.getCate().getId());
 
         int id = newsDAO.addNews(add);
+        if (id != 0) {
+            ImageDTO imageDTO = new ImageDTO();
+            imageDTO.setImgPath(dto.getImagePath());
+            imageDTO.setNewsId(id);
+            imageService.addImage(imageDTO);
+        } else {
+            return 0;
+        }
         return id;
     }
 
