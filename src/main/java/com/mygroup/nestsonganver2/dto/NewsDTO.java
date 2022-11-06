@@ -19,6 +19,7 @@ public class NewsDTO {
     private String shortDescription;   
     private String title;
     private int empId;
+    private String imagePath;
     
     private List<ImageDTO> listImages = new ArrayList<>(); 
     
@@ -80,5 +81,14 @@ public class NewsDTO {
     public void setListImages(List<ImageDTO> listImages) {
         this.listImages = listImages;
     }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+    
     
 }
