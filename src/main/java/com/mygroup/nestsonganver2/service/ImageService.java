@@ -103,6 +103,10 @@ public class ImageService {
             return true;
         return false;
     }
+    
+    public boolean removeNewsId(int id){
+        return imgDAO.removeNewsId(id);
+    }
 
     
 

@@ -19,7 +19,7 @@ public class NewsCategoryService {
     private NewsCategoryService(){}
     
     private static NewsCategoryService instance = null;
-    public static NewsCategoryService getNewsCategoryDAO() {
+    public static NewsCategoryService getNewsCategoryService() {
         if (instance == null) 
             instance = new NewsCategoryService();
         return instance;

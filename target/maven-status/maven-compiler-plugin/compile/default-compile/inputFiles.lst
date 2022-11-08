@@ -1,3 +1,120 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e33e3485d9f56bbf04d65d815c44801d088b5100
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\BillDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\CommentEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\BillService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\NewsDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\BillDetailsService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\ICommentDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\BillStatusDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\ImageEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\BillDetailsConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\UserDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\ImageAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\BillConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\CategoryEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\BillDetailsAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\CategorySQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\Utils.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\CategoryMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\ImageDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\CommentDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\ProductSQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\PaymentStatusConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\BillDetailsDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\MailService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\UserAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\ProductAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\ProductDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\BillAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\NewsMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\ImageConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\ProductConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\RoleAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\BillDetailsMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\CommentService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\RoleDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\ImageMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IUserDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IProductDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\NewsAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\BillStatusAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\PaymentStatusDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\INewsDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\RoleService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\CategoryConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IBillStatusDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IPaymentStatusDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\BillDetailsDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\RowMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\CommentSQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\BillStatusConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\NewsDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\ImageSQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IImageDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\Filter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\BillEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\RoleConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\ProductService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\CartService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\filter\TokenFilter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\PaymentStatusSQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\CommentConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\MailConfig.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\UserConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\ImageService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\AbstractDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\NewsEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\CategoryService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\ProductDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\BillSQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\BillMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\BillStatusSQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IDao.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\ImageDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\NewsConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\CategoryDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\UserDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\RoleSQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\ProductMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\BillStatusService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\UserSQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\BillDetailsSQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\BillDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\BillStatusMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IRoleDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IBillDetailsDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\NewsSQL.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\UserEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\BillDetailsEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\SessionUtils.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\CategoryAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\RoleEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\CommentMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IBillDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\CategoryDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\NewsService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\CartAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\PaymentStatusEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\PaymentStatusMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\RoleDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\PaymentStatusService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\CommentAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\BillStatusDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\CommentDTO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\ProductEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\UserService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\BillStatusEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\UserMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\RoleMapper.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\ICategoryDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\PaymentStatusDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\OTPAPI.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\PaymentStatusAPI.java
+<<<<<<< HEAD
+=======
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\OTPAPI.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\ProductSQL.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\MailConfig.java
@@ -106,3 +223,6 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\NewsCategoryDAO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\PaymentStatusEntity.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\AbstractDAO.java
+>>>>>>> develop
+=======
+>>>>>>> e33e3485d9f56bbf04d65d815c44801d088b5100
