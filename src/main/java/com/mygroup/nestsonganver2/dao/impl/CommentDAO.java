@@ -26,6 +26,7 @@ public class CommentDAO extends AbstractDAO<CommentEntity> implements ICommentDA
         return instance;
     }
     
+    CommentMapper commentMapper= CommentMapper.getInstance();
     private CommentDAO(){}
    
     //GET
@@ -55,8 +56,11 @@ public class CommentDAO extends AbstractDAO<CommentEntity> implements ICommentDA
     }
     
     @Override
-    public double getRatingByProductId(int id){
-        return getRating(CommentSQL.getRatingByIdProduct,id);
+    public float getRatingByProductId(int id){
+        List<Float> ans= query(CommentSQL.getRatingByIdProduct,commentMapper.getStarbyProductId, id);
+        if (ans==null || ans.isEmpty())
+            return 0;
+        return ans.get(0);
     }
     
      @Override

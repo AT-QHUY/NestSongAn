@@ -46,11 +46,6 @@ public class CommentService {
         return CommentConverter.convertEntitytoDTO(entity);
     }
     
-    public double getRatingbyProductId(int id){
-        double rating = 0;
-        rating = commentDAO.getRatingByProductId(id);
-        return rating;
-    } 
     
     public int addNewComment(CommentDTO comment) throws NoSuchAlgorithmException {
         final int result = commentDAO.addNewComment(CommentConverter.convertDTOtoEntity(comment));

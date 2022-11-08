@@ -53,15 +53,7 @@ public class CommentAPI {
 
         return Response.ok(dto, MediaType.APPLICATION_JSON).build();
     } 
-     
-    @GET
-    @Path("rating/{Id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public double getRatingbyProductId(@PathParam("Id") int id){
-        double rating = commentService.getRatingbyProductId(id);
-        return rating;
-    } 
-    
+ 
     @POST
     @Path("/add")
     @Produces(MediaType.APPLICATION_JSON)

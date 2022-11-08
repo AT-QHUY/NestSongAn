@@ -28,8 +28,10 @@ C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\B
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\NewsMapper.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\ImageConverter.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\ProductConverter.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\RoleAPI.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\BillDetailsMapper.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\CommentService.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\RoleDTO.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\ImageMapper.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IUserDAO.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IProductDAO.java
@@ -37,6 +39,7 @@ C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\N
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\BillStatusAPI.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\PaymentStatusDTO.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\INewsDAO.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\RoleService.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\CategoryConverter.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IBillStatusDAO.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IPaymentStatusDAO.java
@@ -49,6 +52,7 @@ C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\const
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IImageDAO.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\Filter.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\BillEntity.java
+C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\RoleConverter.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\ProductService.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\CartService.java
 C:\Users\ADMIN\Desktop\NestSongAn\src\main\java\com\mygroup\nestsonganver2\filter\TokenFilter.java

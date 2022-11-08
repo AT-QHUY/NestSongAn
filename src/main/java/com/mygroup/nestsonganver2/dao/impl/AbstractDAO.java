@@ -6,6 +6,7 @@
 package com.mygroup.nestsonganver2.dao.impl;
 
 import com.mygroup.nestsonganver2.dao.IDao;
+import com.mygroup.nestsonganver2.entity.UserEntity;
 import com.mygroup.nestsonganver2.mapper.RowMapper;
 import com.mygroup.nestsonganver2.utils.Utils;
 import java.sql.Connection;
@@ -17,6 +18,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  *
@@ -62,7 +64,7 @@ public class AbstractDAO<T> implements IDao<T> {
             }
         }
     }
-    
+
     private void setParameter(PreparedStatement statement, Object... parameters) {
         try {
             for (int i = 0; i < parameters.length; i++) {
@@ -75,9 +77,9 @@ public class AbstractDAO<T> implements IDao<T> {
                 } else if (parameter instanceof Integer) {
                     statement.setInt(index, (Integer) parameter);
                 } else if (parameter instanceof Date) {
-                    statement.setDate(index, (Date) parameter);    
+                    statement.setDate(index, (Date) parameter);
                 } else if (parameter instanceof Float) {
-                    statement.setFloat(index, (Float) parameter);    
+                    statement.setFloat(index, (Float) parameter);
 
                 }
             }
@@ -149,7 +151,7 @@ public class AbstractDAO<T> implements IDao<T> {
                 if (statement != null) {
                     statement.close();
                 }
-                if (resultSet != null){
+                if (resultSet != null) {
                     resultSet.close();
                 }
 
@@ -173,7 +175,7 @@ public class AbstractDAO<T> implements IDao<T> {
             resultSet = statement.executeQuery();
             connection.commit();
             connection.setAutoCommit(true);
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 return resultSet.getInt("total");
             }
             return 0;
@@ -197,8 +199,10 @@ public class AbstractDAO<T> implements IDao<T> {
         }
     }
 
+
     @Override
-    public double getRating(String sql, Object... parameters) {
+    public <T> List<T> query(String sql, Function<ResultSet, T> func, Object... parameters) {
+        List<T> results = new ArrayList<>();
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -210,13 +214,13 @@ public class AbstractDAO<T> implements IDao<T> {
             resultSet = statement.executeQuery();
             connection.commit();
             connection.setAutoCommit(true);
-            if (resultSet.next()){
-                return resultSet.getDouble(1);
+            while (resultSet.next()) {
+                results.add((T) func.apply(resultSet));
             }
-            return 0;
+            return results;
         } catch (SQLException e) {
             System.out.println(e);
-            return 0;
+            return null;
         } finally {
             try {
                 if (connection != null) {
@@ -229,8 +233,11 @@ public class AbstractDAO<T> implements IDao<T> {
                     resultSet.close();
                 }
             } catch (SQLException e) {
-                return 0;
+
+                return null;
             }
         }
+
     }
+
 }

@@ -168,5 +168,16 @@ public class ProductService {
             return 0;
         }
     }
+    
+    //calculate static value
+    
+    public List<ProductDTO> getCountOnBill() {
+         try {
+            return productDAO.getStaticValue();
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
 
 }

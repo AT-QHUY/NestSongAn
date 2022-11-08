@@ -8,6 +8,7 @@ import com.mygroup.nestsonganver2.entity.CommentEntity;
 import com.mygroup.nestsonganver2.entity.ProductEntity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,6 +32,7 @@ public class CommentMapper implements RowMapper{
             comment.setId(rs.getInt("id"));
             comment.setUserId(rs.getInt("userId"));
             comment.setProductId(rs.getInt("productId"));
+            comment.setDate(rs.getDate("date"));
             comment.setComment(rs.getString("comment"));
             comment.setRating(rs.getInt("rating"));
             return comment;
@@ -40,4 +42,15 @@ public class CommentMapper implements RowMapper{
         }
        
     }
+    
+    public Function<ResultSet, Float> getStarbyProductId = rs -> {
+        try {
+            float star;
+            star=(rs.getFloat("star"));
+            return star;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductMapper.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    };
 }
