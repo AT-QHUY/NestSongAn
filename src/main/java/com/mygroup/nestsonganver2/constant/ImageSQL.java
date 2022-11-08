@@ -27,6 +27,10 @@ public class ImageSQL {
                                         + "    newsId = ?,\n"
                                         + "    productId = ?\n"
                                         + "WHERE id = ? ";
+    
+    public static String removeNewsId = "UPDATE Images\n"
+                                      + "SET newsId = null\n"
+                                      + "WHERE id = ?";
 //    public static String updateImageByProductId = "UPDATE [dbo].[Images]"
 //                                        + "SET path = ?"
 //                                        + "WHERE productId = ? ";

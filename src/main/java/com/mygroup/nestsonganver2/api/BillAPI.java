@@ -159,8 +159,8 @@ public class BillAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("update-status")
     public Response updateStatus(@QueryParam("id") int id, @QueryParam("status") int status) {
-        int result = BILLS_SERVICE.updateStatus(id, status);
-        if (result == 0) {
+        boolean result = BILLS_SERVICE.updateStatus(id, status);
+        if (result) {
             return Response.notModified().build();
         } else {
             return Response.ok().build();
@@ -173,8 +173,8 @@ public class BillAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("delete/{id}")
     public Response deleteOrder(@PathParam("id") int id){
-          int result = BILLS_SERVICE.updateStatus(id, 4);
-        if (result == 0) {
+          boolean result = BILLS_SERVICE.updateStatus(id, 4);
+        if (result) {
             return Response.notModified().build();
         } else {
             return Response.ok().build();
