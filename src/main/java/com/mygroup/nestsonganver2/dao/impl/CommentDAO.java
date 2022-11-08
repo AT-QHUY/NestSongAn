@@ -5,8 +5,10 @@
 package com.mygroup.nestsonganver2.dao.impl;
 
 import com.mygroup.nestsonganver2.constant.CommentSQL;
+import com.mygroup.nestsonganver2.constant.ProductSQL;
 import com.mygroup.nestsonganver2.dao.ICommentDAO;
 import com.mygroup.nestsonganver2.entity.CommentEntity;
+import com.mygroup.nestsonganver2.entity.ProductEntity;
 import com.mygroup.nestsonganver2.mapper.CommentMapper;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,7 @@ public class CommentDAO extends AbstractDAO<CommentEntity> implements ICommentDA
         return instance;
     }
     
+    CommentMapper commentMapper= CommentMapper.getInstance();
     private CommentDAO(){}
    
     //GET
@@ -50,5 +53,19 @@ public class CommentDAO extends AbstractDAO<CommentEntity> implements ICommentDA
             return null;
         return list.get(0);
 
+    }
+    
+    @Override
+    public float getRatingByProductId(int id){
+        List<Float> ans= query(CommentSQL.getRatingByIdProduct,commentMapper.getStarbyProductId, id);
+        if (ans==null || ans.isEmpty())
+            return 0;
+        return ans.get(0);
+    }
+    
+     @Override
+    public int addNewComment(CommentEntity comment) {
+        int id = insert(CommentSQL.addNewComment, comment.getUserId(), comment.getProductId(), comment.getComment(), comment.getRating());
+        return id;
     }
 }

@@ -15,4 +15,8 @@ public interface ICommentDAO extends IDao<CommentEntity> {
     public List<CommentEntity> getCommentsByProductId(int id);
     
     public CommentEntity getCommentById(int id);
+    
+    public float getRatingByProductId(int id);
+    
+    public int addNewComment(CommentEntity comment);
 }

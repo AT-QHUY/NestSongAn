@@ -89,11 +89,17 @@ com\mygroup\nestsonganver2\dao\IBillDAO.class
 com\mygroup\nestsonganver2\constant\PaymentStatusSQL.class
 com\mygroup\nestsonganver2\api\PaymentStatusAPI.class
 <<<<<<< HEAD
+<<<<<<< HEAD
 com\mygroup\nestsonganver2\dto\CommentDTO.class
 com\mygroup\nestsonganver2\mapper\CommentMapper.class
 =======
 com\mygroup\nestsonganver2\api\RoleAPI.class
 >>>>>>> develop
+=======
+com\mygroup\nestsonganver2\dto\CommentDTO.class
+com\mygroup\nestsonganver2\mapper\CommentMapper.class
+com\mygroup\nestsonganver2\api\RoleAPI.class
+>>>>>>> e33e3485d9f56bbf04d65d815c44801d088b5100
 com\mygroup\nestsonganver2\converter\NewsConverter.class
 com\mygroup\nestsonganver2\entity\PaymentStatusEntity.class
 com\mygroup\nestsonganver2\dao\impl\CategoryDAO.class

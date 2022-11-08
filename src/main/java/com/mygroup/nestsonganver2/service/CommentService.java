@@ -8,6 +8,7 @@ import com.mygroup.nestsonganver2.converter.CommentConverter;
 import com.mygroup.nestsonganver2.dao.impl.CommentDAO;
 import com.mygroup.nestsonganver2.dto.CommentDTO;
 import com.mygroup.nestsonganver2.entity.CommentEntity;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,4 +46,9 @@ public class CommentService {
         return CommentConverter.convertEntitytoDTO(entity);
     }
     
+    
+    public int addNewComment(CommentDTO comment) throws NoSuchAlgorithmException {
+        final int result = commentDAO.addNewComment(CommentConverter.convertDTOtoEntity(comment));
+        return result;
+    }
 }

@@ -6,8 +6,13 @@ package com.mygroup.nestsonganver2.api;
 
 import com.mygroup.nestsonganver2.dto.CommentDTO;
 import com.mygroup.nestsonganver2.service.CommentService;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -28,7 +33,7 @@ public class CommentAPI {
     @Context
     UriInfo ui;
     @GET
-    @Path("/product/{Id}")
+    @Path("{Id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCommentsByProductId(@PathParam("Id") int Id) {
         List<CommentDTO> list = commentService.getCommentsByProductId(Id);
@@ -39,7 +44,7 @@ public class CommentAPI {
     }
     
    @GET
-    @Path("{Id}")
+    @Path("id/{Id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCommentById(@PathParam("Id") int Id) {
         CommentDTO dto = commentService.getCommentById(Id);
@@ -48,5 +53,20 @@ public class CommentAPI {
 
         return Response.ok(dto, MediaType.APPLICATION_JSON).build();
     } 
-    
+ 
+    @POST
+    @Path("/add")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addNewComment(CommentDTO comment) throws URISyntaxException, NoSuchAlgorithmException {
+        //authentication
+        int id = commentService.addNewComment(comment);
+        if (id == 0) {
+            return Response.status(Response.Status.NOT_MODIFIED).build();
+        } else {
+            URI uri = new URI(ui.getBaseUri() + "comment" + id);
+            return Response.created(uri).build();
+        }
+
+    }
 }
