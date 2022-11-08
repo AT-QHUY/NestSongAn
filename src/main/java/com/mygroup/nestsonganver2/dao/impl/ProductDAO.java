@@ -10,6 +10,7 @@ import com.mygroup.nestsonganver2.entity.ProductEntity;
 import com.mygroup.nestsonganver2.mapper.ProductMapper;
 import java.util.List;
 import com.mygroup.nestsonganver2.dto.Filter;
+import com.mygroup.nestsonganver2.dto.ProductDTO;
 import java.text.DecimalFormat;
 
 /**
@@ -160,7 +161,7 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
 
     @Override
     public List<ProductEntity> getByStatus(int status) {
-        List<ProductEntity> productList = query(ProductSQL.getByStatus,productMapper, status);
+        List<ProductEntity> productList = query(ProductSQL.getByStatus, productMapper, status);
         return productList.isEmpty() ? null : productList;
     }
 
@@ -176,4 +177,13 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
         int count = queryCount(ProductSQL.countAllProduct);
         return count;
     }
+
+    @Override
+    public List<ProductDTO> getStaticValue() {
+        List<ProductDTO> dtoList;
+        dtoList = query(ProductSQL.totalProductOnBill, productMapper.mapRowWithTotalOnBill);
+        return (dtoList.isEmpty()) ? null : dtoList;
+    }
+    
+
 }

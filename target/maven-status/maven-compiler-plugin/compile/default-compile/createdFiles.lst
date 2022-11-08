@@ -1,3 +1,4 @@
+com\mygroup\nestsonganver2\dao\INewsCategoryDAO.class
 com\mygroup\nestsonganver2\entity\CategoryEntity.class
 com\mygroup\nestsonganver2\dto\ImageDTO.class
 com\mygroup\nestsonganver2\entity\RoleEntity.class
@@ -6,6 +7,7 @@ com\mygroup\nestsonganver2\dto\PaymentStatusDTO.class
 com\mygroup\nestsonganver2\constant\NewsSQL.class
 com\mygroup\nestsonganver2\dto\CategoryDTO.class
 com\mygroup\nestsonganver2\entity\NewsEntity.class
+com\mygroup\nestsonganver2\entity\NewsCategoryEntity.class
 com\mygroup\nestsonganver2\converter\BillDetailsConverter.class
 com\mygroup\nestsonganver2\api\CartAPI.class
 com\mygroup\nestsonganver2\dto\Filter.class
@@ -39,6 +41,7 @@ com\mygroup\nestsonganver2\dao\IProductDAO.class
 com\mygroup\nestsonganver2\constant\BillStatusSQL.class
 com\mygroup\nestsonganver2\service\BillStatusService.class
 com\mygroup\nestsonganver2\api\NewsAPI.class
+com\mygroup\nestsonganver2\dto\RoleDTO.class
 com\mygroup\nestsonganver2\entity\ProductEntity.class
 com\mygroup\nestsonganver2\api\ImageAPI.class
 com\mygroup\nestsonganver2\mapper\RowMapper.class
@@ -55,6 +58,7 @@ com\mygroup\nestsonganver2\dao\impl\ImageDAO.class
 com\mygroup\nestsonganver2\service\BillDetailsService.class
 com\mygroup\nestsonganver2\converter\ProductConverter.class
 com\mygroup\nestsonganver2\converter\BillStatusConverter.class
+com\mygroup\nestsonganver2\constant\NewsCategorySQL.class
 com\mygroup\nestsonganver2\dto\UserDTO.class
 com\mygroup\nestsonganver2\service\CartService.class
 com\mygroup\nestsonganver2\dao\IRoleDAO.class
@@ -65,7 +69,11 @@ com\mygroup\nestsonganver2\dto\BillDetailsDTO.class
 com\mygroup\nestsonganver2\service\CategoryService.class
 com\mygroup\nestsonganver2\utils\SessionUtils.class
 com\mygroup\nestsonganver2\constant\BillSQL.class
+<<<<<<< HEAD
 com\mygroup\nestsonganver2\constant\CommentSQL.class
+=======
+com\mygroup\nestsonganver2\service\NewsCategoryService.class
+>>>>>>> develop
 com\mygroup\nestsonganver2\converter\BillConverter.class
 com\mygroup\nestsonganver2\api\CategoryAPI.class
 com\mygroup\nestsonganver2\converter\CommentConverter.class
@@ -76,25 +84,33 @@ com\mygroup\nestsonganver2\constant\RoleSQL.class
 com\mygroup\nestsonganver2\constant\CategorySQL.class
 com\mygroup\nestsonganver2\dao\IDao.class
 com\mygroup\nestsonganver2\dao\impl\RoleDAO.class
+com\mygroup\nestsonganver2\service\RoleService.class
 com\mygroup\nestsonganver2\dao\IBillDAO.class
 com\mygroup\nestsonganver2\constant\PaymentStatusSQL.class
 com\mygroup\nestsonganver2\api\PaymentStatusAPI.class
+<<<<<<< HEAD
 com\mygroup\nestsonganver2\dto\CommentDTO.class
 com\mygroup\nestsonganver2\mapper\CommentMapper.class
+=======
+com\mygroup\nestsonganver2\api\RoleAPI.class
+>>>>>>> develop
 com\mygroup\nestsonganver2\converter\NewsConverter.class
 com\mygroup\nestsonganver2\entity\PaymentStatusEntity.class
 com\mygroup\nestsonganver2\dao\impl\CategoryDAO.class
+com\mygroup\nestsonganver2\mapper\NewsCategoryMapper.class
 com\mygroup\nestsonganver2\api\BillStatusAPI.class
 com\mygroup\nestsonganver2\mapper\NewsMapper.class
 com\mygroup\nestsonganver2\dao\impl\BillDAO.class
 com\mygroup\nestsonganver2\dao\impl\NewsDAO.class
 com\mygroup\nestsonganver2\service\BillService.class
 com\mygroup\nestsonganver2\converter\ImageConverter.class
+com\mygroup\nestsonganver2\dao\impl\NewsCategoryDAO.class
 com\mygroup\nestsonganver2\mapper\UserMapper.class
 com\mygroup\nestsonganver2\utils\MailConfig.class
 com\mygroup\nestsonganver2\service\PaymentStatusService.class
 com\mygroup\nestsonganver2\dao\impl\AbstractDAO.class
 com\mygroup\nestsonganver2\dao\IImageDAO.class
+com\mygroup\nestsonganver2\converter\RoleConverter.class
 com\mygroup\nestsonganver2\service\ProductService.class
 com\mygroup\nestsonganver2\constant\UserSQL.class
 com\mygroup\nestsonganver2\dao\impl\BillStatusDAO.class
