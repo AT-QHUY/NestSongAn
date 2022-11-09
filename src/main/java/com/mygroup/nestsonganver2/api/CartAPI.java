@@ -53,10 +53,10 @@ public class CartAPI {
     @Path("/buy/customer") 
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response buy(UserDTO user) {
+    public Response buy(UserDTO user) throws Exception {
         BillDTO bill = cartService.buy(user);
         if (bill != null) {
-            return Response.ok(bill, MediaType.APPLICATION_JSON).build();
+                return Response.ok(bill, MediaType.APPLICATION_JSON).build();
         }
         return Response.notModified().build();
     }
