@@ -86,20 +86,21 @@ public class ProductDAO extends AbstractDAO<ProductEntity> implements IProductDA
         if (filter.getName() != null && !filter.getName().isEmpty()) {
             for (int i = 0; i < productList.size();) {
                 count = 0;
+                int checkWeight = 0;
                 for (int j = 0; j < filter.getName().size(); j++) {
-
                     if (!filter.getName().get(j).toLowerCase().equals("100g") && !filter.getName().get(j).toLowerCase().equals("50g")) {
                         if (!productList.get(i).getName().toLowerCase().contains(filter.getName().get(j).toLowerCase())) {
                             productList.remove(i);
                             break;
-                        }
+                        }                 
                     } else {
+                        checkWeight++;
                         if (productList.get(i).getName().toLowerCase().contains(filter.getName().get(j))) {
                             count++;
                         }
                     }
                     if (j == filter.getName().size()-1) {
-                        if (count == 0) {
+                        if (count == 0 && checkWeight>0) {
                             productList.remove(i);
                         } else {
                             i++;
