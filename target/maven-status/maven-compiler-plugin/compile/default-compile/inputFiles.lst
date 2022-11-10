@@ -20,6 +20,7 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\BillService.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\BillDetailsMapper.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\CategoryAPI.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\CommentSQL.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\filter\TokenFilter.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\RoleService.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\ProductDTO.java
@@ -34,7 +35,10 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\ProductDAO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\BillSQL.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IPaymentStatusDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\CommentDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\CommentDTO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\CategoryDTO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\CommentService.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\UserConverter.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\CategoryMapper.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\RoleDAO.java
@@ -50,8 +54,10 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\RoleSQL.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\UserDAO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\NewsDTO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\CommentConverter.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\Utils.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IBillDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\CommentAPI.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\impl\NewsDAO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dto\UserDTO.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\RoleAPI.java
@@ -67,6 +73,7 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\BillMapper.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\UserAPI.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IRoleDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\CommentEntity.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\NewsConverter.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\CategorySQL.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IUserDAO.java
@@ -100,6 +107,8 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\NewsAPI.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\UserMapper.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\PaymentStatusSQL.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\ICommentDAO.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\CommentMapper.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\NewsCategoryEntity.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\NewsSQL.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\entity\CategoryEntity.java
