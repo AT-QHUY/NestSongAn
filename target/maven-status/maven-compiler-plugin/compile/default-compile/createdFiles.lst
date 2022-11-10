@@ -31,9 +31,12 @@ com\mygroup\nestsonganver2\dao\impl\CommentDAO.class
 com\mygroup\nestsonganver2\api\CommentAPI.class
 com\mygroup\nestsonganver2\mapper\ProductMapper.class
 com\mygroup\nestsonganver2\mapper\RoleMapper.class
+<<<<<<< HEAD
+=======
 com\mygroup\nestsonganver2\service\CommentService.class
 com\mygroup\nestsonganver2\dao\ICommentDAO.class
 com\mygroup\nestsonganver2\api\OTPAPI.class
+>>>>>>> develop
 com\mygroup\nestsonganver2\dao\IUserDAO.class
 com\mygroup\nestsonganver2\mapper\BillStatusMapper.class
 com\mygroup\nestsonganver2\dao\impl\ProductDAO.class
@@ -68,6 +71,7 @@ com\mygroup\nestsonganver2\dto\ProductDTO.class
 com\mygroup\nestsonganver2\dto\BillDetailsDTO.class
 com\mygroup\nestsonganver2\service\CategoryService.class
 com\mygroup\nestsonganver2\utils\SessionUtils.class
+com\mygroup\nestsonganver2\api\MailAPI.class
 com\mygroup\nestsonganver2\constant\BillSQL.class
 com\mygroup\nestsonganver2\service\NewsCategoryService.class
 com\mygroup\nestsonganver2\constant\CommentSQL.class

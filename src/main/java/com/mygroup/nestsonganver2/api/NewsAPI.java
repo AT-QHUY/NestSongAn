@@ -77,6 +77,14 @@ public class NewsAPI {
         return Response.ok(newsList, MediaType.APPLICATION_JSON).build();
     }
 
+    //Get all news by category
+    @GET
+    @Path("category/{cateId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getAllNewsByCategory(@PathParam("cateId") int cateId) {
+        return Response.ok(newsService.getAllNewsByCategoryPagination(cateId), MediaType.APPLICATION_JSON).build();
+    }
     //Get by category
     @POST
     @Produces(MediaType.APPLICATION_JSON)

@@ -12,6 +12,8 @@ import com.mygroup.nestsonganver2.entity.NewsCategoryEntity;
 import com.mygroup.nestsonganver2.entity.NewsEntity;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -82,8 +84,10 @@ public class NewsService {
 
     //Get news by cate 
     public List<NewsDTO> getNewsByCategoryPagination(int cateId, int page, int numberOfNews) {
-        int offset = page * numberOfNews;
-        if (page > 0 && page != 1) {
+        int offset = 0;
+        if(page <= 0 || page == 1) {
+            offset = 0;
+        } else if (page > 1) {
             offset = (page - 1) * numberOfNews;
         }
         int fetch = numberOfNews;
@@ -99,6 +103,14 @@ public class NewsService {
             dtoList.add(dto);
         }
         return dtoList;
+    }
+    
+    public List<NewsDTO> getAllNewsByCategoryPagination(int cateId) {
+        List<NewsDTO> result = getAllNews();
+        if (result == null) return new ArrayList<>();
+        return result.stream()
+                .filter(n -> n.getCate().getId() == cateId)
+                .collect(Collectors.toList());
     }
 
     //Add news 
