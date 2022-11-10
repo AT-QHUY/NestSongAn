@@ -6,6 +6,7 @@ package com.mygroup.nestsonganver2.dao.impl;
 
 import com.mygroup.nestsonganver2.constant.BillSQL;
 import com.mygroup.nestsonganver2.dao.IBillDAO;
+import com.mygroup.nestsonganver2.dto.BillDTO;
 import com.mygroup.nestsonganver2.entity.BillEntity;
 import com.mygroup.nestsonganver2.mapper.BillMapper;
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ import java.util.List;
  * @author Silver King
  */
 public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
+
+    private static final BillMapper billMapper = BillMapper.getInstance();
 
     private static BillDAO billDAO = null;
 
@@ -30,7 +33,7 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
     @Override
     public int createNewBill(BillEntity bill) {
         int id = insert(BillSQL.insertNew, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId(),
-                         bill.getTotalPrice(), bill.getAddress(), bill.getPhoneNumber(), bill.getPaymentStatusId());
+                bill.getTotalPrice(), bill.getAddress(), bill.getPhoneNumber(), bill.getPaymentStatusId());
         return id;
     }
 
@@ -101,7 +104,7 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
     @Override
     public int updateBill(BillEntity bill) {
         int result = update(BillSQL.updateBill, bill.getDate(), bill.getStatus(), bill.getCustomerId(), bill.getEmpId(),
-                            bill.getTotalPrice(), bill.getAddress(), bill.getPhoneNumber(), bill.getPaymentStatusId(), bill.getId());
+                bill.getTotalPrice(), bill.getAddress(), bill.getPhoneNumber(), bill.getPaymentStatusId(), bill.getId());
         return result;
     }
 
@@ -129,4 +132,12 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
         list = query(BillSQL.findByCustomerIdAndStatus, new BillMapper(), empId, status);
         return list;
     }
+
+    @Override
+    public List<BillDTO> findTotalPriceByMonth() {
+        List<BillDTO> list ;
+        list = query(BillSQL.calculateStaticValue, billMapper.mapRowWithTotalOnBill);
+        return (list.isEmpty()) ? null : list;
+    }
+
 }

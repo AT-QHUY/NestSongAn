@@ -19,6 +19,7 @@ com\mygroup\nestsonganver2\converter\PaymentStatusConverter.class
 com\mygroup\nestsonganver2\service\MailService.class
 com\mygroup\nestsonganver2\mapper\CategoryMapper.class
 com\mygroup\nestsonganver2\filter\TokenFilter.class
+com\mygroup\nestsonganver2\entity\CommentEntity.class
 com\mygroup\nestsonganver2\dao\impl\UserDAO.class
 com\mygroup\nestsonganver2\mapper\ImageMapper.class
 com\mygroup\nestsonganver2\service\ImageService.class
@@ -26,8 +27,16 @@ com\mygroup\nestsonganver2\service\NewsService.class
 com\mygroup\nestsonganver2\api\BillDetailsAPI.class
 com\mygroup\nestsonganver2\entity\BillEntity.class
 com\mygroup\nestsonganver2\api\UserAPI.class
+com\mygroup\nestsonganver2\dao\impl\CommentDAO.class
+com\mygroup\nestsonganver2\api\CommentAPI.class
 com\mygroup\nestsonganver2\mapper\ProductMapper.class
 com\mygroup\nestsonganver2\mapper\RoleMapper.class
+<<<<<<< HEAD
+=======
+com\mygroup\nestsonganver2\service\CommentService.class
+com\mygroup\nestsonganver2\dao\ICommentDAO.class
+com\mygroup\nestsonganver2\api\OTPAPI.class
+>>>>>>> develop
 com\mygroup\nestsonganver2\dao\IUserDAO.class
 com\mygroup\nestsonganver2\mapper\BillStatusMapper.class
 com\mygroup\nestsonganver2\dao\impl\ProductDAO.class
@@ -65,8 +74,10 @@ com\mygroup\nestsonganver2\utils\SessionUtils.class
 com\mygroup\nestsonganver2\api\MailAPI.class
 com\mygroup\nestsonganver2\constant\BillSQL.class
 com\mygroup\nestsonganver2\service\NewsCategoryService.class
+com\mygroup\nestsonganver2\constant\CommentSQL.class
 com\mygroup\nestsonganver2\converter\BillConverter.class
 com\mygroup\nestsonganver2\api\CategoryAPI.class
+com\mygroup\nestsonganver2\converter\CommentConverter.class
 com\mygroup\nestsonganver2\converter\CategoryConverter.class
 com\mygroup\nestsonganver2\dto\BillDTO.class
 com\mygroup\nestsonganver2\constant\ImageSQL.class
@@ -78,6 +89,8 @@ com\mygroup\nestsonganver2\service\RoleService.class
 com\mygroup\nestsonganver2\dao\IBillDAO.class
 com\mygroup\nestsonganver2\constant\PaymentStatusSQL.class
 com\mygroup\nestsonganver2\api\PaymentStatusAPI.class
+com\mygroup\nestsonganver2\dto\CommentDTO.class
+com\mygroup\nestsonganver2\mapper\CommentMapper.class
 com\mygroup\nestsonganver2\api\RoleAPI.class
 com\mygroup\nestsonganver2\converter\NewsConverter.class
 com\mygroup\nestsonganver2\entity\PaymentStatusEntity.class
