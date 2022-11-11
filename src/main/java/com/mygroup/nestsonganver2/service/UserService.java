@@ -115,16 +115,16 @@ public class UserService {
     // ----------------------------------------------------------------------
     // Update User
     private int updateUser(UserEntity user, UserEntity oldUser) {
-        if (!user.getFullname().isEmpty()) {
+        if (user.getFullname() == null || user.getFullname().isEmpty()) {
             user.setFullname(oldUser.getFullname());
         }
-        if (!user.getAddress().isEmpty()) {
+        if (user.getAddress() == null || user.getAddress().isEmpty()) {
             user.setAddress(oldUser.getAddress());
         }
-        if (!user.getDateOfBirth().toString().isEmpty()) {
+        if (user.getDateOfBirth() == null || user.getDateOfBirth().toString().isEmpty()) {
             user.setDateOfBirth(oldUser.getDateOfBirth());
         }
-        if (!user.getPhoneNumber().isEmpty()) {
+        if (user.getPhoneNumber() == null || user.getPhoneNumber().isEmpty()) {
             user.setPhoneNumber(oldUser.getPhoneNumber());
         }
         return userDAO.updateUser(user);

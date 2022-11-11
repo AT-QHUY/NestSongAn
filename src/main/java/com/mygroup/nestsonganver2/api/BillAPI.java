@@ -66,7 +66,7 @@ public class BillAPI {
     @Path("/status/{status}")
     public Response getBillByStatus(@PathParam("status") int status) {
         List<BillDTO> list = BILLS_SERVICE.getBillByStatus(status);
-        if (list.isEmpty()) {  
+        if (list.isEmpty()) {
             return Response.notModified().build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
@@ -123,6 +123,20 @@ public class BillAPI {
     }
 
     //--------------------------------------------------------------------------
+    //Get total price by month
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/total-by-month")
+    public Response getTotalPriceByMonth() {
+        List<BillDTO> list = BILLS_SERVICE.getTotalPriceByMonth();
+        if (list == null || list.isEmpty()) {
+            return Response.notModified().build();
+        } else {
+            return Response.ok(list, MediaType.APPLICATION_JSON).build();
+        }
+    }
+
+    //--------------------------------------------------------------------------
     //insert bill
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -166,15 +180,15 @@ public class BillAPI {
             return Response.ok().build();
         }
     }
-    
+
     //--------------------------------------------------------------------------
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("delete/{id}")
-    public Response deleteOrder(@PathParam("id") int id){
-          boolean result = BILLS_SERVICE.updateStatus(id, 4);
-        if (!result) {
+    public Response deleteOrder(@PathParam("id") int id) {
+        boolean result = BILLS_SERVICE.updateStatus(id, 4);
+        if (result) {
             return Response.notModified().build();
         } else {
             return Response.ok().build();

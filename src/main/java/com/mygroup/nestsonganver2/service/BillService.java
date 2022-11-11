@@ -145,4 +145,10 @@ public class BillService {
         }
         return result;
     }
+    
+    //calculate static value
+    
+    public List<BillDTO> getTotalPriceByMonth(){
+        return billDAO.findTotalPriceByMonth();
+    }
 }
