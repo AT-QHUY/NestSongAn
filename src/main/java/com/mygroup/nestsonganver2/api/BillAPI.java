@@ -174,7 +174,7 @@ public class BillAPI {
     @Path("update-status")
     public Response updateStatus(@QueryParam("id") int id, @QueryParam("status") int status) {
         boolean result = BILLS_SERVICE.updateStatus(id, status);
-        if (result) {
+        if (!result) {
             return Response.notModified().build();
         } else {
             return Response.ok().build();

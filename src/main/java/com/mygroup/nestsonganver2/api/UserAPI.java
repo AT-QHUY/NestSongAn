@@ -158,7 +158,7 @@ public class UserAPI {
 
     //--------------------------------------------------------------------------
     // Update an user in database
-    @PUT
+    @POST
     @Path("{isbn}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

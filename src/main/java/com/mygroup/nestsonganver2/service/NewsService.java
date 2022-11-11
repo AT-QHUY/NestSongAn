@@ -137,7 +137,9 @@ public class NewsService {
 
         int id = newsDAO.addNews(add);
         if (id != 0) {
-            addNewsImage(id, dto.getImagePath());
+            dto.getListImages().forEach(item -> {
+                addNewsImage(id, item.getImgPath());
+            });
         } else {
             return 0;
         }

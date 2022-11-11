@@ -160,6 +160,9 @@ public class ImageDAO extends AbstractDAO<ImageEntity> implements IImageDAO {
     }
     
 
-    
+    public boolean removeProductID(int id){
+        int result = update(ImageSQL.removeProductId, id);
+        return result != 0;
+    }
     
 }

@@ -27,7 +27,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("cart")
 public class CartAPI {
-    private CartService cartService = CartService.gettCartSerivce();
+    private final CartService cartService = CartService.gettCartSerivce();
     
     // get cart lines items
     @GET

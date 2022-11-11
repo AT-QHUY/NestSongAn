@@ -23,7 +23,7 @@ import javax.ws.rs.core.Response;
 @Path("mail")
 public class MailAPI {
     
-    private MailService mailService = new MailService();
+    private final MailService mailService = new MailService();
 
     @POST
     @Path("otp")
