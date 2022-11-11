@@ -1,4 +1,3 @@
-D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\OTPAPI.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\constant\ProductSQL.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\utils\MailConfig.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\CategoryConverter.java
@@ -70,6 +69,7 @@ D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganve
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\RoleConverter.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\service\BillDetailsService.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\converter\ImageConverter.java
+D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\MailAPI.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\mapper\BillMapper.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\api\UserAPI.java
 D:\hk5\swp\Nest-Song-An folder\NestSongAn\src\main\java\com\mygroup\nestsonganver2\dao\IRoleDAO.java
