@@ -17,11 +17,11 @@ public class BillSQL {
     
     //--------------------------------------------------------------------------
     //Retrive bill data
-    public static String findAll = "select * from Bills where status = 2 or status = 3 or status =4";
+    public static String findAll = "select * from Bills where status = 2 or status = 3 or status =4 order by Bills.date desc";
     public static String findById = "select * from Bills where Bills.id = ?";
-    public static String findByStatus = "select * from Bills where Bills.status = ?";
-    public static String findByCustomerId = "select * from Bills where Bills.customerId = ? and (status = 2 or status = 3 or status =4)";
-    public static String findByEmpId = "select * from Bills where Bills.empId = ? and (status = 2 or status = 3 or status =4)";
+    public static String findByStatus = "select * from Bills where Bills.status = ? order by Bills.date desc";
+    public static String findByCustomerId = "select * from Bills where Bills.customerId = ? and (status = 2 or status = 3 or status =4) order by Bills.date desc";
+    public static String findByEmpId = "select * from Bills where Bills.empId = ? and (status = 2 or status = 3 or status =4) order by Bills.date desc";
 
     //--------------------------------------------------------------------------
     //Update bill

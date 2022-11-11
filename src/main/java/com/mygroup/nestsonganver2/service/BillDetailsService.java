@@ -36,7 +36,7 @@ public class BillDetailsService {
     public int insertNewBillDetails(BillDetailsDTO billDetails) {
         ProductEntity product = PRODUCT_DAO.getProductById(billDetails.getProduct().getId());
         BillDetailsEntity billDetailsEntity = BILL_DETAILS_CONVERTER.convertDTOtoEntity(billDetails);
-        billDetailsEntity.setPrice(product.getBasePrice());
+        billDetailsEntity.setPrice(product.getBasePrice()*billDetailsEntity.getQuantity());
         return BILL_DETAILS_DAO.insertNewBillDetails(billDetailsEntity);
     }
 
