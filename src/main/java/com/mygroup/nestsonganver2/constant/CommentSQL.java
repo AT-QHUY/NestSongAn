@@ -19,7 +19,7 @@ public class CommentSQL {
             + "where productId= ?\n"
             + "group by productId";
 
-    public static String addNewComment = "insert into dbo.Comments (productId, userId, comment, rating)\n"
-            + "Values (?,?,?,?)";
+    public static String addNewComment = "insert into dbo.Comments (productId, userId, date, comment, rating)\n"
+            + "Values (?,?,?,?,?)";
     //get by status
 }

@@ -64,7 +64,7 @@ public class CommentAPI {
         if (id == 0) {
             return Response.status(Response.Status.NOT_MODIFIED).build();
         } else {
-            URI uri = new URI(ui.getBaseUri() + "comment" + id);
+            URI uri = new URI(ui.getBaseUri() + "product" + id);
             return Response.created(uri).build();
         }
 

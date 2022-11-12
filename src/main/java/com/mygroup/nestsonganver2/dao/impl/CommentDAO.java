@@ -65,7 +65,9 @@ public class CommentDAO extends AbstractDAO<CommentEntity> implements ICommentDA
     
      @Override
     public int addNewComment(CommentEntity comment) {
-        int id = insert(CommentSQL.addNewComment, comment.getUserId(), comment.getProductId(), comment.getComment(), comment.getRating());
+        int id = insert(CommentSQL.addNewComment, comment.getUserId(), comment.getProductId(),comment.getDate(), comment.getComment(), comment.getRating());
+        if (id==0)
         return id;
+        return comment.getProductId();
     }
 }
