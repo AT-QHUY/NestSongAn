@@ -91,20 +91,24 @@ public class MailService {
     }
 
     public void sendBill(String email, BillDTO bill) throws Exception {
-        setProperties();
-        setSession();
-        MimeMessage message = new MimeMessage(this.session);
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-        message.setRecipients(Message.RecipientType.CC, MailConfig.APP_EMAIL);
-        message.setSubject("Nest Song Ân - Chi tiết đơn hàng: " + bill.getId(), "utf-8");
-        String rawMessage = "<h1>Cảm ơn quý khách đã mua sản phẩm của chúng tôi.</h1> <br>"
-                + "<h3>Ngày mua: " + dateTimeFormatter(bill.getDate()) + "</h3>"
-                + "<h3>Địa chỉ giao hàng: " + bill.getAddress() + "</h3>"
-                + "<h3>Số điện thoại người nhận: " + bill.getPhoneNumber() + "</h3>"
-                + "<h3>Tổng tiền: " + floatNumberFormat(bill.getTotalPrice()) + " đồng</h3></br>"
-                + "<h1>Kính chào và hẹn gặp lại quý khách!<h1>";
-        message.setContent(rawMessage, "text/html;charset=UTF-8");
-        Transport.send(message);
+        try {
+            setProperties();
+            setSession();
+            MimeMessage message = new MimeMessage(this.session);
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+            message.setRecipients(Message.RecipientType.CC, MailConfig.APP_EMAIL);
+            message.setSubject("Nest Song Ân - Chi tiết đơn hàng: " + bill.getId(), "utf-8");
+            String rawMessage = "<h1>Cảm ơn quý khách đã mua sản phẩm của chúng tôi.</h1> <br>"
+                    + "<h3>Ngày mua: " + dateTimeFormatter(bill.getDate()) + "</h3>"
+                    + "<h3>Địa chỉ giao hàng: " + bill.getAddress() + "</h3>"
+                    + "<h3>Số điện thoại người nhận: " + bill.getPhoneNumber() + "</h3>"
+                    + "<h3>Tổng tiền: " + floatNumberFormat(bill.getTotalPrice()) + " đồng</h3></br>"
+                    + "<h1>Kính chào và hẹn gặp lại quý khách!<h1>";
+            message.setContent(rawMessage, "text/html;charset=UTF-8");
+            Transport.send(message);
+        } catch (MessagingException e) {
+            System.out.println(e);
+        }
     }
 
     private List<ProductDTO> filterProductList(List<ProductDTO> products) {
@@ -122,7 +126,8 @@ public class MailService {
     }
 
     public void sendDiscountProduct(String email) throws AddressException, MessagingException {
-        List<ProductDTO> products = filterProductList(productService.getByStatus(1));
+        try {
+                    List<ProductDTO> products = filterProductList(productService.getByStatus(1));
         if (products.isEmpty()) {
             return;
         }
@@ -133,24 +138,27 @@ public class MailService {
         message.setRecipients(Message.RecipientType.CC, MailConfig.APP_EMAIL);
         message.setSubject("Giảm giá cực sốc tại Nest Song Ân! ", "utf-8");
         StringBuilder rawMessage = new StringBuilder("<h2>Các mặt hàng đang giảm giá cực sốc:</h2> <table>");
-        for (ProductDTO product : products) {
+        products.forEach(product -> {
             rawMessage
                     .append("<tr><th>")
                     .append(product.getName())
                     .append("</th>")
-//                    .append("<td><img width='100' height='100' style='object-fit:cover' src='")
-//                    .append(product.getImage())
-//                    .append("'></td>") 
+                    //                    .append("<td><img width='100' height='100' style='object-fit:cover' src='")
+                    //                    .append(product.getImage())
+                    //                    .append("'></td>") 
                     .append("<td>Giá gốc: ")
                     .append(floatNumberFormat(product.getBasePrice()))
                     .append(" đồng</td></td><td> giảm: ")
-                    .append(floatNumberFormat(product.getDeal()*100))
+                    .append(floatNumberFormat(product.getDeal() * 100))
                     .append("% </td><td> chỉ còn: ")
                     .append(floatNumberFormat(product.getBasePrice() * (1 - product.getDeal())))
                     .append(" đồng</td></tr>");
-        }
+        });
         rawMessage.append("</table> <br> </h2>Mong quý khách sẽ ghé qua trang bán hàng của chúng tôi tại <a href='http://nest-song-an-bucket.s3-website-ap-southeast-1.amazonaws.com/'>Nest Song Ân</a>.</h2>");
         message.setContent(rawMessage.toString(), "text/html;charset=UTF-8");
         Transport.send(message);
+        } catch (MessagingException e) {
+            System.out.println(e);
+        }
     }
 }
