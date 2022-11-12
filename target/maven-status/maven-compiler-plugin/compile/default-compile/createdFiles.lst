@@ -39,6 +39,7 @@ com\mygroup\nestsonganver2\dao\impl\ProductDAO.class
 com\mygroup\nestsonganver2\dao\IProductDAO.class
 com\mygroup\nestsonganver2\constant\BillStatusSQL.class
 com\mygroup\nestsonganver2\service\BillStatusService.class
+.netbeans_automatic_build
 com\mygroup\nestsonganver2\api\NewsAPI.class
 com\mygroup\nestsonganver2\dto\RoleDTO.class
 com\mygroup\nestsonganver2\entity\ProductEntity.class
@@ -69,6 +70,7 @@ com\mygroup\nestsonganver2\service\CategoryService.class
 com\mygroup\nestsonganver2\utils\SessionUtils.class
 com\mygroup\nestsonganver2\api\MailAPI.class
 com\mygroup\nestsonganver2\constant\BillSQL.class
+com\mygroup\nestsonganver2\api\NewsCategoryAPI.class
 com\mygroup\nestsonganver2\service\NewsCategoryService.class
 com\mygroup\nestsonganver2\constant\CommentSQL.class
 com\mygroup\nestsonganver2\converter\BillConverter.class
