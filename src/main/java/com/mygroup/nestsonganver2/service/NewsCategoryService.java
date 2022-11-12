@@ -32,4 +32,20 @@ public class NewsCategoryService {
     public NewsCategoryEntity findNewsCategory(int id) {
         return newsCategoryDAO.findNewsCategoryByID(id);
     }
+
+    public NewsCategoryEntity addCategoryForNews(NewsCategoryEntity cate) {
+        return newsCategoryDAO.addNewsCategoryEntity(cate);
+    }
+
+    public NewsCategoryEntity updateCategoryOfNews(NewsCategoryEntity cate) {
+        return newsCategoryDAO.updateCategoryOfNews(cate);
+    }
+
+    public NewsCategoryEntity deleteCategoryOfNews(int id) {
+        return newsCategoryDAO.deleteCategoryOfNews(id);
+    }
+
+    public NewsCategoryEntity findCategoryOfNewsById(int id) {
+        return newsCategoryDAO.findNewsCategoryByID(id);
+    }
 }
