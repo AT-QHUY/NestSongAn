@@ -66,7 +66,7 @@ public class BillAPI {
     @Path("/status/{status}")
     public Response getBillByStatus(@PathParam("status") int status) {
         List<BillDTO> list = BILLS_SERVICE.getBillByStatus(status);
-        if (list.isEmpty()) {
+        if (list == null) {
             return Response.notModified().build();
         } else {
             return Response.ok(list, MediaType.APPLICATION_JSON).build();
@@ -188,7 +188,7 @@ public class BillAPI {
     @Path("delete/{id}")
     public Response deleteOrder(@PathParam("id") int id) {
         boolean result = BILLS_SERVICE.updateStatus(id, 4);
-        if (result) {
+        if (! result) {
             return Response.notModified().build();
         } else {
             return Response.ok().build();

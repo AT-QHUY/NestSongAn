@@ -39,7 +39,7 @@ public class NewsCategoryAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getAllNewsCategories() {
         List<NewsCategoryEntity> list = categoryService.findAllNewsCategory();
-        if (list == null && list.isEmpty()) {
+        if (list == null || list.isEmpty()) {
             return Response.ok(new ArrayList<>(), MediaType.APPLICATION_JSON).build();
         }
         return Response.ok(list, MediaType.APPLICATION_JSON).build();

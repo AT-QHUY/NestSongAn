@@ -30,18 +30,41 @@ import javax.ws.rs.ext.Provider;
  */
 public class TokenFilter implements Filter {
 
-   
+    private static UserConverter converter = UserConverter.getInstance();
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-//        UserDTO dto = UserConverter.convertTokentoDTO(req.getHeader("token"));
-//        req.setAttribute("tokenObject", dto);
         HttpServletResponse res = (HttpServletResponse) response;
         res.addHeader("Access-Control-Allow-Origin", "*");
         res.addHeader("Access-Control-Allow-Headers", "*");
         res.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
         res.addHeader("Access-Control-Allow-Credentials", "true");
+
+        final String method = req.getMethod();
+        final String url = req.getRequestURI().toLowerCase();
+        boolean isRegister = url.contains("api/user/insert".toLowerCase());
+        boolean isLogin = url.contains("api/user/login".toLowerCase());
+        boolean isGetMailAPI = url.contains("api/user/mail".toLowerCase());
+        boolean isGetProductFilet = url.contains("api/product/filter".toLowerCase());
+        boolean isMethodAcceptable = "GET".equalsIgnoreCase(method) || "OPTIONS".equalsIgnoreCase(method);
+
+        if (!isMethodAcceptable && !isLogin && !isRegister && !isGetMailAPI && !isGetProductFilet) {
+            final String token = req.getHeader("Authorization");
+            if (token == null || token.isEmpty()) {
+                res.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            } else {
+                UserDTO dto = converter.convertTokentoDTO(req.getHeader("Authorization"));
+                req.setAttribute("tokenObject", dto);
+                if (dto == null) {
+                    res.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+
+                }
+            }
+
+        }
+
+        
         chain.doFilter(request, response);
     }
 
@@ -53,7 +76,4 @@ public class TokenFilter implements Filter {
     public void destroy() {
     }
 
-  
-  
-    
 }
