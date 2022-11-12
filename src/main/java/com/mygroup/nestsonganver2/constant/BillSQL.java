@@ -24,6 +24,7 @@ public class BillSQL {
     public static String findByCustomerId = "select * from Bills where Bills.customerId = ? and (status = 2 or status = 3 or status =4) order by date desc";
     public static String findByEmpId = "select * from Bills where Bills.empId = ? and (status = 2 or status = 3 or status =4) order by date desc";
 
+
     //--------------------------------------------------------------------------
     //Update bill
     public static String updateStatus = "update Bills set status = ? where id = ?";
