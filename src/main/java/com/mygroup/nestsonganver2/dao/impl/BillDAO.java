@@ -47,7 +47,7 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
     //find bill by.....
     @Override
     public List<BillEntity> finndAll() {
-        List<BillEntity> list = new ArrayList<>();
+        List<BillEntity> list;
         list = query(BillSQL.findAll, new BillMapper());
         return list;
     }
@@ -63,37 +63,37 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
             return result;
         } catch (Exception e) {
             System.out.println(e);
-        } finally {
             return result;
+
         }
 
     }
 
     @Override
     public List<BillEntity> findBillByStatus(int status) {
-        List<BillEntity> list = new ArrayList<>();
+        List<BillEntity> list;
         list = query(BillSQL.findByStatus, new BillMapper(), status);
         return list;
     }
 
     @Override
     public List<BillEntity> findBillByCustomerId(int customerId) {
-        List<BillEntity> list = new ArrayList<>();
+        List<BillEntity> list;
         list = query(BillSQL.findByCustomerId, new BillMapper(), customerId);
         return list;
     }
 
     @Override
     public List<BillEntity> findBillByEmpId(int empId) {
-        List<BillEntity> list = new ArrayList<>();
+        List<BillEntity> list;
         list = query(BillSQL.findByEmpId, new BillMapper(), empId);
         return list;
     }
 
     public BillEntity findLastBill(int userId) {
-        List<BillEntity> list = new ArrayList<>();
+        List<BillEntity> list;
         list = query("SELECT TOP 1 * FROM Bills WHERE [customerId] = ? ORDER BY id DESC ", new BillMapper(), userId);
-        if (list.isEmpty() || list == null) {
+        if (list == null || list.isEmpty()) {
             return null;
         }
         return list.get(0);
@@ -121,21 +121,21 @@ public class BillDAO extends AbstractDAO<BillEntity> implements IBillDAO {
 
     @Override
     public List<BillEntity> findByEmpIdAndStatus(int empId, int status) {
-        List<BillEntity> list = new ArrayList<>();
+        List<BillEntity> list;
         list = query(BillSQL.findByEmpIdAndStatus, new BillMapper(), empId, status);
         return list;
     }
 
     @Override
     public List<BillEntity> findByCustomerIdAndStatus(int empId, int status) {
-        List<BillEntity> list = new ArrayList<>();
+        List<BillEntity> list;
         list = query(BillSQL.findByCustomerIdAndStatus, new BillMapper(), empId, status);
         return list;
     }
 
     @Override
     public List<BillDTO> findTotalPriceByMonth() {
-        List<BillDTO> list ;
+        List<BillDTO> list;
         list = query(BillSQL.calculateStaticValue, billMapper.mapRowWithTotalOnBill);
         return (list.isEmpty()) ? null : list;
     }

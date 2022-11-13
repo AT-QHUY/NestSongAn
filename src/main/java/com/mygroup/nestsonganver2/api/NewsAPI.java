@@ -68,7 +68,6 @@ public class NewsAPI {
     // pagination 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response getNewsPagination(@QueryParam("page") int page, @QueryParam("numOfNews") int numberOfNews) {
         List<NewsDTO> newsList = newsService.getNewsPagiantion(page, numberOfNews);
         if (newsList == null || newsList.isEmpty()) {
@@ -79,18 +78,17 @@ public class NewsAPI {
 
     //Get all news by category
     @GET
-    @Path("category/{cateId}")
+    @Path("category-all/{cateId}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response getAllNewsByCategory(@PathParam("cateId") int cateId) {
         return Response.ok(newsService.getAllNewsByCategoryPagination(cateId), MediaType.APPLICATION_JSON).build();
     }
     //Get by category
-    @POST
+    @GET
+    @Path("category/{cateId}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getNewsByCategory(NewsCategoryEntity cate, @QueryParam("page") int page, @QueryParam("numOfNews") int numberOfNews) {
-        List<NewsDTO> newsList = newsService.getNewsByCategoryPagination(cate.getId(), page, numberOfNews);
+    public Response getNewsByCategory(@PathParam("cateId") int cateId, @QueryParam("page") int page, @QueryParam("numOfNews") int numberOfNews) {
+        List<NewsDTO> newsList = newsService.getNewsByCategoryPagination(cateId, page, numberOfNews);
         if (newsList == null || newsList.isEmpty()) {
             return Response.ok(new ArrayList(), MediaType.APPLICATION_JSON).build();
         }

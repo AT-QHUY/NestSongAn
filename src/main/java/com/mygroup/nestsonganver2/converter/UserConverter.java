@@ -86,7 +86,7 @@ public class UserConverter {
                         dto.setRole(new RoleEntity(0, propString[1].trim()));
                         break;
                     case "expired":
-                        LocalDateTime expr = LocalDateTime.parse(propString[1], Utils.dtf);
+                        LocalDateTime expr = LocalDateTime.parse(propString[1], Utils.dtfWithSpace);
                         LocalDateTime now = LocalDateTime.now();
                         if (now.isAfter(expr)) {
                             return null;
@@ -113,7 +113,7 @@ public class UserConverter {
         LocalDateTime now = LocalDateTime.now().plusHours(1);
         builder.append("expired=").append(Utils.dtf.format(now)).append("|");
         builder.append("id=").append(entity.getId()).append("|");
-        builder.append("fullname=").append(entity.getFullname()).append("|");
+        builder.append("fullname=").append(Utils.deAccent(entity.getFullname())).append("|");
         builder.append("role=").append((roleDao.getRoleById(entity.getRoleId())).getName());
         return builder.toString();
     }

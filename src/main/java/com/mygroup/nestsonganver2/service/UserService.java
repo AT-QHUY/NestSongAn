@@ -129,13 +129,22 @@ public class UserService {
         }
         return userDAO.updateUser(user);
     }
+    
+    private String getToken(int id){
+        UserEntity user = userDAO.findUser(id);
+        if (user != null && user.getId() != 0) {
+            return converter.ConvertEntitytoToken(user);
+        }
+        return null;
+        
+    }
 
-    public int updateUser(UserDTO user) {
+    public String updateUser(UserDTO user) {
         UserEntity oldUser = userDAO.findUser(user.getId());
         if (oldUser == null || oldUser.getId() == 0) {
-            return 0;
+            return null;
         } else {
-            return updateUser(converter.convertDTOtoEntity(user), oldUser);
+            return getToken(updateUser(converter.convertDTOtoEntity(user), oldUser));
         }
     }
 
