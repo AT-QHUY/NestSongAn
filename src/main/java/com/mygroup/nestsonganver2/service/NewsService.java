@@ -187,6 +187,10 @@ public class NewsService {
         if (dto.getShortDescription() != null) {
             old.setShortDescription(dto.getShortDescription());
         }
+        
+        if (dto.getTitle()!= null) {
+            old.setTitle(dto.getTitle());
+        }
 
         if (dto.getEmpId() != old.getEmpId() && dto.getEmpId() != 0) {
             old.setEmpId(dto.getEmpId());
