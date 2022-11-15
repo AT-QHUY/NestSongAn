@@ -166,11 +166,10 @@ public class UserAPI {
         String token;
         user.setId(isbn);
         token = userService.updateUser(user);
-        if (token == null || token.isEmpty()) {
-            return Response.notModified().build();
-        } else {
+        if (token != null || !token.isEmpty()) {
             return Response.ok(token, MediaType.APPLICATION_JSON).build();
-
+        } else {
+            return Response.notModified().build();
         }
 
     }

@@ -144,7 +144,11 @@ public class UserService {
         if (oldUser == null || oldUser.getId() == 0) {
             return null;
         } else {
-            return getToken(updateUser(converter.convertDTOtoEntity(user), oldUser));
+            int result = updateUser(converter.convertDTOtoEntity(user), oldUser);
+            if(result > 0){
+                return getToken(user.getId());
+            }
+            return null;
         }
     }
 
